@@ -617,23 +617,27 @@ To prove $A \equiv B$, chain equivalences: $A \equiv A_1 \equiv \ldots \equiv B$
 > [!example] Proof 1
 > **Show:** $\neg(p \lor (\neg p \land q)) \equiv \neg p \land \neg q$
 > 
-> $$\begin{aligned}
+> $$
+> \begin{aligned}
 > \neg(p \lor (\neg p \land q)) &\equiv \neg p \land \neg(\neg p \land q) & \text{(De Morgan)} \\
 > &\equiv \neg p \land (p \lor \neg q) & \text{(De Morgan + Double Neg)} \\
 > &\equiv (\neg p \land p) \lor (\neg p \land \neg q) & \text{(Distributive)} \\
 > &\equiv F \lor (\neg p \land \neg q) & \text{(Negation law)} \\
 > &\equiv \neg p \land \neg q & \text{(Identity)}
-> \end{aligned}$$
+> \end{aligned}
+> $$
 
 > [!example] Proof 2 — Tautology
 > **Show:** $(p \land q) \to (p \lor q)$ is a tautology
 > 
-> $$\begin{aligned}
+> $$
+> \begin{aligned}
 > (p \land q) \to (p \lor q) &\equiv \neg(p \land q) \lor (p \lor q) \\
 > &\equiv (\neg p \lor \neg q) \lor (p \lor q) & \text{(De Morgan)} \\
 > &\equiv (\neg p \lor p) \lor (\neg q \lor q) & \text{(Rearrange)} \\
 > &\equiv T \lor T \equiv T
-> \end{aligned}$$
+> \end{aligned}
+> $$
 
 ---
 ## Propositional Satisfiability
@@ -663,11 +667,15 @@ To prove $A \equiv B$, chain equivalences: $A \equiv A_1 \equiv \ldots \equiv B$
 
 >[!example] Exercise Answers
 > **Prove:** $\neg (p \neg q) \lor (\neg p \land q) \equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q)$ 
-> $$\equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q) \rightarrow De \ Morgan's \ Law$$
-> $$\equiv (\neg p \land q) \lor (\neg p \land \neg q) \rightarrow Double \ Negation$$
-> $$\equiv \neg p \land (q \lor \neg q) \rightarrow Distributive$$
-> $$\equiv \neg p \land T \rightarrow Negation$$
-> $$\equiv \neg p \rightarrow Identity$$ 
+> $$
+> \begin{aligned}
+> &\equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q) & \text{(De Morgan's Law)} \\
+> &\equiv (\neg p \land q) \lor (\neg p \land \neg q) & \text{(Double Negation)} \\
+> &\equiv \neg p \land (q \lor \neg q) & \text{(Distributive)} \\
+> &\equiv \neg p \land T & \text{(Negation)} \\
+> &\equiv \neg p & \text{(Identity)}
+> \end{aligned}
+> $$ 
 # Predicates and Quantifiers
 
 > [!summary] What this covers
