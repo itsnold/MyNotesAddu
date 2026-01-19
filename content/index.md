@@ -12,6 +12,7 @@ Hi guys these are my notes and what not🥹
 > Not every subject has updated notes yet😓, I'll update them as soon as I can
 
 
+
 > [!cite] 🖋️ *Angelo Segundo*
 
 
