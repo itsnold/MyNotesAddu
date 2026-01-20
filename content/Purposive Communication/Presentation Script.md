@@ -40,6 +40,9 @@ Now if you ever end up meeting one of these couples, the question is: how do you
 **Register:**  
 Keep it professional but still casual. Treat them like peers and not like celebrities or people that are essentially above your social standing. Just people lang. You can talk about their *work*, their hobbies, and other aspects that aren't directly tied to their fame.
 
+**Common Misconception:**  
+A lot of people assume that celebrities are too "narcissistic" to be approached casually. That generalization is way too broad to be accurate. Sure you could say *some* celebrities might fit that stereotype, but most of them are just people who happen to have very public jobs. Many actually appreciate being treated like regular human beings instead.
+
 **What NOT to say:**
 - "Is this relationship just a publicity stunt for your new movie?" (That's basically calling them liars to their face.)
 - "Did you sign a prenup?" (Because that's way too personal)
