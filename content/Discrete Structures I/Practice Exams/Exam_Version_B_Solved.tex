@@ -1,0 +1,508 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+% Gray solution boxes
+\definecolor{solngray}{gray}{0.95}
+\newmdenv[backgroundcolor=solngray,linewidth=0.5pt,linecolor=gray,innertopmargin=8pt,innerbottommargin=8pt]{solnbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Prelim Practice Exam B}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{DISCRETE STRUCTURES I}}\\[5pt]
+{\Large Prelim Practice Exam --- Version B}\\[5pt]
+{\large\textit{With Complete Solutions}}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}\\[5pt]
+\textbf{Time Allowed:} 1.5 hours \quad | \quad \textbf{Total Points:} 55
+\end{center}
+
+\vspace{10pt}
+
+\noindent\textbf{Instructions:}
+\begin{itemize}[noitemsep]
+    \item Answer all questions. Show all work for full credit.
+\end{itemize}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+\textit{2 points each.}
+
+\vspace{8pt}
+
+\textbf{1.} The statement ``$p$ only if $q$'' is logically equivalent to:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $q \to p$
+    \item $p \to q$
+    \item $p \land q$
+    \item $p \leftrightarrow q$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{Explanation:} ``$p$ only if $q$'' is one of the trickiest English phrases to translate!
+
+\textbf{Key insight:} ``$p$ only if $q$'' means ``$p$ can be true ONLY when $q$ is true.'' In other words, if $p$ is true, then $q$ MUST be true.
+
+This translates to: $p \to q$
+
+\textbf{Common mistake:} Students often confuse this with $q \to p$. Remember:
+\begin{itemize}[noitemsep]
+    \item ``If $p$ then $q$'' = $p \to q$
+    \item ``$p$ only if $q$'' = $p \to q$ (same!)
+    \item ``$p$ if $q$'' = $q \to p$ (different!)
+\end{itemize}
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{2.} Which of the following is a tautology?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $p \land \neg p$
+    \item $p \lor \neg p$
+    \item $p \to q$
+    \item $p \land q$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item (A) $p \land \neg p$ is a \textbf{contradiction} --- always FALSE (a thing can't be both true and false)
+    \item (B) $p \lor \neg p$ is a \textbf{tautology} --- always TRUE (Law of Excluded Middle)
+    \item (C) $p \to q$ is a \textbf{contingency} --- depends on values of $p$ and $q$
+    \item (D) $p \land q$ is a \textbf{contingency} --- depends on values
+\end{itemize}
+
+$p \lor \neg p$ says ``either $p$ is true or $p$ is false'' --- this is always true!
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{3.} If $P(x)$ denotes ``$x > 5$'' and the domain is $\{1, 3, 5, 7, 9\}$, what is the truth value of $\exists x\, P(x)$?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item True
+    \item False
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (A)}
+
+\textbf{Explanation:} $\exists x\, P(x)$ asks: ``Does there exist at least one element in the domain where $x > 5$?''
+
+Check each element:
+\begin{itemize}[noitemsep]
+    \item $x = 1$: $1 > 5$? No
+    \item $x = 3$: $3 > 5$? No
+    \item $x = 5$: $5 > 5$? No (not strictly greater)
+    \item $x = 7$: $7 > 5$? \textbf{Yes!}
+    \item $x = 9$: $9 > 5$? \textbf{Yes!}
+\end{itemize}
+
+Since we found at least one (actually two!) elements satisfying $P(x)$, the existential statement is \textbf{TRUE}.
+
+\textbf{Remember:} For $\exists$, you only need ONE witness. For $\forall$, you need ALL to satisfy.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{4.} What is the correct translation of ``All mathematicians are logical''?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\forall x\, (M(x) \land L(x))$
+    \item $\forall x\, (M(x) \to L(x))$
+    \item $\exists x\, (M(x) \to L(x))$
+    \item $\exists x\, (M(x) \land L(x))$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{Explanation:} ``All A are B'' ALWAYS uses implication, not conjunction!
+
+$$\text{``All A are B''} \equiv \forall x\, (A(x) \to B(x))$$
+
+\textbf{Why not conjunction?}
+\begin{itemize}[noitemsep]
+    \item $\forall x\, (M(x) \land L(x))$ would mean ``Everything is a mathematician AND logical'' --- this claims everyone/everything is a mathematician!
+    \item $\forall x\, (M(x) \to L(x))$ means ``For anything, IF it's a mathematician, THEN it's logical'' --- only makes claims about mathematicians.
+\end{itemize}
+
+\textbf{Contrast with ``Some'':} ``Some A are B'' uses conjunction: $\exists x\, (A(x) \land B(x))$
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{5.} Which argument form is INVALID (a fallacy)?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $p \to q$, $p$, therefore $q$
+    \item $p \to q$, $\neg q$, therefore $\neg p$
+    \item $p \to q$, $q$, therefore $p$
+    \item $p \lor q$, $\neg p$, therefore $q$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (C)}
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item (A) Modus Ponens --- VALID
+    \item (B) Modus Tollens --- VALID
+    \item (C) \textbf{Affirming the Consequent} --- INVALID (FALLACY!)
+    \item (D) Disjunctive Syllogism --- VALID
+\end{itemize}
+
+\textbf{Why is (C) invalid?}
+
+Consider: ``If it rains, the ground is wet. The ground is wet. Therefore, it rained.''
+
+But wait! The ground could be wet because someone used a hose! Just because $q$ is true doesn't mean $p$ caused it.
+
+\textbf{The two classic fallacies:}
+\begin{enumerate}[noitemsep]
+    \item Affirming the Consequent: $p \to q$, $q$ $\therefore p$ (WRONG!)
+    \item Denying the Antecedent: $p \to q$, $\neg p$ $\therefore \neg q$ (WRONG!)
+\end{enumerate}
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Construct a truth table for $(\neg p \lor q) \to (p \land q)$.
+
+\begin{solnbox}
+\textbf{Identify subexpressions:}
+\begin{enumerate}[noitemsep]
+    \item $\neg p$
+    \item $\neg p \lor q$ (this is actually equivalent to $p \to q$!)
+    \item $p \land q$
+    \item Final: $(\neg p \lor q) \to (p \land q)$
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{cc|c|cc|c}
+\toprule
+$p$ & $q$ & $\neg p$ & $\neg p \lor q$ & $p \land q$ & $(\neg p \lor q) \to (p \land q)$ \\
+\midrule
+T & T & F & T & T & T \\
+T & F & F & F & F & T \\
+F & T & T & T & F & F \\
+F & F & T & T & F & F \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Row-by-row calculation:}
+
+\textbf{Row 1} ($p=T, q=T$):
+\begin{itemize}[noitemsep]
+    \item $\neg p = F$, so $\neg p \lor q = F \lor T = T$
+    \item $p \land q = T \land T = T$
+    \item $T \to T = T$ (true implies true = true)
+\end{itemize}
+
+\textbf{Row 3} ($p=F, q=T$):
+\begin{itemize}[noitemsep]
+    \item $\neg p = T$, so $\neg p \lor q = T \lor T = T$
+    \item $p \land q = F \land T = F$
+    \item $T \to F = F$ (true implies false = FALSE!)
+\end{itemize}
+
+\textbf{Observation:} This is a contingency (has both T and F).
+
+\textbf{Interesting note:} $\neg p \lor q \equiv p \to q$, so we're really looking at $(p \to q) \to (p \land q)$.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 2.} (5 points) Translate into propositional logic:
+
+\textit{``The system will shut down if there is a power failure and the backup generator is not working.''}
+
+Let:
+\begin{itemize}[noitemsep]
+    \item $s$: ``The system will shut down''
+    \item $p$: ``There is a power failure''
+    \item $b$: ``The backup generator is working''
+\end{itemize}
+
+\begin{solnbox}
+\textbf{Parsing the English:}
+
+The structure is: ``[A] if [B]'' which means ``If [B] then [A]'' or $B \to A$.
+
+So: ``System shuts down IF [condition]'' means [condition] $\to s$.
+
+What's the condition? ``Power failure AND backup NOT working'' = $p \land \neg b$
+
+\textbf{Answer:}
+$$\boxed{(p \land \neg b) \to s}$$
+
+\textbf{Alternative reading:} Some might interpret this as the condition for shutdown. Either way, the core translation is the same.
+
+\textbf{Common mistake:} Don't confuse ``if'' and ``only if''!
+\begin{itemize}[noitemsep]
+    \item ``A if B'' = $B \to A$ (B is sufficient for A)
+    \item ``A only if B'' = $A \to B$ (B is necessary for A)
+\end{itemize}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 3.} (4 points) Determine the truth value. Domain: all positive integers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\forall x \forall y\, (x \cdot y \geq 1)$
+    \item $\exists x \exists y\, (x - y = 0)$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) $\forall x \forall y\, (x \cdot y \geq 1)$}
+
+``For all positive integers $x$ and $y$, $x \cdot y \geq 1$.''
+
+Since $x \geq 1$ and $y \geq 1$ for all positive integers, their product $x \cdot y \geq 1 \cdot 1 = 1$.
+
+This is \textbf{TRUE}.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) $\exists x \exists y\, (x - y = 0)$}
+
+``There exist positive integers $x$ and $y$ such that $x - y = 0$.''
+
+$x - y = 0$ means $x = y$.
+
+Can we find positive integers that are equal? Of course! $x = y = 1$ works. (Or $x = y = 5$, etc.)
+
+This is \textbf{TRUE}.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 4.} (6 points) Let $C(x, y)$ mean ``$x$ has called $y$'' where the domain is all people with phones. Express:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Someone has called everyone.
+    \item Everyone has been called by someone.
+    \item No one has called themselves.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) Someone has called everyone.}
+
+``There exists a person $x$ such that for all people $y$, $x$ has called $y$.''
+
+$$\boxed{\exists x \forall y\, C(x, y)}$$
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) Everyone has been called by someone.}
+
+``For every person $y$, there exists some person $x$ such that $x$ has called $y$.''
+
+$$\boxed{\forall y \exists x\, C(x, y)}$$
+
+\textbf{Key insight:} Compare (i) and (ii):
+\begin{itemize}[noitemsep]
+    \item (i) says ONE person made calls to everyone (same caller, all recipients)
+    \item (ii) says everyone received a call from SOMEONE (different callers possible)
+\end{itemize}
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) No one has called themselves.}
+
+``For all people $x$, $x$ has NOT called $x$.'' (No self-calls!)
+
+$$\boxed{\forall x\, \neg C(x, x)}$$
+
+Alternatively: $\neg \exists x\, C(x, x)$ (There does not exist someone who called themselves)
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points) Identify the rule of inference:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Sam is a computer science student. Therefore, Sam is a computer science student or Sam is an art major.
+    \item If today is Tuesday, then I have a quiz. If I have a quiz, then I studied last night. Therefore, if today is Tuesday, then I studied last night.
+    \item It is raining and it is cold. Therefore, it is raining.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i)} Let $c$ = ``Sam is a CS student'', $a$ = ``Sam is an art major''
+
+Structure: $c$, therefore $c \lor a$
+
+This is \textbf{Addition}!
+
+$$\frac{p}{\therefore p \lor q}$$
+
+\textbf{Why it works:} If something is true, adding it to a disjunction with anything else is still true (since OR only needs one true part).
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii)} Let $t$ = ``today is Tuesday'', $q$ = ``I have a quiz'', $s$ = ``I studied last night''
+
+Structure: $t \to q$, $q \to s$, therefore $t \to s$
+
+This is \textbf{Hypothetical Syllogism}!
+
+$$\frac{p \to q \quad q \to r}{\therefore p \to r}$$
+
+\textbf{Why it works:} Chain of implications. Tuesday leads to quiz, quiz leads to studying, so Tuesday leads to studying.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii)} Let $r$ = ``raining'', $c$ = ``cold''
+
+Structure: $r \land c$, therefore $r$
+
+This is \textbf{Simplification}!
+
+$$\frac{p \land q}{\therefore p}$$
+
+\textbf{Why it works:} If both parts are true (conjunction), then certainly each individual part is true.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 6.} (7 points) Prove: $(p \to q) \land (p \to r) \equiv p \to (q \land r)$
+
+\begin{solnbox}
+\textbf{Strategy:} Convert implications to disjunctions, then manipulate.
+
+\begin{align*}
+(p \to q) \land (p \to r) &\equiv (\neg p \lor q) \land (\neg p \lor r) && \text{[Implication Law, twice]} \\
+&\equiv \neg p \lor (q \land r) && \text{[Distributive Law (reverse)]} \\
+&\equiv p \to (q \land r) && \text{[Implication Law]}
+\end{align*}
+
+$$\boxed{(p \to q) \land (p \to r) \equiv p \to (q \land r)}$$
+
+\textbf{Distributive Law clarification:}
+
+The Distributive Law says: $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$
+
+We used it in reverse: $(\neg p \lor q) \land (\neg p \lor r) \equiv \neg p \lor (q \land r)$
+
+Here $A = \neg p$, $B = q$, $C = r$.
+
+\textbf{Intuitive meaning:} If $p$ implies $q$ AND $p$ implies $r$, that's the same as saying $p$ implies ``$q$ and $r$''. If $p$ forces two separate conclusions, then it forces both together.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 7.} (4 points) Negate and simplify:
+
+$$\exists x \forall y \exists z\, (P(x, y) \to Q(y, z))$$
+
+\begin{solnbox}
+\textbf{Step 1:} Push negation through quantifiers, flipping each one.
+
+\begin{align*}
+&\neg(\exists x \forall y \exists z\, (P(x,y) \to Q(y,z))) \\
+&\equiv \forall x\, \neg(\forall y \exists z\, (P(x,y) \to Q(y,z))) && \text{[$\neg\exists \to \forall\neg$]} \\
+&\equiv \forall x \exists y\, \neg(\exists z\, (P(x,y) \to Q(y,z))) && \text{[$\neg\forall \to \exists\neg$]} \\
+&\equiv \forall x \exists y \forall z\, \neg(P(x,y) \to Q(y,z)) && \text{[$\neg\exists \to \forall\neg$]}
+\end{align*}
+
+\textbf{Step 2:} Simplify the negated implication.
+
+Recall: $\neg(A \to B) \equiv A \land \neg B$
+
+So: $\neg(P(x,y) \to Q(y,z)) \equiv P(x,y) \land \neg Q(y,z)$
+
+\textbf{Final answer:}
+$$\boxed{\forall x \exists y \forall z\, (P(x,y) \land \neg Q(y,z))}$$
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 8.} (8 points) Prove valid:
+
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $\forall x\, (P(x) \to Q(x))$
+    \item $\forall x\, (Q(x) \to R(x))$
+    \item $P(a)$
+\end{enumerate}
+
+\textbf{Conclusion:} $R(a)$
+
+\begin{solnbox}
+\textbf{Strategy:} Use Universal Instantiation to get specific statements about $a$, then chain them.
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $\forall x\, (P(x) \to Q(x))$ & Premise \\
+2 & $P(a) \to Q(a)$ & Universal Instantiation (1) \\
+3 & $\forall x\, (Q(x) \to R(x))$ & Premise \\
+4 & $Q(a) \to R(a)$ & Universal Instantiation (3) \\
+5 & $P(a) \to R(a)$ & Hypothetical Syllogism (2, 4) \\
+6 & $P(a)$ & Premise \\
+7 & $R(a)$ & Modus Ponens (5, 6) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$$\boxed{\therefore R(a)}$$
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item Steps 1-2: The universal statement ``for all $x$, $P(x) \to Q(x)$'' applies to any specific element. We pick $a$.
+    \item Steps 3-4: Similarly instantiate the second universal statement for $a$.
+    \item Step 5: Chain the two implications: $P(a) \to Q(a)$ and $Q(a) \to R(a)$ gives $P(a) \to R(a)$.
+    \item Steps 6-7: We HAVE $P(a)$ (premise 3), and we have $P(a) \to R(a)$, so by Modus Ponens, $R(a)$.
+\end{itemize}
+
+This is a classic ``chain of implications with universal statements'' problem!
+\end{solnbox}
+
+\vspace{20pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF EXAM}\\[3pt]
+\textit{Total: 55 points}
+\end{center}
+
+\end{document}

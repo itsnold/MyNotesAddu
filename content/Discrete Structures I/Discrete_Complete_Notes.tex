@@ -1,0 +1,1442 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============ PACKAGES ============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{mdframed}
+\usepackage{float}
+
+% ============ IMAGE PATH ============
+\graphicspath{{attachments/}}
+
+% ============ COLORS ============
+\definecolor{primarypurple}{RGB}{102, 0, 51}
+\definecolor{accentgold}{RGB}{184, 134, 11}
+\definecolor{lightbg}{RGB}{248, 245, 250}
+\definecolor{defbox}{RGB}{243, 229, 245}
+\definecolor{exbox}{RGB}{255, 243, 224}
+\definecolor{tipbox}{RGB}{232, 245, 233}
+\definecolor{warnbox}{RGB}{255, 235, 238}
+
+% ============ HYPERREF SETUP ============
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primarypurple,
+    urlcolor=primarypurple,
+    citecolor=primarypurple
+}
+
+% ============ PAGE STYLE ============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{primarypurple}{\textsc{Discrete Structures I}}}
+\fancyhead[R]{\textcolor{primarypurple}{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primarypurple}\leaders\hrule height \headrulewidth\hfill}}
+
+% ============ TITLE FORMATTING ============
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{primarypurple}}
+  {\thesection}{1em}{}[\titlerule]
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{primarypurple}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{accentgold}}
+  {\thesubsubsection}{1em}{}
+
+% ============ CUSTOM BOXES ============
+\newtcolorbox{definitionbox}[1][]{
+    colback=defbox,
+    colframe=primarypurple,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{examplebox}[1][]{
+    colback=exbox,
+    colframe=accentgold,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{tipbox}[1][]{
+    colback=tipbox,
+    colframe=primarypurple!60!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{warningbox}[1][]{
+    colback=warnbox,
+    colframe=red!70!black,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{formulabox}{
+    colback=lightbg,
+    colframe=primarypurple,
+    arc=2mm,
+    boxrule=1pt,
+    left=5mm,
+    right=5mm
+}
+
+% ============ DOCUMENT START ============
+\begin{document}
+
+% ============ TITLE PAGE ============
+\begin{titlepage}
+\begin{center}
+\vspace*{2cm}
+
+{\Huge\bfseries\textcolor{primarypurple}{Discrete Structures I}}
+
+\vspace{0.5cm}
+{\Large\textcolor{accentgold}{Prelims: Logic \& Proofs}}
+
+\vspace{2cm}
+
+{\large\textsc{Comprehensive Course Notes}}
+
+\vspace{1cm}
+
+{\large Propositional Logic $\bullet$ Predicates $\bullet$ Quantifiers $\bullet$ Inference}
+
+\vspace{3cm}
+
+\rule{0.6\textwidth}{0.4pt}
+
+\vspace{0.5cm}
+
+{\large\textit{Topics Covered:}}
+
+\vspace{0.3cm}
+
+{\normalsize
+\begin{tabular}{l}
+\textbullet\ Propositional Logic \& Connectives \\
+\textbullet\ Applications \& Logical Equivalences \\
+\textbullet\ Predicates and Quantifiers \\
+\textbullet\ Nested Quantifiers \\
+\textbullet\ Rules of Inference \\
+\textbullet\ Valid Arguments \& Proofs
+\end{tabular}
+}
+
+\vfill
+
+{\small Instructor: aamalnegro@addu.edu.ph}
+
+\end{center}
+\end{titlepage}
+
+% ============ TABLE OF CONTENTS ============
+\tableofcontents
+\newpage
+
+% ============================================================
+% CHAPTER 1: PROPOSITIONAL LOGIC
+% ============================================================
+
+\section{Propositional Logic}
+
+Logic gives precise meaning to mathematical statements---it helps us tell valid arguments from invalid ones. It's the foundation for understanding and constructing correct mathematical reasoning.
+
+\subsection{Propositions}
+
+\begin{definitionbox}[Proposition]
+A \textbf{proposition} is a declarative sentence that is either \textbf{true} or \textbf{false}, but not both.
+\end{definitionbox}
+
+\begin{examplebox}[These ARE propositions]
+\begin{itemize}[noitemsep]
+    \item ``Washington, D.C., is the capital of the USA.'' --- True
+    \item ``Toronto is the capital of Canada.'' --- False
+    \item $1 + 1 = 2$ --- True
+    \item $2 + 2 = 3$ --- False
+\end{itemize}
+\end{examplebox}
+
+\begin{examplebox}[These are NOT propositions]
+\begin{itemize}[noitemsep]
+    \item ``What time is it?'' --- A question
+    \item ``Read this carefully.'' --- A command
+    \item $x + 1 = 2$ --- Depends on $x$
+\end{itemize}
+\end{examplebox}
+
+We use letters like $p, q, r, s$ to represent propositions---these are called \textbf{propositional variables}.
+
+\subsection{Logical Connectives}
+
+Compound propositions are formed from existing ones using \textbf{logical operators} (connectives).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{logic_gates.png}
+\caption{Logic gate symbols used in circuit design}
+\end{figure}
+
+\subsubsection{Negation ($\neg$)}
+
+\begin{definitionbox}[Negation]
+$\neg p$ = ``It is not the case that $p$'' = ``not $p$''
+
+Just flips the truth value.
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{c|c}
+\toprule
+$p$ & $\neg p$ \\
+\midrule
+T & F \\
+F & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Conjunction ($\land$)}
+
+\begin{definitionbox}[Conjunction]
+$p \land q$ = ``$p$ and $q$''
+
+Only true when \textbf{both} are true.
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{cc|c}
+\toprule
+$p$ & $q$ & $p \land q$ \\
+\midrule
+T & T & T \\
+T & F & F \\
+F & T & F \\
+F & F & F \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Disjunction ($\lor$)}
+
+\begin{definitionbox}[Disjunction]
+$p \lor q$ = ``$p$ or $q$'' (inclusive OR)
+
+Only false when \textbf{both} are false.
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{cc|c}
+\toprule
+$p$ & $q$ & $p \lor q$ \\
+\midrule
+T & T & T \\
+T & F & T \\
+F & T & T \\
+F & F & F \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Exclusive Or ($\oplus$)}
+
+\begin{definitionbox}[Exclusive Or (XOR)]
+$p \oplus q$ = true when \textbf{exactly one} of $p$ and $q$ is true. Not both.
+\end{definitionbox}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{or_vs_xor.png}
+\caption{OR includes the overlap, XOR excludes it}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{cc|cc}
+\toprule
+$p$ & $q$ & $p \lor q$ & $p \oplus q$ \\
+\midrule
+T & T & T & \textbf{F} \\
+T & F & T & T \\
+F & T & T & T \\
+F & F & F & F \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Conditional Statements}
+
+\begin{definitionbox}[Conditional ($\to$)]
+$p \to q$ = ``If $p$, then $q$''
+
+Only false when $p$ is true and $q$ is false.
+
+$p$ = \textbf{hypothesis} (antecedent) \quad $q$ = \textbf{conclusion} (consequence)
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{cc|c}
+\toprule
+$p$ & $q$ & $p \to q$ \\
+\midrule
+T & T & T \\
+T & F & \textbf{F} \\
+F & T & T \\
+F & F & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{tipbox}[WHY Does This Truth Table Make Sense?]
+Think of $p \to q$ as a \textbf{promise}: ``If condition $p$, then result $q$.''
+
+A politician says: ``If I am elected, I will lower taxes.''
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{cc|c|l}
+\toprule
+$p$ & $q$ & $p \to q$ & \textbf{Why?} \\
+\midrule
+T & T & T & Elected, lowered taxes. Promise kept! \\
+T & F & \textbf{F} & Elected, didn't lower taxes. \textbf{Promise broken!} \\
+F & T & T & Not elected, but taxes lowered anyway. Promise not tested. \\
+F & F & T & Not elected, nothing happened. Promise not tested. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Key insight:} A promise can only be BROKEN if the condition was met but the result didn't happen. If the condition was never met ($p$ is false), the promise was never ``activated'' --- so it's not broken!
+
+This is called \textbf{``vacuous truth''}: $F \to \text{anything} = T$.
+\end{tipbox}
+
+\subsubsection{Converse, Contrapositive, and Inverse}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{conditional_relationships.png}
+\caption{Diagonal pairs are equivalent; horizontal/vertical pairs are not}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{l|c|c}
+\toprule
+\textbf{Name} & \textbf{Statement} & \textbf{Equivalent to $p \to q$?} \\
+\midrule
+Original & $p \to q$ & --- \\
+Contrapositive & $\neg q \to \neg p$ & \textbf{Yes!} \\
+Converse & $q \to p$ & No \\
+Inverse & $\neg p \to \neg q$ & No \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warningbox}[Common Mistake]
+Do NOT assume the converse or inverse means the same as the original. Only the \textbf{contrapositive} is logically equivalent!
+\end{warningbox}
+
+\begin{tipbox}[WHY Is the Contrapositive Equivalent?]
+Consider: ``If it rains, the ground gets wet'' ($R \to W$).
+
+Contrapositive: ``If the ground is NOT wet, it did NOT rain'' ($\neg W \to \neg R$).
+
+\textbf{Why are these the same?}
+
+Both statements describe the \textbf{same forbidden scenario}: Rain happening WITHOUT the ground being wet. If that never occurs, both statements are true.
+
+Think of it logically: If every time it rains the ground gets wet, then seeing dry ground GUARANTEES no rain occurred. Same information, different direction!
+\end{tipbox}
+
+\subsection{Biconditionals}
+
+\begin{definitionbox}[Biconditional ($\leftrightarrow$)]
+$p \leftrightarrow q$ = ``$p$ if and only if $q$''
+
+True when $p$ and $q$ have the \textbf{same truth value}.
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{cc|c}
+\toprule
+$p$ & $q$ & $p \leftrightarrow q$ \\
+\midrule
+T & T & T \\
+T & F & F \\
+F & T & F \\
+F & F & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Equivalent to: $(p \to q) \land (q \to p)$
+
+\subsection{Precedence of Logical Operators}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{operator_precedence.png}
+\caption{Higher up = evaluated first}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{c|l}
+\toprule
+\textbf{Precedence} & \textbf{Operator} \\
+\midrule
+1 (highest) & $\neg$ \\
+2 & $\land$ \\
+3 & $\lor$ \\
+4 & $\to$ \\
+5 (lowest) & $\leftrightarrow$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+% ============================================================
+% CHAPTER 2: APPLICATIONS & EQUIVALENCES
+% ============================================================
+
+\section{Applications of Propositional Logic}
+
+\subsection{Translating English to Logic}
+
+\begin{enumerate}[noitemsep]
+    \item Identify atomic propositions $\to$ assign variables
+    \item Determine the logical connectives
+\end{enumerate}
+
+\begin{examplebox}[Translation Example]
+``If I go to Harry's or to the country, I will not go shopping.''
+
+Variables: $p$ = go to Harry's, $q$ = go to country, $r$ = go shopping
+
+\textbf{Logic:} $(p \lor q) \to \neg r$
+\end{examplebox}
+
+\subsection{Propositional Equivalences}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{tautology_contradiction.png}
+\caption{A tautology is always true; a contradiction is always false}
+\end{figure}
+
+\begin{definitionbox}[Key Terms]
+\textbf{Tautology} --- a proposition that's always true (e.g., $p \lor \neg p$)
+
+\textbf{Contradiction} --- a proposition that's always false (e.g., $p \land \neg p$)
+
+\textbf{Contingency} --- neither tautology nor contradiction
+\end{definitionbox}
+
+Two propositions $p$ and $q$ are \textbf{logically equivalent} ($p \equiv q$) if $p \leftrightarrow q$ is a tautology.
+
+\subsection{De Morgan's Laws}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{demorgan_laws.png}
+\caption{NOT distributes and flips the operator}
+\end{figure}
+
+\begin{formulabox}
+\textbf{De Morgan's Laws:}
+$$\neg(p \land q) \equiv \neg p \lor \neg q$$
+$$\neg(p \lor q) \equiv \neg p \land \neg q$$
+\end{formulabox}
+
+\textit{``Break the bar, change the sign.''}
+
+\begin{tipbox}[WHY Do De Morgan's Laws Work?]
+\textbf{First law:} $\neg(p \land q) \equiv \neg p \lor \neg q$
+
+For $p \land q$ to be FALSE, we need at least one of them to be false.
+
+So its negation is: ``$p$ is false OR $q$ is false'' = $\neg p \lor \neg q$
+
+\textbf{Second law:} $\neg(p \lor q) \equiv \neg p \land \neg q$
+
+For $p \lor q$ to be FALSE, BOTH must be false.
+
+So its negation is: ``$p$ is false AND $q$ is false'' = $\neg p \land \neg q$
+
+\textbf{Pattern:} Negation distributes AND flips the operator!
+\end{tipbox}
+
+\subsection{Logical Equivalences Reference}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Law} & \textbf{Equivalence} \\
+\midrule
+Identity & $p \land T \equiv p$, \quad $p \lor F \equiv p$ \\
+Domination & $p \lor T \equiv T$, \quad $p \land F \equiv F$ \\
+Idempotent & $p \lor p \equiv p$, \quad $p \land p \equiv p$ \\
+Double Negation & $\neg(\neg p) \equiv p$ \\
+Negation & $p \lor \neg p \equiv T$, \quad $p \land \neg p \equiv F$ \\
+Commutative & $p \lor q \equiv q \lor p$, \quad $p \land q \equiv q \land p$ \\
+Associative & $(p \lor q) \lor r \equiv p \lor (q \lor r)$ \\
+Distributive & $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ \\
+Absorption & $p \lor (p \land q) \equiv p$, \quad $p \land (p \lor q) \equiv p$ \\
+Implication & $p \to q \equiv \neg p \lor q$ \\
+Contrapositive & $p \to q \equiv \neg q \to \neg p$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+% ============================================================
+% CHAPTER 3: PREDICATES AND QUANTIFIERS
+% ============================================================
+
+\section{Predicates and Quantifiers}
+
+\subsection{Why Predicate Logic?}
+
+Consider the classic argument:
+\begin{itemize}[noitemsep]
+    \item ``All men are mortal.''
+    \item ``Socrates is a man.''
+    \item Therefore: ``Socrates is mortal.''
+\end{itemize}
+
+This \textbf{cannot} be represented in propositional logic. We need predicate logic to talk about \textbf{objects}, their \textbf{properties}, and their \textbf{relations}.
+
+\subsection{Propositional Functions}
+
+\begin{definitionbox}[Propositional Function]
+$P(x)$ contains variables and a predicate. It becomes a proposition when the variable is replaced by a value from the \textbf{domain} $U$.
+\end{definitionbox}
+
+\begin{examplebox}[Example]
+Let $P(x)$ denote ``$x > 0$'' with domain = integers.
+
+$P(-3)$ is \textbf{false}, $P(0)$ is \textbf{false}, $P(3)$ is \textbf{true}
+\end{examplebox}
+
+\subsection{Quantifiers}
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Symbol} & \textbf{Name} & \textbf{Meaning} \\
+\midrule
+$\forall$ & Universal & ``For all'' --- $\forall x\, P(x)$ is true for \textbf{every} $x$ \\
+$\exists$ & Existential & ``There exists'' --- $\exists x\, P(x)$ is true for \textbf{some} $x$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{examplebox}[Domain Matters!]
+Let $P(x)$ = ``$x > 0$''
+
+If $U$ = integers: $\forall x\, P(x)$ is \textbf{false} (negative integers exist)
+
+If $U$ = positive integers: $\forall x\, P(x)$ is \textbf{true}
+\end{examplebox}
+
+\subsection{Negating Quantified Expressions}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{quantifier_negation.png}
+\caption{Negation flips the quantifier and negates the predicate}
+\end{figure}
+
+\begin{formulabox}
+\textbf{De Morgan's Laws for Quantifiers:}
+$$\neg \forall x\, P(x) \equiv \exists x\, \neg P(x)$$
+$$\neg \exists x\, P(x) \equiv \forall x\, \neg P(x)$$
+\end{formulabox}
+
+``Not all'' = ``There exists one that doesn't''
+
+``None exist'' = ``All don't''
+
+\subsection{Translation Patterns}
+
+\begin{warningbox}[Pattern to Remember]
+``All A are B'' $\to$ $\forall x\, (A(x) \to B(x))$ --- uses \textbf{implication}
+
+``Some A are B'' $\to$ $\exists x\, (A(x) \land B(x))$ --- uses \textbf{conjunction}
+\end{warningbox}
+
+\begin{tipbox}[WHY ``All'' Uses Implication, Not Conjunction]
+\textbf{Wrong:} $\forall x\,(M(x) \land L(x))$ for ``All mathematicians are logical.''
+
+This claims: ``Everything is a mathematician AND logical.'' That says my coffee cup is a mathematician!
+
+\textbf{Correct:} $\forall x\,(M(x) \to L(x))$
+
+This claims: ``IF something is a mathematician, THEN it's logical.''
+
+We only make claims about mathematicians. For non-mathematicians, the implication is vacuously true (hypothesis is false).
+\end{tipbox}
+
+\begin{tipbox}[WHY ``Some'' Uses Conjunction, Not Implication]
+\textbf{Wrong:} $\exists x\,(M(x) \to U(x))$ for ``Some mathematicians are musicians.''
+
+This is too weak! It's true if ANYTHING exists that is either NOT a mathematician, OR is a musician. A rock (non-mathematician) makes this true!
+
+\textbf{Correct:} $\exists x\,(M(x) \land U(x))$
+
+This claims: ``There exists something that IS a mathematician AND IS a musician.''
+
+Both conditions must be true for that specific thing.
+\end{tipbox}
+
+\newpage
+
+% ============================================================
+% CHAPTER 4: NESTED QUANTIFIERS
+% ============================================================
+
+\section{Nested Quantifiers}
+
+\subsection{When Order Matters}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{quantifier_order.png}
+\caption{Same quantifiers can swap; mixed quantifiers cannot}
+\end{figure}
+
+\begin{tipbox}[Key Insight]
+Same type of quantifiers can be swapped:
+$$\forall x \forall y\, P(x,y) \equiv \forall y \forall x\, P(x,y)$$
+$$\exists x \exists y\, P(x,y) \equiv \exists y \exists x\, P(x,y)$$
+
+Different quantifiers \textbf{cannot}:
+$$\forall x \exists y\, P(x,y) \not\equiv \exists y \forall x\, P(x,y)$$
+\end{tipbox}
+
+\begin{examplebox}[Order Matters Example]
+Let $Q(x,y)$ = ``$x + y = 0$'' with $U$ = real numbers.
+
+\begin{center}
+\begin{tabular}{l|l|c}
+\toprule
+\textbf{Statement} & \textbf{Meaning} & \textbf{Truth} \\
+\midrule
+$\forall x \exists y\, Q(x,y)$ & For every $x$, there's a $y$ making $x + y = 0$ & True \\
+$\exists y \forall x\, Q(x,y)$ & There's one $y$ that works for ALL $x$ & False \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{examplebox}
+
+\begin{tipbox}[WHY Does Order Matter?]
+$\forall x \exists y\, P(x,y)$: ``For every $x$, there exists some $y$...''
+
+The $y$ can be \textbf{different} for each $x$! Each $x$ gets its own $y$.
+
+$\exists y \forall x\, P(x,y)$: ``There exists a $y$ such that for all $x$...''
+
+ONE fixed $y$ must work for \textbf{every single} $x$. Much stronger!
+
+\textbf{Love example:}
+\begin{itemize}[noitemsep]
+    \item $\forall x \exists y\, L(x,y)$ = ``Everyone loves someone'' (probably true --- each person has their own someone)
+    \item $\exists y \forall x\, L(x,y)$ = ``Someone is loved by everyone'' (probably false --- no one is universally loved)
+\end{itemize}
+\end{tipbox}
+
+\subsection{Quantifications of Two Variables}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{quantification_grid.png}
+\caption{Stronger claims at top-left, weaker at bottom-right}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{l|l|l}
+\toprule
+\textbf{Statement} & \textbf{When True} & \textbf{When False} \\
+\midrule
+$\forall x \forall y\, P(x,y)$ & $P$ is true for \textbf{every} pair & Any pair makes it false \\
+$\forall x \exists y\, P(x,y)$ & For every $x$, \textbf{some} $y$ works & Some $x$ has no suitable $y$ \\
+$\exists x \forall y\, P(x,y)$ & Some $x$ works for \textbf{all} $y$ & Every $x$ fails for some $y$ \\
+$\exists x \exists y\, P(x,y)$ & \textbf{At least one} pair works & False for every pair \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Negating Nested Quantifiers}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{nested_quantifier_negation.png}
+\caption{Push negation inward, flipping quantifiers as you go}
+\end{figure}
+
+Push negation inward: $\neg \forall$ becomes $\exists \neg$, $\neg \exists$ becomes $\forall \neg$.
+
+\begin{examplebox}[Full Negation Walkthrough]
+\textbf{Original:} $\exists w \forall a \exists f (P(w,f) \land Q(f,a))$
+
+\textbf{Negation steps:}
+\begin{enumerate}[noitemsep]
+    \item $\neg \exists w \to \forall w \neg$
+    \item $\neg \forall a \to \exists a \neg$
+    \item $\neg \exists f \to \forall f \neg$
+    \item Apply De Morgan's to the predicate
+\end{enumerate}
+
+\textbf{Result:} $\forall w \exists a \forall f (\neg P(w,f) \lor \neg Q(f,a))$
+\end{examplebox}
+
+\newpage
+
+% ============================================================
+% CHAPTER 5: RULES OF INFERENCE
+% ============================================================
+
+\section{Rules of Inference}
+
+\subsection{Arguments and Validity}
+
+\begin{definitionbox}[Argument]
+A sequence of propositions where all but the final one are \textbf{premises} and the last is the \textbf{conclusion}.
+
+An argument is \textbf{valid} if the premises imply the conclusion.
+\end{definitionbox}
+
+An argument is valid if $(p_1 \land p_2 \land \ldots \land p_n) \to q$ is a tautology.
+
+\subsection{Rules of Inference for Propositional Logic}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{inference_rules.png}
+\caption{Propositional rules on left, quantifier rules on right}
+\end{figure}
+
+\subsubsection{Modus Ponens}
+
+The most common rule. ``If P then Q. P is true. So Q must be true.''
+
+\begin{formulabox}
+$$\frac{p \to q \quad p}{\therefore q}$$
+\end{formulabox}
+
+\subsubsection{Modus Tollens}
+
+Contrapositive reasoning. If Q is false, then P was false.
+
+\begin{formulabox}
+$$\frac{p \to q \quad \neg q}{\therefore \neg p}$$
+\end{formulabox}
+
+\begin{tipbox}[WHY Does Modus Tollens Work?]
+Think of it as ``backwards reasoning'' through an implication.
+
+If $p \to q$ is true (every time $p$ happens, $q$ follows), and we observe $\neg q$ (Q didn't happen)...
+
+Then $p$ could NOT have happened! Because if $p$ had been true, $q$ would have been true too.
+
+\textbf{Example:} ``If it rains, the ground is wet.'' The ground is NOT wet. Therefore, it did NOT rain.
+
+This is equivalent to using the contrapositive: $p \to q \equiv \neg q \to \neg p$.
+\end{tipbox}
+
+\subsubsection{Hypothetical Syllogism}
+
+Chaining implications together.
+
+\begin{formulabox}
+$$\frac{p \to q \quad q \to r}{\therefore p \to r}$$
+\end{formulabox}
+
+\subsubsection{Disjunctive Syllogism}
+
+Process of elimination.
+
+\begin{formulabox}
+$$\frac{p \lor q \quad \neg p}{\therefore q}$$
+\end{formulabox}
+
+\subsubsection{Additional Rules}
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\toprule
+\textbf{Rule} & \textbf{Form} & \textbf{Meaning} \\
+\midrule
+Addition & $\frac{p}{\therefore p \lor q}$ & Add anything via OR \\
+Simplification & $\frac{p \land q}{\therefore p}$ & Extract from AND \\
+Conjunction & $\frac{p \quad q}{\therefore p \land q}$ & Combine via AND \\
+Resolution & $\frac{\neg p \lor r \quad p \lor q}{\therefore q \lor r}$ & Cancel $p$ and $\neg p$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Summary Table}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{l|l|l}
+\toprule
+\textbf{Rule} & \textbf{Form} & \textbf{What it means} \\
+\midrule
+Modus Ponens & $p \to q, p \Rightarrow q$ & Condition met, consequence follows \\
+Modus Tollens & $p \to q, \neg q \Rightarrow \neg p$ & Consequence failed, condition was false \\
+Hyp. Syllogism & $p \to q, q \to r \Rightarrow p \to r$ & Chain implications \\
+Disj. Syllogism & $p \lor q, \neg p \Rightarrow q$ & Process of elimination \\
+Addition & $p \Rightarrow p \lor q$ & Add via OR \\
+Simplification & $p \land q \Rightarrow p$ & Extract from AND \\
+Conjunction & $p, q \Rightarrow p \land q$ & Combine via AND \\
+Resolution & $\neg p \lor r, p \lor q \Rightarrow q \lor r$ & Cancel complementary literals \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{Rules of Inference for Quantified Statements}
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\toprule
+\textbf{Rule} & \textbf{Form} & \textbf{Direction} \\
+\midrule
+Universal Instantiation (UI) & $\forall x\, P(x) \Rightarrow P(c)$ & General $\to$ Specific \\
+Universal Generalization (UG) & $P(c)$ arbitrary $\Rightarrow \forall x\, P(x)$ & Specific $\to$ General \\
+Existential Instantiation (EI) & $\exists x\, P(x) \Rightarrow P(c)$ for some $c$ & Name the witness \\
+Existential Generalization (EG) & $P(c) \Rightarrow \exists x\, P(x)$ & Specific $\to$ Exists \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{tipbox}[WHY Do These Quantifier Rules Work?]
+\textbf{Universal Instantiation (UI):} If something is true for ALL $x$, then it's true for any specific $x$ you pick. ``All dogs bark'' $\to$ ``Rex (a dog) barks.''
+
+\textbf{Universal Generalization (UG):} If you prove $P(c)$ for an ARBITRARY $c$ (not special in any way), then $P$ holds for all $x$. Careful: $c$ must truly be arbitrary!
+
+\textbf{Existential Instantiation (EI):} If something exists with property $P$, give it a name! ``Some student failed'' $\to$ call them $a$, so $Failed(a)$.
+
+\textbf{Existential Generalization (EG):} If a specific thing has property $P$, then something with property $P$ exists. ``Rex barks'' $\to$ ``Some dog barks.''
+\end{tipbox}
+
+\subsection{Building Valid Arguments}
+
+\begin{examplebox}[Example: Weather and Activities]
+\textbf{Hypotheses:}
+\begin{itemize}[noitemsep]
+    \item ``It is not sunny this afternoon and it is colder than yesterday.'' ($\neg p \land q$)
+    \item ``We will go swimming only if it is sunny.'' ($r \to p$)
+    \item ``If we do not go swimming, then we will take a canoe trip.'' ($\neg r \to s$)
+    \item ``If we take a canoe trip, then we will be home by sunset.'' ($s \to t$)
+\end{itemize}
+
+\textbf{Conclusion:} ``We will be home by sunset.'' ($t$)
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $\neg p \land q$ & Premise \\
+2 & $\neg p$ & Simplification (1) \\
+3 & $r \to p$ & Premise \\
+4 & $\neg r$ & Modus Tollens (2, 3) \\
+5 & $\neg r \to s$ & Premise \\
+6 & $s$ & Modus Ponens (4, 5) \\
+7 & $s \to t$ & Premise \\
+8 & $t$ & Modus Ponens (6, 7) \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{examplebox}
+
+\subsection{The Socrates Argument}
+
+$$\frac{\forall x(Man(x) \to Mortal(x)) \quad Man(Socrates)}{\therefore Mortal(Socrates)}$$
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $\forall x(Man(x) \to Mortal(x))$ & Premise \\
+2 & $Man(Socrates) \to Mortal(Socrates)$ & UI from (1) \\
+3 & $Man(Socrates)$ & Premise \\
+4 & $Mortal(Socrates)$ & MP from (2, 3) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+% ============================================================
+% QUICK REFERENCE
+% ============================================================
+
+\section*{Quick Reference: Key Formulas}
+\addcontentsline{toc}{section}{Quick Reference: Key Formulas}
+
+\subsection*{Connectives Summary}
+
+\begin{center}
+\begin{tabular}{l|c|l|l}
+\toprule
+\textbf{Connective} & \textbf{Symbol} & \textbf{Name} & \textbf{True when...} \\
+\midrule
+Negation & $\neg p$ & NOT & $p$ is false \\
+Conjunction & $p \land q$ & AND & Both true \\
+Disjunction & $p \lor q$ & OR & At least one true \\
+Exclusive Or & $p \oplus q$ & XOR & Exactly one true \\
+Conditional & $p \to q$ & IF-THEN & $p$ false OR $q$ true \\
+Biconditional & $p \leftrightarrow q$ & IFF & Same truth value \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Key Equivalences}
+
+\begin{center}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Name} & \textbf{Equivalence} \\
+\midrule
+De Morgan's & $\neg(p \land q) \equiv \neg p \lor \neg q$ \\
+De Morgan's & $\neg(p \lor q) \equiv \neg p \land \neg q$ \\
+Implication & $p \to q \equiv \neg p \lor q$ \\
+Contrapositive & $p \to q \equiv \neg q \to \neg p$ \\
+Quantifier Neg & $\neg \forall x\, P(x) \equiv \exists x\, \neg P(x)$ \\
+Quantifier Neg & $\neg \exists x\, P(x) \equiv \forall x\, \neg P(x)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Inference Rules}
+
+\begin{center}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Rule} & \textbf{Pattern} \\
+\midrule
+Modus Ponens & $p \to q$, $p$ $\Rightarrow$ $q$ \\
+Modus Tollens & $p \to q$, $\neg q$ $\Rightarrow$ $\neg p$ \\
+Hypothetical Syllogism & $p \to q$, $q \to r$ $\Rightarrow$ $p \to r$ \\
+Disjunctive Syllogism & $p \lor q$, $\neg p$ $\Rightarrow$ $q$ \\
+Universal Instantiation & $\forall x\, P(x)$ $\Rightarrow$ $P(c)$ \\
+Existential Generalization & $P(c)$ $\Rightarrow$ $\exists x\, P(x)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\begin{tipbox}[Common Fallacies to Avoid]
+\begin{itemize}[noitemsep]
+    \item \textbf{Affirming the Consequent:} $p \to q$, $q$ $\Rightarrow$ $p$ --- \textbf{INVALID!}
+    \item \textbf{Denying the Antecedent:} $p \to q$, $\neg p$ $\Rightarrow$ $\neg q$ --- \textbf{INVALID!}
+\end{itemize}
+\end{tipbox}
+
+\newpage
+
+% ============================================================
+% ADDITIONAL DETAILED CONTENT
+% ============================================================
+
+\section{Logic and Bit Operations}
+
+Computers use \textbf{bits}---just 0 and 1. Truth values map directly to bits.
+
+\begin{center}
+\begin{tabular}{c|c}
+\toprule
+\textbf{Truth Value} & \textbf{Bit} \\
+\midrule
+True (T) & 1 \\
+False (F) & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Bit Operations}
+
+\begin{center}
+\begin{tabular}{cc|ccc}
+\toprule
+$x$ & $y$ & OR & AND & XOR \\
+\midrule
+0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 \\
+1 & 0 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{definitionbox}[Bit String]
+A \textbf{bit string} is a sequence of bits. The \textbf{length} is the number of bits.
+\end{definitionbox}
+
+\begin{examplebox}[Bitwise Operations]
+Find OR, AND, XOR of \texttt{01 1011 0110} and \texttt{11 0001 1101}:
+
+\begin{verbatim}
+     01 1011 0110
+     11 0001 1101
+     ────────────
+OR:  11 1011 1111
+AND: 01 0001 0100
+XOR: 10 1010 1011
+\end{verbatim}
+\end{examplebox}
+
+\newpage
+
+\section{Equivalence Proofs}
+
+To prove $A \equiv B$, chain equivalences: $A \equiv A_1 \equiv \ldots \equiv B$
+
+\begin{examplebox}[Proof 1: Negation Simplification]
+\textbf{Show:} $\neg(p \lor (\neg p \land q)) \equiv \neg p \land \neg q$
+
+\begin{align*}
+\neg(p \lor (\neg p \land q)) &\equiv \neg p \land \neg(\neg p \land q) && \text{(De Morgan)} \\
+&\equiv \neg p \land (p \lor \neg q) && \text{(De Morgan + Double Neg)} \\
+&\equiv (\neg p \land p) \lor (\neg p \land \neg q) && \text{(Distributive)} \\
+&\equiv F \lor (\neg p \land \neg q) && \text{(Negation law)} \\
+&\equiv \neg p \land \neg q && \text{(Identity)}
+\end{align*}
+\end{examplebox}
+
+\begin{examplebox}[Proof 2: Tautology Verification]
+\textbf{Show:} $(p \land q) \to (p \lor q)$ is a tautology
+
+\begin{align*}
+(p \land q) \to (p \lor q) &\equiv \neg(p \land q) \lor (p \lor q) && \text{(Implication)} \\
+&\equiv (\neg p \lor \neg q) \lor (p \lor q) && \text{(De Morgan)} \\
+&\equiv (\neg p \lor p) \lor (\neg q \lor q) && \text{(Rearrange)} \\
+&\equiv T \lor T \equiv T && \text{(Negation law)}
+\end{align*}
+\end{examplebox}
+
+\section{Propositional Satisfiability}
+
+\begin{definitionbox}[Satisfiability]
+A compound proposition is \textbf{satisfiable} if some assignment of truth values makes it true.
+
+If no assignment works, it's \textbf{unsatisfiable} (its negation is a tautology).
+\end{definitionbox}
+
+\begin{examplebox}[Satisfiability Examples]
+\textbf{1.} $(p \lor \neg q) \land (q \lor \neg r) \land (r \lor \neg p)$
+
+$\checkmark$ Satisfiable --- set $p, q, r$ all to T
+
+\textbf{2.} $(p \lor q \lor r) \land (\neg p \lor \neg q \lor \neg r)$
+
+$\checkmark$ Satisfiable --- set $p = T$, $q = F$
+
+\textbf{3.} $p \land \neg p$
+
+$\times$ Unsatisfiable --- contradiction
+\end{examplebox}
+
+\newpage
+
+\section{Historical Notes}
+
+\begin{tipbox}[Aristotle (384--322 BCE)]
+Born in Stagirus, northern Greece. His father was physician to the King of Macedonia. Orphaned young, he went to Athens at 17 and joined Plato's Academy for 20 years.
+
+He didn't get picked to succeed Plato, so he tutored Alexander the Great and founded his own school (the Lyceum). His followers were called ``peripatetics'' because he liked walking around while discussing philosophy.
+
+Wrote systematic treatises on logic, philosophy, psychology, physics---foundational stuff that lasted centuries.
+\end{tipbox}
+
+\begin{tipbox}[George Boole (1815--1864)]
+Son of a cobbler, born in Lincoln, England. Despite his family's poverty, he became one of the most important mathematicians of the 1800s.
+
+Published \textit{The Mathematical Analysis of Logic} in 1848, then \textit{The Laws of Thought} in 1854---that's where \textbf{Boolean algebra} comes from.
+
+Died from pneumonia after giving a lecture while soaking wet from a rainstorm.
+\end{tipbox}
+
+\begin{tipbox}[John Wilder Tukey (1915--2000)]
+Born in New Bedford, Massachusetts. Education at Brown, PhD from Princeton in 1939.
+
+Made major contributions to statistics, co-invented the \textbf{Fast Fourier Transform}.
+
+Fun fact: he coined the terms ``\textbf{bit}'' (1946) and ``\textbf{software}''. Received the National Medal of Science.
+\end{tipbox}
+
+\newpage
+
+\section{Extended Exercises with Solutions}
+
+\subsection{Translation Exercises}
+
+\begin{examplebox}[Exercise: Contrapositives]
+\textbf{a)} ``If it snows today, I will ski tomorrow.''
+
+\textbf{Solution:} Let $s$ = ``it snows today'', $k$ = ``I ski tomorrow''
+
+Original: $s \to k$
+
+Contrapositive: $\neg k \to \neg s$
+
+\textbf{Answer:} ``If I do not ski tomorrow, then it did not snow today.''
+
+\textbf{Why?} Contrapositive swaps AND negates both parts. Always equivalent to original.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{b)} ``I come to class whenever there is going to be a quiz.''
+
+\textbf{Solution:} ``A whenever B'' means ``If B then A'' (B is sufficient for A).
+
+Let $c$ = ``I come to class'', $q$ = ``there is a quiz''
+
+Original: $q \to c$ (if quiz, then I come)
+
+Contrapositive: $\neg c \to \neg q$
+
+\textbf{Answer:} ``If I do not come to class, then there is not going to be a quiz.''
+\end{examplebox}
+
+\begin{examplebox}[Exercise: System Translation]
+``To use the wireless network in the airport you must pay the daily fee unless you are a subscriber.''
+
+\textbf{Step-by-step solution:}
+
+\textbf{Step 1:} Identify the key phrase. ``must [X] unless [Y]'' means ``if not Y, then X''
+
+Or equivalently: ``X or Y is required''
+
+\textbf{Step 2:} Assign variables.
+\begin{itemize}[noitemsep]
+    \item $w$: ``You can use the wireless network''
+    \item $d$: ``You pay the daily fee''
+    \item $s$: ``You are a subscriber''
+\end{itemize}
+
+\textbf{Step 3:} The sentence says: To use the network ($w$), you need either the fee ($d$) or subscription ($s$).
+
+Using the network \textbf{requires} (payment OR subscription).
+
+\textbf{Answer:} $w \to (d \lor s)$
+
+\textbf{Alternative form:} $(w \land \neg s) \to d$
+
+This says ``if you use the network AND you're not a subscriber, then you must pay.'' (Logically equivalent!)
+\end{examplebox}
+
+\begin{examplebox}[Exercise: Presidential Eligibility]
+``You are eligible to be President of the U.S.A. only if you are at least 35 years old, were born in the U.S.A or at the time of your birth both of your parents were citizens, and you have lived at least 14 years in the country.''
+
+\textbf{Step-by-step solution:}
+
+\textbf{Step 1:} Key phrase is ``$A$ only if $B$'' which means $A \to B$.
+
+So: eligible $\to$ [requirements]
+
+\textbf{Step 2:} Parse the requirements:
+\begin{itemize}[noitemsep]
+    \item At least 35 ($a$) --- AND
+    \item (Born in USA ($b$) OR parents were citizens ($p$)) --- AND
+    \item Lived 14+ years ($r$)
+\end{itemize}
+
+\textbf{Step 3:} Combine with proper grouping:
+
+\textbf{Answer:} $e \to (a \land (b \lor p) \land r)$
+
+\textbf{Why the grouping?} The ``or'' only applies to birth circumstances, not to age or residency.
+\end{examplebox}
+
+\subsection{Quantifier Exercises}
+
+\begin{examplebox}[Quantifier Translation with Explanations]
+Let $U$ = all people, $F(x)$ = ``$x$ is your friend'', $P(x)$ = ``$x$ is perfect''
+
+\textbf{1.} ``No one is perfect.''
+
+\textbf{Solution:} ``No one'' means ``there does not exist anyone.''
+
+$\neg \exists x\, P(x)$
+
+Equivalently (by De Morgan for quantifiers): $\forall x\, \neg P(x)$ (everyone is NOT perfect)
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{2.} ``Not everyone is perfect.''
+
+\textbf{Solution:} This is different from ``no one''! It means ``at least one person isn't.''
+
+$\neg \forall x\, P(x)$
+
+Equivalently: $\exists x\, \neg P(x)$ (someone is NOT perfect)
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{3.} ``All your friends are perfect.''
+
+\textbf{Solution:} ``All A are B'' uses implication!
+
+$\forall x\, (F(x) \to P(x))$
+
+\textbf{Why implication?} We only make claims about friends. For non-friends, the implication is vacuously true.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{4.} ``At least one of your friends is perfect.''
+
+\textbf{Solution:} ``Some A are B'' uses conjunction!
+
+$\exists x\, (F(x) \land P(x))$
+
+\textbf{Why conjunction?} We need someone who IS a friend AND IS perfect.
+\end{examplebox}
+
+\subsection{Nested Quantifier Practice}
+
+\begin{examplebox}[Multiplication by Zero --- Detailed Analysis]
+Let $U$ = real numbers, $P(x,y) : x \cdot y = 0$
+
+\begin{center}
+\begin{tabular}{l|c|l}
+\toprule
+\textbf{Statement} & \textbf{Truth} & \textbf{Detailed Reasoning} \\
+\midrule
+$\forall x \forall y\, P(x,y)$ & False & ``Every product is 0'' --- Counterexample: $2 \cdot 3 = 6 \neq 0$ \\
+$\forall x \exists y\, P(x,y)$ & True & ``For any $x$, there's a $y$ making $xy = 0$'' --- Pick $y = 0$ always! \\
+$\exists x \forall y\, P(x,y)$ & True & ``Some $x$ makes $xy = 0$ for ALL $y$'' --- $x = 0$ works! \\
+$\exists x \exists y\, P(x,y)$ & True & ``Some pair has $xy = 0$'' --- $x = 0, y = 0$ works \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Key insight:} Zero is special --- it ``absorbs'' everything in multiplication!
+\end{examplebox}
+
+\begin{examplebox}[Love Relations --- Understanding Quantifier Order]
+\begin{center}
+\begin{tabular}{l|l|l}
+\toprule
+\textbf{English} & \textbf{Logic} & \textbf{Explanation} \\
+\midrule
+``Everybody loves somebody.'' & $\forall x \exists y\, L(x,y)$ & Each person has their own someone \\
+``Someone is loved by everyone.'' & $\exists y \forall x\, L(x,y)$ & ONE person universally loved \\
+``Someone loves someone.'' & $\exists x \exists y\, L(x,y)$ & At least one love exists \\
+``Everyone loves themselves.'' & $\forall x\, L(x,x)$ & Self-love for all \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Critical difference:}
+\begin{itemize}[noitemsep]
+    \item $\forall x \exists y\, L(x,y)$: The $y$ can be DIFFERENT for each $x$ (everyone loves their own someone)
+    \item $\exists y \forall x\, L(x,y)$: ONE fixed $y$ must work for ALL $x$ (one universally loved person)
+\end{itemize}
+
+The first is much weaker (and more likely true) than the second!
+\end{examplebox}
+
+% ============================================================
+% PROBLEM-SOLVING STRATEGIES
+% ============================================================
+
+\section{Problem-Solving Strategies}
+
+\subsection{How to Negate Nested Quantifiers (Step-by-Step)}
+
+\begin{tipbox}[The Algorithm]
+To negate $\forall x \exists y \forall z\, P(x,y,z)$:
+
+\textbf{Step 1:} Start with $\neg$ on the outside:
+$$\neg(\forall x \exists y \forall z\, P(x,y,z))$$
+
+\textbf{Step 2:} Push $\neg$ past the first quantifier, flipping it:
+$$\exists x\, \neg(\exists y \forall z\, P(x,y,z))$$
+
+\textbf{Step 3:} Push $\neg$ past the second quantifier, flipping it:
+$$\exists x \forall y\, \neg(\forall z\, P(x,y,z))$$
+
+\textbf{Step 4:} Push $\neg$ past the third quantifier, flipping it:
+$$\exists x \forall y \exists z\, \neg P(x,y,z)$$
+
+\textbf{Pattern:} Every $\forall$ becomes $\exists$, every $\exists$ becomes $\forall$. Negation ends up on the predicate.
+\end{tipbox}
+
+\subsection{How to Approach Equivalence Proofs}
+
+\begin{tipbox}[Strategy for Algebraic Proofs]
+\textbf{Goal:} Show $A \equiv B$ by transforming $A$ into $B$ step by step.
+
+\textbf{Common first steps:}
+\begin{enumerate}[noitemsep]
+    \item \textbf{Convert implications:} Replace $p \to q$ with $\neg p \lor q$
+    \item \textbf{Apply De Morgan's:} Break apart $\neg(p \land q)$ or $\neg(p \lor q)$
+    \item \textbf{Look for $p \land \neg p$ or $p \lor \neg p$:} These simplify to $F$ and $T$
+    \item \textbf{Use Distributive to factor:} $(A \land B) \lor (A \land C) = A \land (B \lor C)$
+\end{enumerate}
+
+\textbf{Always write the law name!} Format: [Expression 1] $\equiv$ [Expression 2] \quad [Law name]
+\end{tipbox}
+
+\subsection{How to Build Valid Arguments}
+
+\begin{tipbox}[The General Approach]
+Given premises and a goal conclusion:
+
+\textbf{Step 1 --- Identify what you have and what you need}
+
+\textbf{Step 2 --- Work backwards from the conclusion:}
+\begin{itemize}[noitemsep]
+    \item If you have $p \to q$, you need $p$ (for Modus Ponens)
+    \item If you have $p \lor q$ and want $q$, show $\neg p$ (for Disjunctive Syllogism)
+\end{itemize}
+
+\textbf{Step 3 --- Work forwards from premises:}
+\begin{itemize}[noitemsep]
+    \item Extract from conjunctions (Simplification)
+    \item Chain implications (Hypothetical Syllogism)
+    \item Instantiate universal statements (UI)
+\end{itemize}
+
+\textbf{Step 4 --- Meet in the middle!}
+\end{tipbox}
+
+\begin{examplebox}[Worked Example: Equivalence Proof]
+\textbf{Prove:} $\neg(p \to q) \equiv p \land \neg q$
+
+\textbf{Step 1 --- Convert the implication:}
+
+$p \to q$ can be written as $\neg p \lor q$ (Implication Law).
+
+So $\neg(p \to q) \equiv \neg(\neg p \lor q)$
+
+\textbf{Step 2 --- Apply De Morgan's Law:}
+
+$\neg(\neg p \lor q) \equiv \neg(\neg p) \land \neg q$
+
+De Morgan's says: to negate an OR, negate each part and change to AND.
+
+\textbf{Step 3 --- Simplify using Double Negation:}
+
+$\neg(\neg p) \land \neg q \equiv p \land \neg q$
+
+\textbf{Final result:} $\neg(p \to q) \equiv p \land \neg q$ \checkmark
+
+\textbf{Intuition:} When is $p \to q$ FALSE? Only when $p$ is TRUE and $q$ is FALSE. That's exactly $p \land \neg q$!
+\end{examplebox}
+
+\begin{examplebox}[Worked Example: Valid Argument Proof]
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $p \lor q$
+    \item $p \to r$
+    \item $q \to s$
+    \item $\neg r$
+\end{enumerate}
+\textbf{Goal:} Prove $s$
+
+\textbf{Analysis (think before writing):}
+\begin{itemize}[noitemsep]
+    \item I need $s$. Looking at premises, $q \to s$ gives me $s$ if I can get $q$.
+    \item How to get $q$? I have $p \lor q$. If I show $\neg p$, then $q$ follows (Disjunctive Syllogism).
+    \item How to get $\neg p$? I have $p \to r$ and $\neg r$. By Modus Tollens, $\neg p$!
+\end{itemize}
+
+\textbf{Formal Proof:}
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\# & Statement & Reason \\
+\midrule
+1 & $p \to r$ & Premise \\
+2 & $\neg r$ & Premise \\
+3 & $\neg p$ & Modus Tollens (1, 2) \\
+4 & $p \lor q$ & Premise \\
+5 & $q$ & Disjunctive Syllogism (3, 4) \\
+6 & $q \to s$ & Premise \\
+7 & $s$ & Modus Ponens (5, 6) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$\therefore s$ \checkmark
+\end{examplebox}
+
+\subsection{Common Mistakes Checklist}
+
+\begin{warningbox}[Avoid These Errors!]
+\textbf{1. Confusing ``if'' vs ``only if'':}
+\begin{itemize}[noitemsep]
+    \item ``$p$ \textbf{if} $q$'' means $q \to p$
+    \item ``$p$ \textbf{only if} $q$'' means $p \to q$
+\end{itemize}
+
+\textbf{2. All/Some translation:}
+\begin{itemize}[noitemsep]
+    \item ``All A are B'': Use $\forall x\,(A(x) \to B(x))$ --- implication!
+    \item ``Some A are B'': Use $\exists x\,(A(x) \land B(x))$ --- conjunction!
+\end{itemize}
+
+\textbf{3. Converse/Inverse vs Contrapositive:}
+\begin{itemize}[noitemsep]
+    \item Only CONTRAPOSITIVE is equivalent to original!
+\end{itemize}
+
+\textbf{4. Fallacies:}
+\begin{itemize}[noitemsep]
+    \item $p \to q$, $q$ $\Rightarrow$ $p$ --- WRONG (Affirming Consequent)
+    \item $p \to q$, $\neg p$ $\Rightarrow$ $\neg q$ --- WRONG (Denying Antecedent)
+\end{itemize}
+
+\textbf{5. Quantifier order:}
+\begin{itemize}[noitemsep]
+    \item $\forall \exists$ CANNOT swap with $\exists \forall$!
+\end{itemize}
+\end{warningbox}
+
+\subsection{Quick Truth Value Checks}
+
+\begin{tipbox}[Checking Quantified Statements]
+\textbf{$\forall x\, P(x)$ is TRUE:} Check that EVERY element satisfies $P$.
+
+\textbf{$\forall x\, P(x)$ is FALSE:} Find ONE counterexample.
+
+\textbf{$\exists x\, P(x)$ is TRUE:} Find ONE example (a ``witness'').
+
+\textbf{$\exists x\, P(x)$ is FALSE:} Show NO element satisfies $P$.
+\end{tipbox}
+
+\end{document}

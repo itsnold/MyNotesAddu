@@ -1,0 +1,685 @@
+\documentclass[11pt,a4paper]{article}
+
+% ============ PACKAGES ============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{mdframed}
+\usepackage{float}
+
+% ============ IMAGE PATH ============
+\graphicspath{{attachments/}}
+
+% ============ COLORS ============
+\definecolor{primaryblue}{RGB}{0, 51, 102}
+\definecolor{accentgold}{RGB}{184, 134, 11}
+\definecolor{lightbg}{RGB}{248, 249, 250}
+\definecolor{defbox}{RGB}{232, 245, 233}
+\definecolor{exbox}{RGB}{255, 243, 224}
+\definecolor{tipbox}{RGB}{227, 242, 253}
+
+% ============ HYPERREF SETUP ============
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue
+}
+
+% ============ PAGE STYLE ============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{primaryblue}{\textsc{Mathematics in the Modern World}}}
+\fancyhead[R]{\textcolor{primaryblue}{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primaryblue}\leaders\hrule height \headrulewidth\hfill}}
+
+% ============ TITLE FORMATTING ============
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{primaryblue}}
+  {\thesection}{1em}{}[\titlerule]
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{primaryblue}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{accentgold}}
+  {\thesubsubsection}{1em}{}
+
+% ============ CUSTOM BOXES ============
+\newtcolorbox{definitionbox}[1][]{
+    colback=defbox,
+    colframe=primaryblue,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{examplebox}[1][]{
+    colback=exbox,
+    colframe=accentgold,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{tipbox}[1][]{
+    colback=tipbox,
+    colframe=primaryblue!60,
+    fonttitle=\bfseries,
+    title=#1,
+    arc=3mm,
+    boxrule=0.5pt
+}
+
+\newtcolorbox{formulabox}{
+    colback=lightbg,
+    colframe=primaryblue,
+    arc=2mm,
+    boxrule=1pt,
+    left=5mm,
+    right=5mm
+}
+
+% ============ DOCUMENT START ============
+\begin{document}
+
+% ============ TITLE PAGE ============
+\begin{titlepage}
+\begin{center}
+\vspace*{2cm}
+
+{\Huge\bfseries\textcolor{primaryblue}{Mathematics in the\\Modern World}}
+
+\vspace{0.5cm}
+{\Large\textcolor{accentgold}{GE 1108}}
+
+\vspace{2cm}
+
+{\large\textsc{Comprehensive Course Notes}}
+
+\vspace{1cm}
+
+{\large Prelims: Modules 1 \& 2}
+
+\vspace{3cm}
+
+\rule{0.6\textwidth}{0.4pt}
+
+\vspace{0.5cm}
+
+{\large\textit{Topics Covered:}}
+
+\vspace{0.3cm}
+
+{\normalsize
+\begin{tabular}{l}
+\textbullet\ Sequences and Recurrence Relations \\
+\textbullet\ The Fibonacci Sequence \\
+\textbullet\ The Golden Ratio \\
+\textbullet\ Fractals and Fractal Dimension \\
+\textbullet\ Famous Fractals and Applications
+\end{tabular}
+}
+
+\vfill
+
+{\small Instructor: Mr.\ Jekie John Nilo R.\ Basco}
+
+\end{center}
+\end{titlepage}
+
+% ============ TABLE OF CONTENTS ============
+\tableofcontents
+\newpage
+
+% ============================================================
+% MODULE 1: FIBONACCI AND THE GOLDEN RATIO
+% ============================================================
+
+\section{Module 1: The Fibonacci Sequence}
+
+\subsection{Sequences}
+
+One of the best ways to describe events is through patterns. This section introduces sequences and recurrence relations---essential foundations for understanding Fibonacci.
+
+\begin{definitionbox}[Sequence]
+A \textbf{sequence} is a function whose domain is a set of consecutive natural numbers and whose range is a set of real numbers.
+
+Denoted as: $a_1, a_2, a_3, \ldots, a_n, \ldots$
+
+Where $a_n$ is the $n$-th term of the sequence.
+
+A sequence may be:
+\begin{itemize}[noitemsep]
+    \item \textbf{Finite} — has a definite number of terms
+    \item \textbf{Infinite} — continues indefinitely
+\end{itemize}
+\end{definitionbox}
+
+\subsubsection{Common Sequence Types}
+
+\textbf{Arithmetic Sequence:} Has a common difference $d$ between consecutive terms.
+\begin{formulabox}
+$$a_n = a_1 + (n - 1)d$$
+\end{formulabox}
+
+\begin{examplebox}[Example]
+$2, 5, 8, 11, 14, \ldots$ has $a_1 = 2$ and $d = 3$
+
+So $a_n = 2 + (n-1)(3) = 3n - 1$
+\end{examplebox}
+
+\textbf{Geometric Sequence:} Has a common ratio $r$ between consecutive terms.
+\begin{formulabox}
+$$a_n = a_1 \cdot r^{n-1}$$
+\end{formulabox}
+
+\textbf{Harmonic Sequence:} The reciprocals of an arithmetic sequence.
+$$a_n = \frac{1}{a_1 + (n-1)d}$$
+
+\textbf{Fibonacci Sequence:} Each term is the sum of the two preceding terms.
+$$F_n = F_{n-1} + F_{n-2}$$
+
+\subsection{Recurrence Relations}
+
+\begin{definitionbox}[Recurrence Relation]
+A \textbf{recurrence relation} for the sequence $\{a_n\}$ is an equation that expresses $a_n$ in terms of one or more of the previous terms ($a_0, a_1, \ldots, a_{n-1}$), for all integers $n \geq n_0$.
+
+The \textbf{initial conditions} specify the terms before the recurrence relation takes effect.
+
+The recurrence relation together with initial conditions \textbf{uniquely determines} the sequence.
+\end{definitionbox}
+
+\begin{examplebox}[Example]
+Let $\{a_n\}$ satisfy $a_n = a_{n-1} + 3$ for $n \geq 1$ with $a_0 = 2$.
+
+Find $a_1, a_2, a_3$:
+
+\begin{itemize}[noitemsep]
+    \item $a_1 = a_0 + 3 = 2 + 3 = 5$
+    \item $a_2 = a_1 + 3 = 5 + 3 = 8$
+    \item $a_3 = a_2 + 3 = 8 + 3 = 11$
+\end{itemize}
+\end{examplebox}
+
+\newpage
+
+\subsection{Leonardo Pisano (Fibonacci)}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.25\textwidth]{Leonardo_Pisano.jpg}
+\caption{Leonardo Pisano (Fibonacci), c. 1170--1250}
+\end{figure}
+
+The \textbf{Fibonacci sequence} is named after \textbf{Leonardo Pisano} (c. 1170--1250), who introduced this sequence in his book \textit{Liber Abaci} (The Book of Calculating) in 1202.
+
+Unlike arithmetic sequences (common difference $d$) or geometric sequences (common ratio $r$), Fibonacci works differently---each term depends on the two before it.
+
+\subsubsection{The Rabbit Problem}
+
+To understand where Fibonacci comes from, there's the classic problem about rabbits:
+
+\begin{tipbox}[The Rules]
+\begin{enumerate}[noitemsep]
+    \item All pairs consist of a male and female
+    \item One pair of newborn rabbits starts on January 1
+    \item When they're 2 months old, they produce a pair of babies
+    \item Every month after that, they produce another pair
+    \item All rabbits reproduce the same way
+    \item Rabbits don't die
+\end{enumerate}
+\end{tipbox}
+
+\begin{center}
+\begin{tabular}{l l c}
+\toprule
+\textbf{Month} & \textbf{What's Happening} & \textbf{Total Pairs} \\
+\midrule
+January 1 & Just the original pair & 1 \\
+February 1 & Still growing & 1 \\
+March 1 & First offspring! & 2 \\
+April 1 & Another offspring & 3 \\
+May 1 & First offspring reproduces too & 5 \\
+June 1 & More pairs hit 2 months & 8 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Finding the Pattern}
+
+Looking at the counts: $1, 1, 2, 3, 5, 8, \ldots$
+
+The number of newborns this month equals the number of pairs from 2 months ago---only pairs that are 2+ months old can reproduce.
+
+\begin{formulabox}
+$$\text{Pairs this month} = \text{Pairs last month} + \text{Pairs from 2 months ago}$$
+\end{formulabox}
+
+\begin{definitionbox}[Fibonacci Sequence]
+Initial conditions: $f_0 = 0$, $f_1 = 1$
+
+Recurrence relation: $f_n = f_{n-1} + f_{n-2}$ for $n \geq 2$
+
+The sequence: $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \ldots$
+\end{definitionbox}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+\textbf{Sequence} & \textbf{Formula} & \textbf{Type} & \textbf{Example} \\
+\midrule
+Arithmetic & $a_n = a_1 + (n-1)d$ & Common difference & $2, 5, 8, 11, \ldots$ \\
+Geometric & $a_n = a_1 \cdot r^{n-1}$ & Common ratio & $3, 6, 12, 24, \ldots$ \\
+Fibonacci & $f_n = f_{n-1} + f_{n-2}$ & Sum of previous two & $1, 1, 2, 3, 5, \ldots$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\newpage
+
+\subsection{The Golden Ratio}
+
+The \textbf{Golden Ratio} is denoted by the Greek letter $\phi$ (phi).
+
+\subsubsection{Phidias and the Golden Proportion}
+
+The symbol $\phi$ comes from \textbf{Phidias} (c. 480--430 BC), a Greek sculptor who supposedly used the golden proportion in his works, including the Parthenon.
+
+\begin{definitionbox}[The Golden Proportion]
+A line is divided in the \textbf{golden ratio} when the ratio of the whole to the longer part equals the ratio of the longer part to the shorter part.
+
+If the whole $= a + b$ and the longer part $= a$:
+$$\frac{a + b}{a} = \frac{a}{b} = \phi$$
+\end{definitionbox}
+
+\subsubsection{Deriving Phi}
+
+Starting with the golden proportion: $\displaystyle\frac{a}{b} = \frac{a + b}{a}$
+
+Let $\phi = \displaystyle\frac{a}{b}$. Then $a = \phi \cdot b$.
+
+Substituting into $\displaystyle\frac{a + b}{a} = \phi$:
+
+$$\frac{\phi b + b}{\phi b} = \phi \quad\Rightarrow\quad \frac{b(\phi + 1)}{\phi b} = \phi \quad\Rightarrow\quad \frac{\phi + 1}{\phi} = \phi$$
+
+Multiply both sides by $\phi$:
+$$\phi + 1 = \phi^2$$
+
+Rearranging: $\phi^2 - \phi - 1 = 0$
+
+Using the quadratic formula:
+
+\begin{formulabox}
+$$\phi = \frac{1 + \sqrt{5}}{2} \approx 1.6180339887\ldots$$
+\end{formulabox}
+
+It's irrational---the decimal goes on forever without repeating.
+
+\subsubsection{Fibonacci and the Golden Ratio Connection}
+
+Taking the ratio of consecutive Fibonacci numbers approaches $\phi$ as the numbers get larger:
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+$n$ & $f_n$ & $f_{n+1}$ & $f_{n+1}/f_n$ \\
+\midrule
+1 & 1 & 1 & 1.000 \\
+2 & 1 & 2 & 2.000 \\
+3 & 2 & 3 & 1.500 \\
+4 & 3 & 5 & 1.667 \\
+5 & 5 & 8 & 1.600 \\
+6 & 8 & 13 & 1.625 \\
+7 & 13 & 21 & 1.615 \\
+8 & 21 & 34 & 1.619 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+As $n \to \infty$, the ratio $\displaystyle\frac{f_{n+1}}{f_n} \to \phi$.
+
+\begin{tipbox}[Why This Happens]
+Dividing $f_n = f_{n-1} + f_{n-2}$ by $f_{n-1}$ gives:
+$$\frac{f_n}{f_{n-1}} = 1 + \frac{f_{n-2}}{f_{n-1}}$$
+As $n$ gets large, both ratios approach $\phi$, giving $\phi = 1 + \frac{1}{\phi}$---the same equation we solved earlier.
+\end{tipbox}
+
+\newpage
+
+% ============================================================
+% MODULE 2: FRACTALS
+% ============================================================
+
+\section{Module 2: Fractals and Fractal Dimension}
+
+\subsection{What are Fractals?}
+
+Fractals are never-ending patterns that are infinitely complex and \textbf{self-similar} across different scales. They're created by repeating a simple process over and over in a feedback loop.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{fern_self_similarity.png}
+\caption{Self-similarity in a fern: the whole fern, pinnae, and pinnules share the same shape at different scales}
+\end{figure}
+
+\begin{definitionbox}[Self-Similarity]
+A pattern is \textbf{self-similar} if it's congruent to a uniform scaling of itself.
+
+Some fractals are only \textbf{self-affine}---their subunits are scaled by different amounts in different directions upon successive iterations.
+\end{definitionbox}
+
+Zoom in on a fractal and you'll see the same pattern repeating at smaller scales.
+
+\subsubsection{Benoit Mandelbrot}
+
+The word ``fractal'' was coined in 1980 by Belgian mathematician \textbf{Benoit Mandelbrot} (1924--2010). He chose the name because it reminded him of ``fraction''---fitting since these self-similar shapes have fractional dimensions.
+
+\begin{tipbox}[Mandelbrot's Observation]
+``Clouds are not spheres, mountains are not cones, coastlines are not circles, and bark is not smooth, nor does lightning travel in a straight line.''
+\end{tipbox}
+
+\subsection{Fractal Dimension}
+
+Regular objects have integer dimensions (1D line, 2D square, 3D cube). But fractals have ``in-between'' dimensions.
+
+\subsubsection{Dimension Scaling Pattern}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{dimension_scaling.png}
+\caption{How pieces scale with dimension: 1D gives $n$, 2D gives $n^2$, 3D gives $n^3$}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+\toprule
+\textbf{Dimension} & \textbf{Object} & \textbf{Scale $s = 1/2$} & \textbf{Pieces $n$} \\
+\midrule
+1D & Line & Cut in half & $2 = 2^1$ \\
+2D & Square & Cut each dim & $4 = 2^2$ \\
+3D & Cube & Cut each dim & $8 = 2^3$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Notice: The exponent is the dimension! With $s = 1/3$: Line gives 3, Square gives 9, Cube gives 27.
+
+\subsubsection{Deriving the Dimension Formula}
+
+Variables:
+\begin{itemize}[noitemsep]
+    \item $D$ = dimensionality
+    \item $n$ = number of equal pieces
+    \item $s$ = size (length) of each piece
+    \item $r$ = magnification factor $= 1/s$
+\end{itemize}
+
+The relationship is: $n = r^D$
+
+\textbf{Solving for $D$:}
+$$n = r^D \quad\Rightarrow\quad \log n = D \log r \quad\Rightarrow\quad D = \frac{\log n}{\log r}$$
+
+\begin{formulabox}
+\textbf{Fractal Dimension Formula:}
+$$D = \frac{\log n}{\log r} = \frac{\log(\text{number of pieces})}{\log(\text{magnification factor})}$$
+\end{formulabox}
+
+\begin{examplebox}[Verifying with Known Dimensions]
+\textbf{Line (1D):} $s = 1/2 \Rightarrow n = 2, r = 2$
+$$D = \frac{\log 2}{\log 2} = 1 \quad\checkmark$$
+
+\textbf{Square (2D):} $s = 1/2 \Rightarrow n = 4, r = 2$
+$$D = \frac{\log 4}{\log 2} = 2 \quad\checkmark$$
+
+\textbf{Cube (3D):} $s = 1/2 \Rightarrow n = 8, r = 2$
+$$D = \frac{\log 8}{\log 2} = 3 \quad\checkmark$$
+\end{examplebox}
+
+For fractals, $D$ won't be a nice integer---it'll be something like 1.26 or 1.58.
+
+\newpage
+
+\subsection{Famous Fractals}
+
+\subsubsection{The Cantor Set}
+
+Named after \textbf{Georg Cantor} (1845--1918), the founder of set theory. It's often called the simplest fractal.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{cantor_set.png}
+\caption{Cantor Set: Start with a line, remove the middle third, repeat forever}
+\end{figure}
+
+\textbf{Algorithm:}
+\begin{enumerate}[noitemsep]
+    \item Start with a line segment
+    \item Divide into thirds
+    \item Remove the middle third
+    \item Iterate on remaining segments
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\toprule
+Iteration $k$ & Copies $n_k$ & Length $s_k$ \\
+\midrule
+0 & 1 & 1 \\
+1 & 2 & $1/3$ \\
+2 & 4 & $1/9$ \\
+3 & 8 & $1/27$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Pattern: $n_k = 2^k$ and $s_k = (1/3)^k$
+
+$$D = \frac{\ln 2^k}{\ln 3^k} = \frac{k \ln 2}{k \ln 3} = \frac{\ln 2}{\ln 3}$$
+
+\begin{formulabox}
+\textbf{Cantor Set Dimension:} $D = \displaystyle\frac{\ln 2}{\ln 3} \approx 0.63$
+\end{formulabox}
+
+\subsubsection{The Sierpinski Triangle}
+
+Named after Polish mathematician \textbf{Wacław Sierpiński}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{sierpinski_triangle.png}
+\caption{Sierpinski Triangle: Remove the center triangle, repeat on each remaining triangle}
+\end{figure}
+
+\textbf{Algorithm:}
+\begin{enumerate}[noitemsep]
+    \item Start with an equilateral triangle
+    \item Connect the midpoints of each side
+    \item Remove the center triangle
+    \item Repeat on each remaining triangle
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\toprule
+Iteration $k$ & Triangles $n_k$ & Side Length $s_k$ \\
+\midrule
+0 & 1 & 1 \\
+1 & 3 & $1/2$ \\
+2 & 9 & $1/4$ \\
+3 & 27 & $1/8$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Pattern: $n_k = 3^k$ and $s_k = (1/2)^k$
+
+\begin{formulabox}
+\textbf{Sierpinski Triangle Dimension:} $D = \displaystyle\frac{\ln 3}{\ln 2} \approx 1.58$
+\end{formulabox}
+
+Between 1D and 2D---it has ``more'' than a line but ``less'' than a filled triangle.
+
+\subsubsection{The Koch Snowflake}
+
+Created by Swedish mathematician \textbf{Niels Fabian Helge von Koch}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{koch_edge.png}
+\caption{Koch Edge: Replace the middle third with a triangular bump, repeat}
+\end{figure}
+
+\textbf{Algorithm (Koch Edge):}
+\begin{enumerate}[noitemsep]
+    \item Start with a line segment
+    \item Divide into 3 equal parts
+    \item Replace middle part with two segments at 60° angles
+    \item Repeat on each segment
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{c|c|c}
+\toprule
+Iteration $k$ & Segments $n_k$ & Length $s_k$ \\
+\midrule
+0 & 1 & 1 \\
+1 & 4 & $1/3$ \\
+2 & 16 & $1/9$ \\
+3 & 64 & $1/27$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Pattern: $n_k = 4^k$ and $s_k = (1/3)^k$
+
+\begin{formulabox}
+\textbf{Koch Snowflake Dimension:} $D = \displaystyle\frac{\ln 4}{\ln 3} \approx 1.26$
+\end{formulabox}
+
+\newpage
+
+\subsection{Fractal Dimension Summary}
+
+\begin{center}
+\begin{tabular}{l|c|c|c}
+\toprule
+\textbf{Fractal} & \textbf{$n$ (copies)} & \textbf{$s$ (scale)} & \textbf{Dimension $D$} \\
+\midrule
+Cantor Set & 2 & $1/3$ & $\frac{\ln 2}{\ln 3} \approx 0.63$ \\
+Sierpinski Triangle & 3 & $1/2$ & $\frac{\ln 3}{\ln 2} \approx 1.58$ \\
+Koch Snowflake & 4 & $1/3$ & $\frac{\ln 4}{\ln 3} \approx 1.26$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{The Julia and Mandelbrot Sets}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{julia_mandelbrot.png}
+\caption{Left: Julia Set with swirling self-similar patterns. Right: Mandelbrot Set}
+\end{figure}
+
+\subsubsection{Julia Set}
+
+Given some constant $c \in \mathbb{C}$, the forward iterations of a complex point $x_0$ are generated using:
+$$x_{n+1} = x_n^2 + c$$
+
+The Julia set is the boundary between points that escape to infinity and those that stay bounded.
+
+\subsubsection{Mandelbrot Set}
+
+The \textbf{Mandelbrot set} is the set of values $c$ in the complex plane for which the orbit of $z = 0$ under $z_{n+1} = z_n^2 + c$ remains bounded.
+
+\begin{tipbox}[Famous Regions]
+\textbf{Sea Horse Valley} --- centered around $-0.75 + 0.1i$, spiral shapes resembling sea horse tails
+
+\textbf{Elephant Valley} --- centered around $0.3 + 0i$, rounded trunk-like shapes
+\end{tipbox}
+
+Being a fractal, the entire Mandelbrot Set's shape appears again when zooming in on its boundary---self-similarity at work.
+
+\subsection{Fractals in Nature and Applications}
+
+Nature has countless examples of fractals---plants, animals, and environmental phenomena exhibit iterative, recursive behavior.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{natural_fractals.png}
+\caption{Romanesco broccoli, fern leaves, tree branches, snowflakes, lightning, and river deltas all show fractal patterns}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Category} & \textbf{Examples} \\
+\midrule
+Plants & Romanesco broccoli, fern leaves, tree branches, pinecones \\
+Animals & Gecko feet, blood vessel networks \\
+Environment & Snowflakes, clouds, coastlines, river networks \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Scientific Applications}
+
+\textbf{Physics:} In 2018, physicists created a Sierpinski Triangle pattern using electron arrangements on copper surfaces. Astrophysicists study the fractal nature of interstellar gas to understand star formation.
+
+\textbf{Biology:} DNA and chromosomes exhibit self-similar structures. Blood vessel networks and lung bronchi follow fractal branching patterns.
+
+\textbf{Technology:} Computer chip cooling circuits use fractal branching for efficiency. Fractal antennas can receive multiple frequencies in a compact design.
+
+\newpage
+
+% ============================================================
+% APPENDIX: FORMULAS
+% ============================================================
+
+\section*{Quick Reference: Key Formulas}
+\addcontentsline{toc}{section}{Quick Reference: Key Formulas}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{l|l}
+\toprule
+\textbf{Concept} & \textbf{Formula} \\
+\midrule
+Arithmetic Sequence & $a_n = a_1 + (n-1)d$ \\
+Geometric Sequence & $a_n = a_1 \cdot r^{n-1}$ \\
+Fibonacci Sequence & $f_n = f_{n-1} + f_{n-2}$ with $f_0=0, f_1=1$ \\
+Golden Ratio & $\phi = \displaystyle\frac{1+\sqrt{5}}{2} \approx 1.618$ \\
+Fractal Dimension & $D = \displaystyle\frac{\log n}{\log r}$ \\
+Cantor Set Dimension & $D \approx 0.63$ \\
+Sierpinski Triangle Dimension & $D \approx 1.58$ \\
+Koch Snowflake Dimension & $D \approx 1.26$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+\begin{tipbox}[Key Connections]
+\begin{itemize}[noitemsep]
+    \item The ratio of consecutive Fibonacci numbers approaches $\phi$ as $n \to \infty$
+    \item The Golden Ratio satisfies $\phi = 1 + \frac{1}{\phi}$ and $\phi^2 = \phi + 1$
+    \item Fractal dimensions can be non-integers, indicating ``in-between'' complexity
+    \item Self-similarity is the defining feature of fractals
+\end{itemize}
+\end{tipbox}
+
+\end{document}

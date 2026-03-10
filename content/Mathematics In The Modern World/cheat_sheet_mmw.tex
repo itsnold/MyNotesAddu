@@ -1,0 +1,197 @@
+    \documentclass[11pt,letterpaper]{article}
+    \usepackage{multicol}
+    \usepackage{calc}
+    \usepackage{ifthen}
+    \usepackage[margin=0.4in]{geometry}
+    \usepackage{amsmath,amsthm,amsfonts,amssymb}
+    \usepackage{color,graphicx,overpic}
+    \usepackage{hyperref}
+    \usepackage{enumitem}
+
+    % Geometry setup for maximum space
+    %\geometry{top=0.4in,left=0.4in,right=0.4in,bottom=0.4in}
+
+    % Colors for design
+    \definecolor{myblue}{cmyk}{1, .50, .10, .01}
+    \definecolor{mygreen}{cmyk}{.60, 1, .10, .01} 
+    \definecolor{sectioncolor}{RGB}{0, 51, 102}
+    \definecolor{boxcolor}{RGB}{240, 248, 255}
+
+    % Custom section command
+    \newcommand{\mysection}[1]{%
+        \vspace{-0.3em}
+        \colorbox{sectioncolor}{\makebox[\linewidth][l]{\bfseries\color{white}#1}}%
+        \vspace{0.3em}
+    }
+
+    % Custom subsection command
+    \newcommand{\mysubsection}[1]{%
+        \vspace{-0.2em}
+        {\bfseries\color{sectioncolor}#1}%
+        \vspace{0.1em}
+    }
+
+    % Basic layout
+    \pagestyle{empty}
+    \makeatletter
+    \renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                    {-1ex plus -.5ex minus -.2ex}%
+                                    {0.5ex plus .2ex}%x
+                                    {\normalfont\large\bfseries}}
+    \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                    {-1explus -.5ex minus -.2ex}%
+                                    {0.5ex plus .2ex}%
+                                    {\normalfont\normalsize\bfseries}}
+    \makeatother
+
+    \setcounter{secnumdepth}{0}
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{0pt plus 0.5ex}
+
+    \begin{document}
+    \raggedright
+    \footnotesize
+    \begin{multicols*}{2}
+
+    % ================= HEADER =================
+    \begin{center}
+        \Large{\textbf{\color{sectioncolor}MMW Quiz Cheat Sheet}} \\
+        \small{Prelims: Module 1 \& 2}
+    \end{center}
+
+    % ================= MODULE 1 =================
+    \mysection{1. Fibonacci Sequence}
+
+    \mysubsection{Leonardo Pisano (Fibonacci)}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item Lived: $\sim1170 - 1250$. Italian mathematician.
+        \item Book: \textbf{Liber Abaci} (1202) (Book of Calculation).
+        \item Introduced: Hindu-Arabic numerals to Europe.
+    \end{itemize}
+
+    \mysubsection{The Rabbit Problem}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item Origin of the sequence.
+        \item Pairs: 1 $\to$ 1 $\to$ 2 $\to$ 3 $\to$ 5...
+        \item Rule: Offspring appear after 2 months. 
+    \end{itemize}
+
+    \mysubsection{The Sequence ($F_n$)}
+    $$0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 \dots$$
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Recursive Formula:} $F_n = F_{n-1} + F_{n-2}$
+        \item \textbf{Lucas Numbers:} Similar recursive ($2, 1, 3, 4, 7 \dots$).
+    \end{itemize}
+
+    \mysubsection{The Golden Ratio ($\phi$ / Phi)}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item Value: $\phi \approx \mathbf{1.61803...}$
+        \item Exact: $\phi = \frac{1 + \sqrt{5}}{2}$
+        \item Limit: $\lim_{n \to \infty} \frac{F_{n}}{F_{n-1}} = \phi$
+        \item \textbf{Golden Rectangle:} Ratio of sides is $1:\phi$.
+        \item \textbf{Golden Spiral:} Logarithmic spiral growing by $\phi$ every quarter turn.
+        \item \textbf{Golden Angle:} $\approx 137.5^\circ$ (ideal for seed packing).
+    \end{itemize}
+
+    % ================= APPLICATIONS =================
+    \mysection{2. Applications (Nature \& Art)}
+
+    \mysubsection{Nature's Numbering System}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Flowers (Petals):} Usually Fibonacci numbers.
+        \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+            \item 3: Lily, Iris
+            \item 5: Buttercup, Wild Rose
+            \item 8: Delphinium
+            \item 13: Corn Marigold
+            \item 21: Aster, Black-eyed Susan
+            \item 34: Daisy
+        \end{itemize}
+        \item \textbf{Bees:} Male bees (drones) have \textit{no father} (unfertilized egg). Female bees have 2 parents.
+        \item \textbf{Bee Ancestry:} $1, 1, 2, 3, 5 \dots$ (Fibonacci).
+        \item \textbf{Trees:} Branching patterns often follow Fibonacci.
+        \item \textbf{Phyllotaxis:} Leaf arrangement to maximize sun (Golden Angle).
+    \end{itemize}
+
+    \mysubsection{Human Body}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Hand:} Finger bones (phalanges) follow Fibonacci scaling.
+        \item \textbf{DNA:} 
+        \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+            \item Length: 34 \AA
+            \item Width: 21 \AA
+            \item Ratio: $34/21 \approx 1.619 \approx \phi$.
+        \end{itemize}
+        \item \textbf{Heart:} Ventricular dimensions align with $\phi$. Night BP (relaxed) aligns closer to $\phi$.
+        \item \textbf{Cochlea (Ear):} Spiral shape $\approx$ Golden Spiral.
+    \end{itemize}
+
+    \mysubsection{Art \& Architecture}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Parthenon (Athens):} Facade fits Golden Rectangles. Phidias (sculptor) $\to$ name "Phi".
+        \item \textbf{Great Pyramids:} Dimensions approx $\phi$.
+        \item \textbf{Taj Mahal:} Uses Golden Proportions.
+        \item \textbf{Notre Dame:} Facade proportions.
+        \item \textbf{Da Vinci:}
+        \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+            \item \textit{Vitruvian Man:} Body proportions.
+            \item \textit{Mona Lisa:} Face fits Golden Rectangles.
+            \item \textit{Last Supper}: Composition.
+        \end{itemize}
+        \item \textbf{Beauty:} Facial ratios close to $\phi$ are perceived as more attractive (Marquardt Mask).
+    \end{itemize}
+
+    % ================= MODULE 2 =================
+    \mysection{3. Fractals}
+
+    \mysubsection{Definitions}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Fractal:} Never-ending pattern, infinitely complex.
+        \item \textbf{Self-Similarity:} Looks the same at different scales (zoom in $\to$ same pattern).
+        \item \textbf{Benoit Mandelbrot:} Coined "fractal" (1980). "Clouds are not spheres..."
+    \end{itemize}
+
+    \mysubsection{Examples}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item \textbf{Nature:} Ferns, Coastlines, Lightning, Bronchial tree.
+        \item \textbf{Math:} Sierpinski Triangle, Koch Snowflake, Mandelbrot Set.
+    \end{itemize}
+
+    \mysubsection{Fractal Dimension ($D$)}
+    Normal dimensions are integers (1, 2, 3). Fractals have fractional dimensions (e.g., 1.26, 1.58).
+
+    \begin{equation*}
+        \boxed{D = \frac{\log n}{\log r}}
+    \end{equation*}
+
+    Where:
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item $n$ = number of self-similar pieces.
+        \item $r$ = magnification factor ($1/s$).
+        \item $s$ = scaling factor (size of each piece relative to whole).
+    \end{itemize}
+
+    \textbf{Example: Sierpinski Triangle}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item It is made of $n=3$ copies of itself.
+        \item Each copy is scaled by $s=1/2$ (so $r=2$).
+        \item $D = \frac{\log 3}{\log 2} \approx 1.585$.
+    \end{itemize}
+
+    \textbf{Example: Koch Snowflake}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item $n=4$ pieces.
+        \item Each scaled by $s=1/3$ (so $r=3$).
+        \item $D = \frac{\log 4}{\log 3} \approx 1.26$.
+    \end{itemize}
+
+    % ================= MISC =================
+    \mysection{Reminders}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item $\phi$ is irrational (infinite, non-repeating).
+        \item Bee ancestry: Male (1), Parents (1), G-Parents (2), G-G-Parents (3), G-G-G-Parents (5)...
+        \item "Divine Proportion" = Golden Ratio.
+    \end{itemize}
+
+    \end{multicols*}
+    \end{document}

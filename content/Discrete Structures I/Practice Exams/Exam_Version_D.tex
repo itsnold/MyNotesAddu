@@ -1,0 +1,208 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Prelim Practice Exam D}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{DISCRETE STRUCTURES I}}\\[5pt]
+{\Large Prelim Practice Exam --- Version D}\\[5pt]
+{\large\textit{Simulation Exam}}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}\\[5pt]
+\textbf{Time Allowed:} 1.5 hours \quad | \quad \textbf{Total Points:} 55
+\end{center}
+
+\vspace{5pt}
+
+\noindent\textbf{Name:} \underline{\hspace{6cm}} \quad \textbf{Date:} \underline{\hspace{3cm}}
+
+\vspace{10pt}
+
+\noindent\textbf{Instructions:}
+\begin{itemize}[noitemsep]
+    \item Answer all questions.
+    \item Show all work for full credit.
+    \item Write clearly and box your final answers.
+    \item No calculators, notes, or electronic devices.
+\end{itemize}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+\textit{Circle the letter of the best answer. 2 points each.}
+
+\vspace{10pt}
+
+\textbf{1.} Which of the following is NOT a proposition?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item The Earth is flat.
+    \item $3 + 4 = 8$
+    \item $x^2 = 4$
+    \item Every even number greater than 2 is the sum of two primes.
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{2.} The logical equivalence $p \to q \equiv \neg p \lor q$ is called:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item De Morgan's Law
+    \item Implication Law
+    \item Double Negation
+    \item Contrapositive Law
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{3.} What is the truth value of $\forall x\, (x^2 > x)$ if the domain is all positive real numbers greater than 1?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item True
+    \item False
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{4.} The negation of $\forall x \exists y\, P(x, y)$ is:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\exists x \forall y\, P(x, y)$
+    \item $\forall x \exists y\, \neg P(x, y)$
+    \item $\exists x \forall y\, \neg P(x, y)$
+    \item $\exists x \exists y\, \neg P(x, y)$
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{5.} The argument form $p \to q$, $q \to r$, therefore $p \to r$ is called:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item Modus Ponens
+    \item Modus Tollens
+    \item Hypothetical Syllogism
+    \item Resolution
+\end{enumerate}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Construct a truth table for $\neg(p \to q) \lor (q \to p)$.
+
+\vspace{80pt}
+
+\textbf{Question 2.} (5 points) Translate the following statement into propositional logic.
+
+\textit{``You cannot board the plane unless you have a valid ticket and a passport.''}
+
+Let:
+\begin{itemize}[noitemsep]
+    \item $b$: ``You can board the plane''
+    \item $t$: ``You have a valid ticket''
+    \item $p$: ``You have a passport''
+\end{itemize}
+
+\vspace{60pt}
+
+\textbf{Question 3.} (4 points) Determine the truth value of each statement if the domain for all variables is the set of real numbers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\exists x \forall y\, (xy = 0)$
+    
+    \vspace{30pt}
+    
+    \item $\forall x \forall y\, (x + y = y + x)$
+    
+    \vspace{30pt}
+\end{enumerate}
+
+\textbf{Question 4.} (6 points) Let $W(x, y)$ be the statement ``student $x$ has worked with student $y$ on a project,'' where the domain for both $x$ and $y$ is all students in the class. Express each statement using quantifiers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item Every student has worked with at least one other student.
+    
+    \vspace{35pt}
+    
+    \item There is a student who has worked with everyone.
+    
+    \vspace{35pt}
+    
+    \item Some student has never worked with anyone.
+    
+    \vspace{35pt}
+\end{enumerate}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points) Identify the rule of inference used in each argument.
+
+\begin{enumerate}[label=(\roman*)]
+    \item If $n$ is an even integer, then $n^2$ is even. The integer 6 is even. Therefore, $36$ is even.
+    
+    \vspace{40pt}
+    
+    \item Jane will take CS 101 or Math 201. Jane will not take Math 201. Therefore, Jane will take CS 101.
+    
+    \vspace{40pt}
+    
+    \item If today is Friday, we have pizza. We do not have pizza. Therefore, today is not Friday.
+    
+    \vspace{40pt}
+\end{enumerate}
+
+\textbf{Question 6.} (7 points) Prove that $\neg(p \lor q) \lor (\neg p \land q) \equiv \neg p$ without using truth tables. List each logical law applied in your proof.
+
+\vspace{120pt}
+
+\textbf{Question 7.} (4 points) Negate the following statement and simplify your answer. Express your final answer without negation symbols directly in front of quantifiers.
+
+$$\forall x \forall y\, (P(x) \land Q(y) \to R(x, y))$$
+
+\vspace{80pt}
+
+\textbf{Question 8.} (8 points) Using rules of inference, prove that the following argument is valid. Clearly show each step and identify the rule used.
+
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $p \to (q \to r)$
+    \item $p$
+    \item $q$
+\end{enumerate}
+
+\textbf{Conclusion:} $r$
+
+\vspace{100pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF EXAM}\\[3pt]
+\textit{Total: 55 points}
+\end{center}
+
+\end{document}

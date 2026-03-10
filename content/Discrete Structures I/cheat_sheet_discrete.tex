@@ -1,0 +1,176 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[margin=0.4in]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+% Geometry setup for maximum space
+%\geometry{top=0.4in,left=0.4in,right=0.4in,bottom=0.4in}
+
+% Colors for design
+\definecolor{sectioncolor}{RGB}{102, 0, 51} % Darker Red/Purple for Discrete
+\definecolor{highlight}{RGB}{255, 240, 245}
+
+% Custom section commands
+\newcommand{\mysection}[1]{%
+    \vspace{-0.3em}
+    \colorbox{sectioncolor}{\makebox[\linewidth][l]{\bfseries\color{white}#1}}%
+    \vspace{0.3em}
+}
+
+\newcommand{\mysubsection}[1]{%
+    \vspace{-0.2em}
+    {\bfseries\color{sectioncolor}#1}%
+    \vspace{0.1em}
+}
+
+% Basic layout
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}{-1ex plus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}{-1explus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\normalsize\bfseries}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols*}{2}
+
+% ================= HEADER =================
+\begin{center}
+     \Large{\textbf{\color{sectioncolor}Discrete Structures Cheat Sheet}} \\
+     \small{Prelims: Logic \& Proofs}
+\end{center}
+
+% ================= PROPOSITIONS =================
+\mysection{1. Propositional Logic}
+\textbf{Proposition:} Statement that is True or False (not both).
+
+\mysubsection{Logical Connectives}
+\begin{tabular}{c|c|c|l}
+    Sym & Name & Meaning & Note \\
+    \hline
+    $\neg p$ & Negation & NOT & Flips value \\
+    $p \land q$ & Conjunction & AND & True only if \textbf{both} T \\
+    $p \lor q$ & Disjunction & OR & True if \textbf{at least one} T \\
+    $p \oplus q$ & XOR & Excl. OR & True if \textbf{exactly one} T \\
+    $p \to q$ & Implication & IF...THEN & False only if $T \to F$ \\
+    $p \leftrightarrow q$ & Biconditional & IFF & True if values \textbf{match} \\
+\end{tabular}
+
+\mysubsection{The Implication ($p \to q$)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item $p$: Hypothesis, $q$: Conclusion.
+    \item \textbf{Equivalent:} $\neg p \lor q$
+    \item \textbf{False Case:} Only when $p$ is True AND $q$ is False.
+\end{itemize}
+
+\mysubsection{Related Statements}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Original:} $p \to q$
+    \item \textbf{Contrapositive:} $\neg q \to \neg p$ (\textbf{Equivalent!})
+    \item \textbf{Converse:} $q \to p$ (Not equivalent)
+    \item \textbf{Inverse:} $\neg p \to \neg q$ (Not equivalent)
+\end{itemize}
+
+\mysubsection{Operator Precedence}
+1. $\neg$ (Not) \quad 2. $\land$ (And) \quad 3. $\lor$ (Or) \quad 4. $\to$ \quad 5. $\leftrightarrow$
+
+% ================= LOGICAL EQUIVALENCES =================
+\mysection{2. Logical Equivalences}
+Two statements are equivalent ($p \equiv q$) if they have same truth tables.
+
+\mysubsection{De Morgan's Laws (CRITICAL)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item $\neg(p \land q) \equiv \neg p \lor \neg q$
+    \item $\neg(p \lor q) \equiv \neg p \land \neg q$
+    \item (Break the bar, change the sign)
+\end{itemize}
+
+\mysubsection{Standard Laws}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Identity:} $p \land T \equiv p$, $p \lor F \equiv p$
+    \item \textbf{Domination:} $p \lor T \equiv T$, $p \land F \equiv F$
+    \item \textbf{Idempotent:} $p \lor p \equiv p$, $p \land p \equiv p$
+    \item \textbf{Double Negation:} $\neg(\neg p) \equiv p$
+    \item \textbf{Distributive:}
+    \begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+        \item $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$
+        \item $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+    \end{itemize}
+    \item \textbf{Implication:} $p \to q \equiv \neg p \lor q$
+\end{itemize}
+
+% ================= QUANTIFIERS =================
+\mysection{3. Predicates \& Quantifiers}
+
+\mysubsection{Definitions}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Universal ($\forall x P(x)$):} "For all $x$". True ONLY if $P(x)$ is true for \textbf{every} instance. False if one counterexample.
+    \item \textbf{Existential ($\exists x P(x)$):} "There exists $x$". True if \textbf{at least one} instance is true.
+\end{itemize}
+
+\mysubsection{Negating Quantifiers (De Morgan's)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item $\neg \forall x P(x) \equiv \exists x \neg P(x)$
+    \item $\neg \exists x P(x) \equiv \forall x \neg P(x)$
+    \item \textit{Example:} "Not all birds fly" $\equiv$ "There exists a bird that does not fly".
+\end{itemize}
+
+\mysubsection{Nested Quantifiers}
+Order matters!
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item $\forall x \forall y$: For every pair...
+    \item $\exists x \exists y$: There is a pair...
+    \item $\forall x \exists y$: For every person, there is someone they love. (Everybody loves someone).
+    \item $\exists x \forall y$: There is someone who loves everyone. (A super-lover exists).
+\end{itemize}
+
+% ================= INFERENCE =================
+\mysection{4. Rules of Inference}
+
+\mysubsection{Propositional Logic}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Modus Ponens:} $\frac{p \to q, p}{\therefore q}$
+    \item \textbf{Modus Tollens:} $\frac{p \to q, \neg q}{\therefore \neg p}$
+    \item \textbf{Hypothetical Syllogism:} $\frac{p \to q, q \to r}{\therefore p \to r}$
+    \item \textbf{Disjunctive Syllogism:} $\frac{p \lor q, \neg p}{\therefore q}$ ("Process of elimination")
+    \item \textbf{Addition:} $\frac{p}{\therefore p \lor q}$
+    \item \textbf{Simplification:} $\frac{p \land q}{\therefore p}$
+    \item \textbf{Resolution:} $\frac{\neg p \lor r, p \lor q}{\therefore q \lor r}$
+\end{itemize}
+
+\mysubsection{Quantified Logic}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Univ. Instantiation (UI):} $\forall x P(x) \implies P(c)$ (General $\to$ Specific)
+    \item \textbf{Univ. Generalization (UG):} $P(c)$ (arb.) $\implies \forall x P(x)$
+    \item \textbf{Exist. Instantiation (EI):} $\exists x P(x) \implies P(c)$ (for some $c$)
+    \item \textbf{Exist. Generalization (EG):} $P(c) \implies \exists x P(x)$
+\end{itemize}
+
+\mysubsection{Common Fallacies (Beware!)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Affirming the Consequent:} $\frac{p \to q, q}{\therefore p}$ (INVALID)
+    \item \textbf{Denying the Antecedent:} $\frac{p \to q, \neg p}{\therefore \neg q}$ (INVALID)
+\end{itemize}
+
+% ================= PROOFS =================
+\mysection{5. Proof Methods}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Direct Proof:} Assume $p$, show $q$.
+    \item \textbf{Proof by Contraposition:} Assume $\neg q$, show $\neg p$. (Use for "If...then" when direct is hard).
+    \item \textbf{Proof by Contradiction:} Assume $\neg p$, show it leads to a contradiction ($r \land \neg r$).
+    \item \textbf{Exhaustive Proof:} Test all cases.
+    \item \textbf{Counterexample:} Find one case where statement fails to disprove $\forall$.
+\end{itemize}
+
+\end{multicols*}
+\end{document}

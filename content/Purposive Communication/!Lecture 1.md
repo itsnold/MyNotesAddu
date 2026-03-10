@@ -12,7 +12,7 @@
 > 
 > This includes your internal monologue, self-reflection, and the thinking process you use to work through problems or make decisions.
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - Journaling your thoughts
 > > - Weighing pros and cons before a decision
 > > - Mental rehearsal before a speech
@@ -23,7 +23,7 @@
 > 
 > This is the most common form of communication in daily life. It allows for immediate feedback, clarification, and a natural back-and-forth exchange.
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - A conversation with a friend
 > > - A one-on-one meeting with a professor
 > > - Texting someone about weekend plans
@@ -33,7 +33,7 @@
 > 
 > Found in meetings, study groups, and team discussions. Everyone can still participate directly, but the dynamics become more complex as group size increases.
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - Study group sessions
 > > - Team project meetings
 > > - Family discussions
@@ -44,7 +44,7 @@
 > 
 > Includes speeches, presentations, and lectures. Feedback from the audience is limited and often delayed or non-verbal (applause, facial expressions, etc.).
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - A TED Talk
 > > - Classroom lectures
 > > - Political speeches
@@ -55,14 +55,14 @@
 > 
 > Unlike public communication, the sender and receivers are typically separated by distance and time. Messages are produced by organizations and distributed through technological channels. Feedback is minimal, delayed, or indirect (ratings, comments, shares).
 > 
-> > [!info]+ Important Characteristics
+> > [!info]- Important Characteristics
 > > - **One-to-many** — a single source reaches thousands or millions
 > > - **Mediated** — relies on technology (print, broadcast, digital)
 > > - **Anonymous audience** — the sender doesn't know individual receivers
 > > - **Gatekeeping** — editors, producers, and algorithms filter content
 > > - **Delayed feedback** — responses come through ratings, reviews, or social media
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - Television news broadcasts
 > > - Newspaper and magazine articles
 > > - Radio programs and podcasts
@@ -88,7 +88,7 @@
 > 
 > Often subconscious, non-verbal cues can reinforce or contradict verbal messages. They play a crucial role in conveying emotions and attitudes.
 > 
-> > [!info]+ Types of Non-Verbal Cues
+> > [!info]- Types of Non-Verbal Cues
 > > - **Kinesics (Body language)** — posture, gestures, movements
 > > - **Facial expressions** — smiles, frowns, raised eyebrows
 > > - **Oculesics (Eye behavior)** — eye contact, gaze, pupil dilation
@@ -102,7 +102,7 @@
 > 
 > Leverages imagery, graphics, and design to communicate ideas quickly and effectively.
 > 
-> > [!example]+ Examples
+> > [!example]- Examples
 > > - Infographics and charts
 > > - Photographs and videos
 > > - Diagrams and flowcharts

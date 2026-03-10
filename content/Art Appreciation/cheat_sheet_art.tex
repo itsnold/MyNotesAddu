@@ -1,0 +1,217 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[margin=0.4in]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+% Colors for design
+\definecolor{sectioncolor}{RGB}{139, 69, 19} % Warm brown for Art
+\definecolor{highlight}{RGB}{255, 248, 240}
+
+% Custom section commands
+\newcommand{\mysection}[1]{%
+    \vspace{-0.3em}
+    \colorbox{sectioncolor}{\makebox[\linewidth][l]{\bfseries\color{white}#1}}%
+    \vspace{0.3em}
+}
+
+\newcommand{\mysubsection}[1]{%
+    \vspace{-0.2em}
+    {\bfseries\color{sectioncolor}#1}%
+    \vspace{0.1em}
+}
+
+% Basic layout
+\pagestyle{empty}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}{-1ex plus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}{-1explus -.5ex minus -.2ex}{0.5ex plus .2ex}{\normalfont\normalsize\bfseries}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols*}{2}
+
+% ================= HEADER =================
+\begin{center}
+     \Large{\textbf{\color{sectioncolor}Art Appreciation Cheat Sheet}} \\
+     \small{Prelims: Power of Art \& Everyday Aesthetics}
+\end{center}
+
+% ================= PART 1: POWER OF ART =================
+\mysection{Part 1: The Power of Art}
+
+\mysubsection{Learning How to See}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Art requires \textbf{active viewing}, not passive looking
+    \item Artists see details and relationships others miss
+    \item Modern humans are visually numb from image overload
+\end{itemize}
+
+\mysubsection{The Mona Lisa (Leonardo da Vinci)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Sfumato}: Soft, hazy transitions around eyes/mouth
+    \item Mismatched horizon lines create illusion of movement
+    \item Stolen 1911: the theft made it world-famous
+    \item \textbf{Sprezzatura}: Aristocratic aloofness, effortless elegance
+\end{itemize}
+
+\mysubsection{Japanese Art Classification}
+\begin{tabular}{l|l}
+    National Treasures & Can't sell or export \\
+    Important Cultural Properties & Significant but lower tier \\
+    Living National Treasures & Title for living masters \\
+\end{tabular}
+
+\mysubsection{Art and Faith}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Venus of Willendorf}: Fertility charm (25,000 BCE)
+    \item \textbf{Lascaux Cave Paintings}: Hunting magic, not decoration
+    \item \textbf{African Masks}: Become the spirit when worn in ritual
+    \item \textbf{Shamanism}: Everything has a spirit, art helps travel between worlds
+    \item \textbf{Gothic Cathedrals}: Vertical lines pull soul upward
+\end{itemize}
+
+\mysubsection{Greek Idealism}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Shows humans as they \textit{should} be, not as they are
+    \item Perfect balance between body and mind
+    \item ``Beauty is truth, truth beauty'' (John Keats)
+\end{itemize}
+
+\mysubsection{Art as Power Declaration}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Henry VIII (Holbein)}: Wide stance, direct gaze = intimidation
+    \item \textbf{Mussolini Head (Bertelli)}: 360° rotation = sees everything
+    \item \textbf{Futurism}: Art movement about speed, machines, modernity
+    \item \textbf{Mughal Art}: Emperor with halo = divine right
+\end{itemize}
+
+\mysubsection{Art as Shock / Social Commentary}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Aunt Jemima (Betye Saar)}: Transforms racist symbol into resistance
+    \item \textbf{L.H.O.O.Q. (Duchamp)}: Mona Lisa with mustache = Dadaism
+    \item \textbf{Dadaism}: Anti-art, mocks tradition and sacred art
+\end{itemize}
+
+\mysubsection{Art and Emotion}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Vietnam Memorial (Maya Lin)}: V-shaped black granite wall
+    \item Polished surface reflects viewer: living face the dead
+    \item Names chronological, not alphabetical: forces you to search
+\end{itemize}
+
+\mysubsection{Transforming the Ordinary}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Urban Landscape (Zhan Wang)}: City made of kitchenware
+    \item \textbf{The Gates (Christo)}: 7,503 saffron gates in Central Park
+    \item \textbf{House (Whiteread)}: Cast of empty space inside building
+\end{itemize}
+
+\mysubsection{Why Artists Create}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Self-expression}: Frida Kahlo (pain as subject)
+    \item \textbf{Play}: Paul Klee (whimsy, doodles)
+    \item \textbf{Memory}: Marc Chagall (dreamlike nostalgia)
+\end{itemize}
+
+% ================= PART 2: EVERYDAY AESTHETICS =================
+\mysection{Part 2: Everyday Aesthetics}
+
+\mysubsection{Historical Context}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Early: Aesthetics covered everything
+    \item 18th/19th C: Narrowed to Fine Arts only
+    \item 20th C: Philosophy of Art, separate from daily life
+    \item Late 20th C: Return to Everyday Aesthetics
+\end{itemize}
+
+\mysubsection{Wabi-Sabi (侘寂)}
+Japanese aesthetic: acceptance of transience and imperfection
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Wabi}: Less is more, rustic simplicity
+    \item \textbf{Sabi}: Attentive melancholy, passage of time
+    \item Beauty in the \textbf{Imperfect, Impermanent, Incomplete}
+\end{itemize}
+
+\mysubsection{Kintsugi (金継ぎ)}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Broken pottery repaired with \textbf{gold lacquer}
+    \item Highlights cracks instead of hiding them
+    \item Breakage becomes part of object's history
+    \item Repaired object is \textit{more} beautiful than original
+\end{itemize}
+
+\mysubsection{6 Dimensions of Everyday Aesthetics}
+
+\textbf{1. Broadening Scope}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Beyond museums: nature, functional objects, chores, routines
+\end{itemize}
+
+\textbf{2. Functional Beauty}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Usefulness can \textit{make} something beautiful
+    \item Well-designed tools ARE beautiful
+\end{itemize}
+
+\textbf{3. Active Participation vs. Passive Viewing}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Traditional: Spectator (stand back)
+    \item Everyday: Agent (doing, engaging)
+    \item \textbf{Pedestal Problem}: Putting everyday object on display destroys its everydayness
+\end{itemize}
+
+\textbf{4. Social Aesthetics}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item Interactions have aesthetic dimensions
+    \item Tone of voice, gestures, how you handle objects
+\end{itemize}
+
+\textbf{5. Beyond Beauty and Sublimity}
+\begin{tabular}{l|l}
+    The Boring & Background experience \\
+    The Plain & Simple, quiet \\
+    The Messy & Chaotic, lived-in \\
+    The Cute & Small, endearing \\
+    The Cozy & Warm, intimate \\
+\end{tabular}
+
+\textbf{6. Negative Aesthetic Qualities}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Artistic lens}: View ugly thing as if it were art
+    \item \textbf{Motivated action}: Ugliness compels you to change it
+\end{itemize}
+
+\mysubsection{Graffiti: Art or Pollution?}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Visual pollution}: Vandalism, no consent, eyesore
+    \item \textbf{Social commentary}: Political messages, voice for marginalized (e.g., Banksy, Lumad murals)
+\end{itemize}
+
+\mysubsection{Criticisms of Everyday Aesthetics}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Subjective relativism}: Too personal for critical discussion
+    \item \textbf{Self-indulgence}: Becomes just ``what I like''
+    \item \textbf{Loss of authority}: If everything is aesthetic, does expertise matter?
+\end{itemize}
+
+\mysubsection{Related Art Movements}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=0pt]
+    \item \textbf{Conceptual Art}: Idea matters more than object
+    \item \textbf{Environmental Art}: Merged with landscapes
+    \item \textbf{Performance Art}: Body and actions are the art
+    \item \textbf{Socially Engaged Art}: Collaboration with public
+\end{itemize}
+
+\end{multicols*}
+\end{document}

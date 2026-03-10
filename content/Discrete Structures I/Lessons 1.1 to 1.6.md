@@ -62,7 +62,7 @@ We use letters like $p, q, r, s$ to represent propositions — these are called 
 > [!info] Notation
 > **T** = True, **F** = False. Simple enough.
 
-> [!quote]+ Aristotle (384–322 B.C.E.)
+> [!quote]- Aristotle (384–322 B.C.E.)
 > Born in Stagirus, northern Greece. His father was physician to the King of Macedonia. He was orphaned young, went to Athens at 17, and joined Plato's Academy for 20 years.
 > 
 > Interesting — he didn't get picked to succeed Plato when he died, so he ended up tutoring Alexander the Great and eventually founded his own school (the Lyceum). His followers were called "peripatetics" because he liked walking around while discussing philosophy.
@@ -77,7 +77,7 @@ This whole area is called **propositional calculus** or **propositional logic**.
 
 **Compound propositions** are just new propositions formed from existing ones using **logical operators** (also called connectives).
 
-> [!info]+ 📊 Logic Gates Overview
+> [!info]- 📊 Logic Gates Overview
 > ![[attachments/logic_gates.png]]
 > *The symbols used in circuit design*
 
@@ -159,7 +159,7 @@ This whole area is called **propositional calculus** or **propositional logic**.
 
 ### Exclusive Or (XOR)
 
-> [!abstract]+ 📊 OR vs XOR
+> [!abstract]- 📊 OR vs XOR
 > ![[attachments/or_vs_xor.png]]
 > *∨ includes the overlap, ⊕ excludes it*
 
@@ -253,7 +253,7 @@ This whole area is called **propositional calculus** or **propositional logic**.
 
 Given $p \to q$, there are three related statements worth knowing:
 
-> [!tip]+ 📊 Relationship Map
+> [!tip]- 📊 Relationship Map
 > ![[attachments/conditional_relationships.png]]
 > *Diagonal pairs are equivalent; horizontal/vertical pairs are not*
 
@@ -342,7 +342,7 @@ You can figure out complex expressions by building up step by step.
 
 To avoid drowning in parentheses, operators follow a precedence order:
 
-> [!info]+ 📊 Precedence Hierarchy
+> [!info]- 📊 Precedence Hierarchy
 > ![[attachments/operator_precedence.png]]
 > *Higher up = evaluated first*
 
@@ -403,14 +403,14 @@ These work the same as logical connectives:
 
 ## Historical Notes
 
-> [!quote]+ George Boole (1815–1864)
+> [!quote]- George Boole (1815–1864)
 > Son of a cobbler, born in Lincoln, England. His family was poor, but he became one of the most important mathematicians of the 1800s anyway.
 > 
 > Published *The Mathematical Analysis of Logic* in 1848, then *The Laws of Thought* in 1854 — that's where **Boolean algebra** comes from.
 > 
 > Died from pneumonia after giving a lecture while soaking wet from a rainstorm. Dedication, honestly.
 
-> [!quote]+ John Wilder Tukey (1915–2000)
+> [!quote]- John Wilder Tukey (1915–2000)
 > Born in New Bedford, Massachusetts. Education at Brown, PhD from Princeton in 1939.
 > 
 > Made major contributions to statistics, co-invented the **Fast Fourier Transform**.
@@ -527,7 +527,7 @@ Engineers take requirements in English and express them precisely using logic.
 
 ## Propositional Equivalences
 
-> [!info]+ 📊 Tautology vs Contradiction
+> [!info]- 📊 Tautology vs Contradiction
 > ![[attachments/tautology_contradiction.png]]
 > *A tautology is always true; a contradiction is always false*
 
@@ -566,7 +566,7 @@ They're equivalent if their truth table columns match.
 
 Named after Augustus De Morgan (1806-1871).
 
-> [!info]+ 📊 De Morgan's Laws
+> [!info]- 📊 De Morgan's Laws
 > ![[attachments/demorgan_laws.png]]
 > *NOT distributes and flips the operator*
 > Negation distributes and flips AND↔OR.
@@ -617,27 +617,23 @@ To prove $A \equiv B$, chain equivalences: $A \equiv A_1 \equiv \ldots \equiv B$
 > [!example] Proof 1
 > **Show:** $\neg(p \lor (\neg p \land q)) \equiv \neg p \land \neg q$
 > 
-> $$
-> \begin{aligned}
+> $$\begin{aligned}
 > \neg(p \lor (\neg p \land q)) &\equiv \neg p \land \neg(\neg p \land q) & \text{(De Morgan)} \\
 > &\equiv \neg p \land (p \lor \neg q) & \text{(De Morgan + Double Neg)} \\
 > &\equiv (\neg p \land p) \lor (\neg p \land \neg q) & \text{(Distributive)} \\
 > &\equiv F \lor (\neg p \land \neg q) & \text{(Negation law)} \\
 > &\equiv \neg p \land \neg q & \text{(Identity)}
-> \end{aligned}
-> $$
+> \end{aligned}$$
 
 > [!example] Proof 2 — Tautology
 > **Show:** $(p \land q) \to (p \lor q)$ is a tautology
 > 
-> $$
-> \begin{aligned}
+> $$\begin{aligned}
 > (p \land q) \to (p \lor q) &\equiv \neg(p \land q) \lor (p \lor q) \\
 > &\equiv (\neg p \lor \neg q) \lor (p \lor q) & \text{(De Morgan)} \\
 > &\equiv (\neg p \lor p) \lor (\neg q \lor q) & \text{(Rearrange)} \\
 > &\equiv T \lor T \equiv T
-> \end{aligned}
-> $$
+> \end{aligned}$$
 
 ---
 ## Propositional Satisfiability
@@ -667,15 +663,11 @@ To prove $A \equiv B$, chain equivalences: $A \equiv A_1 \equiv \ldots \equiv B$
 
 >[!example] Exercise Answers
 > **Prove:** $\neg (p \neg q) \lor (\neg p \land q) \equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q)$ 
-> $$
-> \begin{aligned}
-> &\equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q) & \text{(De Morgan's Law)} \\
-> &\equiv (\neg p \land q) \lor (\neg p \land \neg q) & \text{(Double Negation)} \\
-> &\equiv \neg p \land (q \lor \neg q) & \text{(Distributive)} \\
-> &\equiv \neg p \land T & \text{(Negation)} \\
-> &\equiv \neg p & \text{(Identity)}
-> \end{aligned}
-> $$ 
+> $$\equiv (\neg p \land \neg (\neg q)) \lor (\neg p \land \neg q) \rightarrow De \ Morgan's \ Law$$
+> $$\equiv (\neg p \land q) \lor (\neg p \land \neg q) \rightarrow Double \ Negation$$
+> $$\equiv \neg p \land (q \lor \neg q) \rightarrow Distributive$$
+> $$\equiv \neg p \land T \rightarrow Negation$$
+> $$\equiv \neg p \rightarrow Identity$$ 
 # Predicates and Quantifiers
 
 > [!summary] What this covers
@@ -806,7 +798,7 @@ So $\forall x\, P(x) \lor Q(x)$ means $(\forall x\, P(x)) \lor Q(x)$, not $\fora
 
 ## Negating Quantified Expressions
 
-> [!info]+ 📊 De Morgan's Laws for Quantifiers
+> [!info]- 📊 De Morgan's Laws for Quantifiers
 > ![[attachments/quantifier_negation.png]]
 > *Negation flips the quantifier and negates the predicate*
 
@@ -974,7 +966,7 @@ Just layering predicates on top of each other. The outer quantifier "wraps" the 
 
 The **order matters** when using different quantifiers. If they're the same quantifiers you can swap them. If they're different ones, you can't.
 
-> [!info]+ 📊 Quantifier Order Overview
+> [!info]- 📊 Quantifier Order Overview
 > ![[attachments/quantifier_order.png]]
 > *Same quantifiers can swap; mixed quantifiers cannot*
 
@@ -1028,7 +1020,7 @@ The **order matters** when using different quantifiers. If they're the same quan
 
 Different quantifier combinations have different "strengths." $\forall x \forall y$ is the strongest claim (must hold for all pairs), while $\exists x \exists y$ is the weakest (just needs one pair to work).
 
-> [!info]+ 📊 Two Variable Quantification Grid
+> [!info]- 📊 Two Variable Quantification Grid
 > ![[attachments/quantification_grid.png]]
 > *Stronger claims at top-left, weaker at bottom-right*
 
@@ -1118,7 +1110,7 @@ Notice how "everybody loves somebody" ($\forall x \exists y$) is very different 
 
 Same idea as before with De Morgan's Laws for quantifiers, but now we apply them repeatedly. Each time we push the negation past a quantifier, we flip it ($\forall \leftrightarrow \exists$). Keep going until the negation reaches the innermost predicate.
 
-> [!info]+ 📊 Negation Flow
+> [!info]- 📊 Negation Flow
 > ![[attachments/nested_quantifier_negation.png]]
 > *Push negation inward, flipping quantifiers as you go*
 
@@ -1228,7 +1220,7 @@ We construct valid arguments in two stages:
 
 These are the building blocks for constructing valid arguments. Each rule is a simple, proven argument form that we can apply whenever the pattern matches.
 
-> [!info]+ 📊 Rules Overview
+> [!info]- 📊 Rules Overview
 > ![[attachments/inference_rules.png]]
 > *Propositional rules on left, quantifier rules on right*
 

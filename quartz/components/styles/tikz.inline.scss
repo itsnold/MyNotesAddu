@@ -1,0 +1,29 @@
+.tikzjax-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.tikzjax-wrapper.tikzjax-error {
+  padding: 1rem;
+  border: 1px solid var(--lightgray);
+  border-radius: 0.5rem;
+  background: var(--light);
+}
+
+.tikzjax-wrapper figcaption {
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--darkgray);
+}
+
+.tikzjax-source {
+  margin: 0;
+}
+
+.tikzjax-wrapper svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

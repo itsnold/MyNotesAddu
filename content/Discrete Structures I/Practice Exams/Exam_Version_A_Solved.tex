@@ -1,0 +1,554 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{xcolor}
+
+% Gray solution boxes
+\definecolor{solngray}{gray}{0.95}
+\newenvironment{solution}{\begin{shaded}\textbf{SOLUTION:}\par\smallskip}{\end{shaded}}
+\newenvironment{shaded}{\begin{snugshade}}{\end{snugshade}}
+\surroundwithmdframed[backgroundcolor=solngray,linewidth=0pt]{shaded}
+
+% Actually use mdframed
+\usepackage{mdframed}
+\newmdenv[backgroundcolor=solngray,linewidth=0.5pt,linecolor=gray,innertopmargin=8pt,innerbottommargin=8pt]{solnbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Prelim Practice Exam A}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{DISCRETE STRUCTURES I}}\\[5pt]
+{\Large Prelim Practice Exam --- Version A}\\[5pt]
+{\large\textit{With Complete Solutions}}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}\\[5pt]
+\textbf{Time Allowed:} 1.5 hours \quad | \quad \textbf{Total Points:} 55
+\end{center}
+
+\vspace{10pt}
+
+\noindent\textbf{Instructions:}
+\begin{itemize}[noitemsep]
+    \item Answer all questions.
+    \item Show all work for full credit.
+    \item Write clearly and box your final answers.
+\end{itemize}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+\textit{Circle the letter of the best answer. 2 points each.}
+
+\vspace{8pt}
+
+\textbf{1.} Which of the following is a proposition?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $x + 5 = 10$
+    \item What time is it?
+    \item Close the door.
+    \item $2 + 2 = 5$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (D)}
+
+\textbf{Explanation:} A proposition is a declarative sentence that is either TRUE or FALSE, but not both.
+\begin{itemize}[noitemsep]
+    \item (A) $x + 5 = 10$ --- Not a proposition because it contains a variable $x$. We cannot determine its truth value without knowing $x$.
+    \item (B) ``What time is it?'' --- This is a question, not a declarative statement.
+    \item (C) ``Close the door.'' --- This is a command/imperative, not declarative.
+    \item (D) $2 + 2 = 5$ --- This IS a proposition! It's a declarative statement that is definitively FALSE. Remember: a proposition doesn't have to be true, it just needs to have a definite truth value.
+\end{itemize}
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{2.} The contrapositive of $p \to q$ is:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $q \to p$
+    \item $\neg p \to \neg q$
+    \item $\neg q \to \neg p$
+    \item $\neg p \lor q$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (C)}
+
+\textbf{Explanation:} For any conditional $p \to q$:
+\begin{itemize}[noitemsep]
+    \item \textbf{Converse:} $q \to p$ (swap the order) --- NOT equivalent to original
+    \item \textbf{Inverse:} $\neg p \to \neg q$ (negate both) --- NOT equivalent to original
+    \item \textbf{Contrapositive:} $\neg q \to \neg p$ (swap AND negate both) --- IS equivalent to original!
+\end{itemize}
+
+\textbf{Memory trick:} The contrapositive is the ONLY related statement that is logically equivalent to the original. Think of it as ``if not the consequence, then not the cause.''
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{3.} What is the truth value of $\forall x (x^2 \geq 0)$ if the domain is all real numbers?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item True
+    \item False
+    \item Cannot be determined
+    \item Depends on $x$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (A)}
+
+\textbf{Explanation:} The statement says ``For ALL real numbers $x$, $x^2 \geq 0$.''
+
+This is TRUE because:
+\begin{itemize}[noitemsep]
+    \item If $x > 0$: $x^2 > 0 \geq 0$ \checkmark
+    \item If $x = 0$: $x^2 = 0 \geq 0$ \checkmark
+    \item If $x < 0$: $x^2 > 0 \geq 0$ \checkmark (negative times negative = positive)
+\end{itemize}
+
+Since the square of any real number is never negative, this universal statement holds for the entire domain.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{4.} Which rule of inference is represented by: ``If $p \to q$ and $\neg q$, then $\neg p$''?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item Modus Ponens
+    \item Modus Tollens
+    \item Hypothetical Syllogism
+    \item Disjunctive Syllogism
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{Explanation:} 
+\begin{itemize}[noitemsep]
+    \item \textbf{Modus Ponens:} $p \to q$, $p$ $\therefore q$ (``If P then Q; P is true; so Q'')
+    \item \textbf{Modus Tollens:} $p \to q$, $\neg q$ $\therefore \neg p$ (``If P then Q; Q is false; so P must be false'')
+    \item \textbf{Hypothetical Syllogism:} $p \to q$, $q \to r$ $\therefore p \to r$ (chain implications)
+    \item \textbf{Disjunctive Syllogism:} $p \lor q$, $\neg p$ $\therefore q$ (process of elimination)
+\end{itemize}
+
+The given form matches \textbf{Modus Tollens} --- we reason backwards from the consequence being false.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{5.} The negation of $\exists x\, P(x)$ is:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\exists x\, \neg P(x)$
+    \item $\forall x\, P(x)$
+    \item $\forall x\, \neg P(x)$
+    \item $\neg \forall x\, P(x)$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (C)}
+
+\textbf{Explanation:} De Morgan's Laws for Quantifiers:
+$$\neg \exists x\, P(x) \equiv \forall x\, \neg P(x)$$
+$$\neg \forall x\, P(x) \equiv \exists x\, \neg P(x)$$
+
+In plain English:
+\begin{itemize}[noitemsep]
+    \item ``NOT (there exists an $x$ with property $P$)'' = ``ALL $x$ do NOT have property $P$''
+    \item If nothing has the property, then everything lacks the property.
+\end{itemize}
+
+\textbf{Rule:} Negation flips the quantifier ($\forall \leftrightarrow \exists$) and negates the predicate.
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Construct a truth table for $(p \to \neg q) \leftrightarrow (q \lor \neg p)$.
+
+\begin{solnbox}
+\textbf{Step-by-step approach:}
+
+First, identify all subexpressions we need:
+\begin{enumerate}[noitemsep]
+    \item $\neg q$ (negation of $q$)
+    \item $\neg p$ (negation of $p$)
+    \item $p \to \neg q$ (conditional)
+    \item $q \lor \neg p$ (disjunction)
+    \item Final: $(p \to \neg q) \leftrightarrow (q \lor \neg p)$
+\end{enumerate}
+
+\textbf{Remember:}
+\begin{itemize}[noitemsep]
+    \item $p \to q$ is FALSE only when $p$ is TRUE and $q$ is FALSE
+    \item $p \leftrightarrow q$ is TRUE when both sides have the SAME truth value
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{cc|cc|cc|c}
+\toprule
+$p$ & $q$ & $\neg p$ & $\neg q$ & $p \to \neg q$ & $q \lor \neg p$ & $(p \to \neg q) \leftrightarrow (q \lor \neg p)$ \\
+\midrule
+T & T & F & F & F & T & F \\
+T & F & F & T & T & F & F \\
+F & T & T & F & T & T & T \\
+F & F & T & T & T & T & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Detailed calculation for Row 1} ($p=T$, $q=T$):
+\begin{itemize}[noitemsep]
+    \item $\neg q = \neg T = F$
+    \item $\neg p = \neg T = F$
+    \item $p \to \neg q = T \to F = F$ (true implies false = false!)
+    \item $q \lor \neg p = T \lor F = T$
+    \item $F \leftrightarrow T = F$ (different values, so biconditional is false)
+\end{itemize}
+
+\textbf{Observation:} This is NOT a tautology (has F values) and NOT a contradiction (has T values). It's a contingency.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 2.} (5 points) Translate the following statement into propositional logic using the propositions provided.
+
+\textit{``You can graduate only if you have completed all required courses and you have paid all fees, unless you have a special exemption.''}
+
+Let:
+\begin{itemize}[noitemsep]
+    \item $g$: ``You can graduate''
+    \item $c$: ``You have completed all required courses''
+    \item $f$: ``You have paid all fees''
+    \item $e$: ``You have a special exemption''
+\end{itemize}
+
+\begin{solnbox}
+\textbf{Breaking down the English:}
+
+\textbf{Key phrase 1:} ``$A$ only if $B$'' translates to $A \to B$
+
+So ``You can graduate only if [condition]'' means $g \to [\text{condition}]$
+
+\textbf{Key phrase 2:} ``[X] unless [Y]'' translates to $\neg Y \to X$ or equivalently $X \lor Y$
+
+\textbf{Key phrase 3:} ``[A] and [B]'' translates to $A \land B$
+
+\textbf{Putting it together:}
+
+The condition for graduation is: ``completed courses AND paid fees'' = $(c \land f)$
+
+But there's an exception: ``unless you have a special exemption''
+
+This means: Either you meet the requirements $(c \land f)$, OR you have an exemption $e$.
+
+\textbf{Full translation:}
+$$\boxed{g \to ((c \land f) \lor e)}$$
+
+\textbf{Alternative interpretation:} If ``unless'' modifies the entire statement:
+$$g \to (c \land f) \lor e$$
+
+Both are acceptable depending on how you parse the English. The key insight is recognizing ``only if'' creates an implication with $g$ as the antecedent.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 3.} (4 points) Determine the truth value of each statement if the domain for all variables is the set of integers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\forall n \exists m (n + m = 0)$
+    \item $\exists n \forall m (nm = m)$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) $\forall n \exists m (n + m = 0)$}
+
+\textbf{Translation:} ``For every integer $n$, there exists an integer $m$ such that $n + m = 0$.''
+
+\textbf{Analysis:} For any integer $n$, we need to find some $m$ where $n + m = 0$.
+
+Simply choose $m = -n$! Then $n + (-n) = 0$. \checkmark
+
+Since every integer has an additive inverse in the integers, this is \textbf{TRUE}.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) $\exists n \forall m (nm = m)$}
+
+\textbf{Translation:} ``There exists an integer $n$ such that for ALL integers $m$, $nm = m$.''
+
+\textbf{Analysis:} We need ONE specific $n$ that works for EVERY $m$.
+
+If $nm = m$ for all $m$, then $nm - m = 0$, so $m(n-1) = 0$ for all $m$.
+
+This only works if $n - 1 = 0$, i.e., $n = 1$.
+
+Let's verify: If $n = 1$, then $nm = 1 \cdot m = m$. \checkmark
+
+Yes! The number $n = 1$ (the multiplicative identity) satisfies this.
+
+This is \textbf{TRUE}.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 4.} (6 points) Let $F(x, y)$ be the statement ``$x$ is friends with $y$'' where the domain for both $x$ and $y$ is all students at your university. Express each statement using quantifiers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item Everyone has at least one friend.
+    \item There is a student who is friends with everyone.
+    \item No student is friends with everyone.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) Everyone has at least one friend.}
+
+``For every student $x$, there exists some student $y$ such that $x$ is friends with $y$.''
+
+$$\boxed{\forall x \exists y\, F(x, y)}$$
+
+\textbf{Note:} The order matters! ``$\forall x \exists y$'' means each person has \textit{their own} friend (possibly different for each person).
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) There is a student who is friends with everyone.}
+
+``There exists a student $x$ such that for all students $y$, $x$ is friends with $y$.''
+
+$$\boxed{\exists x \forall y\, F(x, y)}$$
+
+\textbf{Key insight:} Here we're looking for ONE specific person who has the universal property. The $\exists$ comes first because we're claiming such a person exists.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) No student is friends with everyone.}
+
+This is the NEGATION of (ii)!
+
+``It is NOT the case that there exists a student who is friends with everyone.''
+
+Method 1 (direct): $\neg \exists x \forall y\, F(x, y)$
+
+Method 2 (simplified using De Morgan's):
+$$\neg \exists x \forall y\, F(x, y) \equiv \forall x \exists y\, \neg F(x, y)$$
+
+$$\boxed{\forall x \exists y\, \neg F(x, y)}$$
+
+\textbf{In English:} ``For every student, there is someone they are NOT friends with.''
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points) Identify the rule of inference used in each argument below.
+
+\begin{enumerate}[label=(\roman*)]
+    \item If it rains, the ground is wet. The ground is not wet. Therefore, it did not rain.
+    \item Alice will study math or physics. Alice will not study math. Therefore, Alice will study physics.
+    \item If I wake up early, I will exercise. If I exercise, I will be healthy. Therefore, if I wake up early, I will be healthy.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) ``If it rains, the ground is wet. The ground is not wet. Therefore, it did not rain.''}
+
+Let $r$ = ``it rains'', $w$ = ``the ground is wet''
+
+Structure:
+\begin{align*}
+&r \to w \\
+&\neg w \\
+&\therefore \neg r
+\end{align*}
+
+This is \textbf{Modus Tollens}!
+
+\textbf{Why it works:} If the implication $r \to w$ holds, and we observe $\neg w$ (the conclusion is false), then the hypothesis $r$ must have been false. Otherwise, a true $r$ with a true implication would force $w$ to be true --- contradiction!
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) ``Alice will study math or physics. Alice will not study math. Therefore, Alice will study physics.''}
+
+Let $m$ = ``Alice studies math'', $p$ = ``Alice studies physics''
+
+Structure:
+\begin{align*}
+&m \lor p \\
+&\neg m \\
+&\therefore p
+\end{align*}
+
+This is \textbf{Disjunctive Syllogism}!
+
+\textbf{Why it works:} In a disjunction, at least one must be true. If we eliminate one option (by knowing it's false), the other must be the true one. Process of elimination!
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) ``If I wake up early, I will exercise. If I exercise, I will be healthy. Therefore, if I wake up early, I will be healthy.''}
+
+Let $w$ = ``wake up early'', $e$ = ``exercise'', $h$ = ``be healthy''
+
+Structure:
+\begin{align*}
+&w \to e \\
+&e \to h \\
+&\therefore w \to h
+\end{align*}
+
+This is \textbf{Hypothetical Syllogism}!
+
+\textbf{Why it works:} We chain implications together. If $A$ leads to $B$, and $B$ leads to $C$, then $A$ leads to $C$. We cut out the ``middle man'' $e$.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 6.} (7 points) Prove that $\neg(p \to q) \equiv p \land \neg q$ without using truth tables. List each logical law used.
+
+\begin{solnbox}
+\textbf{Strategy:} Start with the left side and transform step-by-step until we get the right side.
+
+\textbf{Key insight:} First convert the implication using $p \to q \equiv \neg p \lor q$.
+
+\begin{align*}
+\neg(p \to q) &\equiv \neg(\neg p \lor q) && \text{[Implication Law: } p \to q \equiv \neg p \lor q \text{]} \\
+&\equiv \neg(\neg p) \land \neg q && \text{[De Morgan's Law: } \neg(A \lor B) \equiv \neg A \land \neg B \text{]} \\
+&\equiv p \land \neg q && \text{[Double Negation Law: } \neg(\neg p) \equiv p \text{]}
+\end{align*}
+
+$$\boxed{\neg(p \to q) \equiv p \land \neg q}$$
+
+\textbf{What does this mean intuitively?}
+
+The implication $p \to q$ is false ONLY when $p$ is true and $q$ is false.
+
+So the NEGATION of the implication (when is $p \to q$ false?) is exactly when $p$ is true AND $q$ is false, i.e., $p \land \neg q$.
+
+\textbf{Laws used:}
+\begin{enumerate}[noitemsep]
+    \item Implication Law
+    \item De Morgan's Law
+    \item Double Negation Law
+\end{enumerate}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 7.} (4 points) Negate the following statement and simplify. Express your final answer without negation symbols directly in front of quantifiers.
+
+$$\forall x \exists y \forall z\, P(x, y, z)$$
+
+\begin{solnbox}
+\textbf{Method:} Push the negation inward, flipping each quantifier as we pass it.
+
+\textbf{Rule:} $\neg \forall$ becomes $\exists \neg$ and $\neg \exists$ becomes $\forall \neg$
+
+\begin{align*}
+\neg(\forall x \exists y \forall z\, P(x, y, z)) &\equiv \exists x\, \neg(\exists y \forall z\, P(x, y, z)) && \text{[Flip } \forall \text{ to } \exists \text{]} \\
+&\equiv \exists x \forall y\, \neg(\forall z\, P(x, y, z)) && \text{[Flip } \exists \text{ to } \forall \text{]} \\
+&\equiv \exists x \forall y \exists z\, \neg P(x, y, z) && \text{[Flip } \forall \text{ to } \exists \text{]}
+\end{align*}
+
+$$\boxed{\exists x \forall y \exists z\, \neg P(x, y, z)}$$
+
+\textbf{Pattern recognition:} Notice how each quantifier flips:
+\begin{itemize}[noitemsep]
+    \item $\forall x \to \exists x$
+    \item $\exists y \to \forall y$  
+    \item $\forall z \to \exists z$
+\end{itemize}
+
+The negation ends up on the predicate $P$ itself.
+
+\textbf{English interpretation:} 
+\begin{itemize}[noitemsep]
+    \item Original: ``For all $x$, there exists $y$ such that for all $z$, $P$ holds.''
+    \item Negation: ``There exists $x$ such that for all $y$, there exists $z$ where $P$ does NOT hold.''
+\end{itemize}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 8.} (8 points) Prove the following argument is valid by giving a proof using rules of inference. List each rule used.
+
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $p \lor q$
+    \item $p \to r$
+    \item $q \to s$
+    \item $\neg r$
+\end{enumerate}
+
+\textbf{Conclusion:} $s$
+
+\begin{solnbox}
+\textbf{Strategy:} We have $p \lor q$ and need to get to $s$. Let's see which path leads to $s$.
+
+From premise 3: $q \to s$. So if we can prove $q$, we get $s$ by Modus Ponens.
+
+How do we get $q$? We have $p \lor q$. If we can show $\neg p$, then by Disjunctive Syllogism, we get $q$!
+
+How do we get $\neg p$? We have $p \to r$ and $\neg r$. By Modus Tollens, we get $\neg p$!
+
+\textbf{Formal Proof:}
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $p \to r$ & Premise \\
+2 & $\neg r$ & Premise \\
+3 & $\neg p$ & Modus Tollens (1, 2) \\
+4 & $p \lor q$ & Premise \\
+5 & $q$ & Disjunctive Syllogism (3, 4) \\
+6 & $q \to s$ & Premise \\
+7 & $s$ & Modus Ponens (5, 6) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$$\boxed{\therefore s}$$
+
+\textbf{Proof walkthrough:}
+\begin{itemize}[noitemsep]
+    \item Steps 1-3: We use $\neg r$ to ``work backwards'' through $p \to r$. Since the conclusion $r$ is false, the hypothesis $p$ must be false. (Modus Tollens)
+    \item Steps 4-5: Knowing $\neg p$ and $p \lor q$, we eliminate $p$ from the disjunction, leaving $q$. (Disjunctive Syllogism)
+    \item Steps 6-7: Finally, with $q$ and $q \to s$, we conclude $s$. (Modus Ponens)
+\end{itemize}
+\end{solnbox}
+
+\vspace{20pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF EXAM}\\[3pt]
+\textit{Total: 55 points}
+\end{center}
+
+\end{document}

@@ -1,0 +1,46 @@
+ -# -  -ð -Ÿ -Ž -¨ -  -A -r -t -  -A -p -p -r -e -c -i -a -t -i -o -n -
+ -
+ -> -  -[ -! -a -b -s -t -r -a -c -t -] -  -C -o -u -r -s -e -  -O -v -e -r -v -i -e -w -
+ -> -  -T -h -i -s -  -c -o -u -r -s -e -  -e -x -p -l -o -r -e -s -  -t -h -e -  -p -o -w -e -r -  -a -n -d -  -m -e -a -n -i -n -g -  -o -f -  -a -r -t -  -a -c -r -o -s -s -  -c -u -l -t -u -r -e -s -  -a -n -d -  -h -i -s -t -o -r -y -, -  -f -r -o -m -  -p -r -e -h -i -s -t -o -r -i -c -  -c -a -v -e -  -p -a -i -n -t -i -n -g -s -  -t -o -  -c -o -n -t -e -m -p -o -r -a -r -y -  -s -o -c -i -a -l -  -c -o -m -m -e -n -t -a -r -y -, -  -a -n -d -  -e -x -a -m -i -n -e -s -  -h -o -w -  -a -e -s -t -h -e -t -i -c -  -e -x -p -e -r -i -e -n -c -e -s -  -p -e -r -m -e -a -t -e -  -o -u -r -  -e -v -e -r -y -d -a -y -  -l -i -v -e -s -. -
+ -
+ -- -- -- -
+ -
+ -# -# -  -ð -Ÿ -“ -š -  -P -r -e -l -i -m -  -N -o -t -e -s -
+ -
+ -# -# -# -  -P -a -r -t -  -1 -: -  -T -h -e -  -P -o -w -e -r -  -o -f -  -A -r -t -
+ -[ -[ -P -a -r -t -  -1 -  -- -  -T -h -e -  -P -o -w -e -r -  -o -f -  -A -r -t -] -] -
+ -
+ -C -o -v -e -r -s -  -t -h -e -  -m -a -n -y -  -w -a -y -s -  -a -r -t -  -i -n -f -l -u -e -n -c -e -s -  -c -u -l -t -u -r -e -  -a -n -d -  -e -x -p -e -r -i -e -n -c -e -: -
+ -- -  -L -e -a -r -n -i -n -g -  -H -o -w -  -t -o -  -S -e -e -  -( -M -o -n -a -  -L -i -s -a -, -  -S -f -u -m -a -t -o -) -
+ -- -  -A -r -t -  -a -n -d -  -C -u -l -t -u -r -e -  -( -J -a -p -a -n -e -s -e -  -A -r -t -, -  -A -m -i -d -a -  -B -u -d -d -h -a -) -
+ -- -  -A -r -t -  -a -n -d -  -F -a -i -t -h -  -( -P -r -e -h -i -s -t -o -r -i -c -  -A -r -t -, -  -T -r -i -b -a -l -  -A -r -t -, -  -R -e -l -i -g -i -o -u -s -  -A -r -c -h -i -t -e -c -t -u -r -e -) -
+ -- -  -A -r -t -  -a -n -d -  -I -d -e -a -l -s -  -( -G -r -e -e -k -  -s -c -u -l -p -t -u -r -e -, -  -b -e -a -u -t -y -  -a -s -  -t -r -u -t -h -) -
+ -- -  -A -r -t -  -a -n -d -  -P -o -w -e -r -  -( -R -o -y -a -l -  -P -o -r -t -r -a -i -t -s -, -  -P -r -o -p -a -g -a -n -d -a -) -
+ -- -  -A -r -t -  -a -n -d -  -S -h -o -c -k -  -( -D -a -d -a -i -s -m -, -  -S -o -c -i -a -l -  -C -o -m -m -e -n -t -a -r -y -) -
+ -- -  -A -r -t -  -a -n -d -  -E -m -o -t -i -o -n -  -( -V -i -e -t -n -a -m -  -M -e -m -o -r -i -a -l -) -
+ -- -  -A -r -t -  -a -n -d -  -T -r -a -n -s -f -o -r -m -a -t -i -o -n -  -( -C -h -r -i -s -t -o -' -s -  -G -a -t -e -s -, -  -Z -h -a -n -  -W -a -n -g -) -
+ -- -  -A -r -t -  -a -s -  -S -e -l -f -- -E -x -p -r -e -s -s -i -o -n -  -( -K -a -h -l -o -, -  -C -h -a -g -a -l -l -) -
+ -
+ -- -- -- -
+ -
+ -# -# -# -  -P -a -r -t -  -2 -: -  -E -v -e -r -y -d -a -y -  -A -e -s -t -h -e -t -i -c -s -
+ -[ -[ -P -a -r -t -  -2 -  -- -  -E -v -e -r -y -d -a -y -  -A -e -s -t -h -e -t -i -c -s -] -] -
+ -
+ -E -x -p -l -o -r -e -s -  -a -e -s -t -h -e -t -i -c -s -  -b -e -y -o -n -d -  -t -h -e -  -m -u -s -e -u -m -: -
+ -- -  -H -i -s -t -o -r -i -c -a -l -  -C -o -n -t -e -x -t -  -o -f -  -A -e -s -t -h -e -t -i -c -s -
+ -- -  -W -a -b -i -- -S -a -b -i -  -a -n -d -  -K -i -n -t -s -u -g -i -
+ -- -  -T -h -e -  -6 -  -D -i -m -e -n -s -i -o -n -s -  -o -f -  -E -v -e -r -y -d -a -y -  -A -e -s -t -h -e -t -i -c -s -
+ -- -  -F -u -n -c -t -i -o -n -a -l -  -B -e -a -u -t -y -
+ -- -  -A -c -t -i -v -e -  -P -a -r -t -i -c -i -p -a -t -i -o -n -  -v -s -. -  -S -p -e -c -t -a -t -o -r -s -h -i -p -
+ -- -  -S -o -c -i -a -l -  -A -e -s -t -h -e -t -i -c -s -
+ -- -  -N -e -g -a -t -i -v -e -  -A -e -s -t -h -e -t -i -c -  -Q -u -a -l -i -t -i -e -s -
+ -- -  -G -r -a -f -f -i -t -i -: -  -A -r -t -  -o -r -  -P -o -l -l -u -t -i -o -n -? -
+ -- -  -C -r -i -t -i -c -i -s -m -s -  -a -n -d -  -D -e -v -e -l -o -p -m -e -n -t -s -
+ -
+ -- -- -- -
+ -
+ -> -  -[ -! -t -i -p -] -  -S -t -u -d -y -  -T -i -p -s -
+ -> -  -- -  -F -o -c -u -s -  -o -n -  -* -* -k -e -y -  -t -e -r -m -s -* -* -  -a -n -d -  -t -h -e -i -r -  -d -e -f -i -n -i -t -i -o -n -s -
+ -> -  -- -  -U -n -d -e -r -s -t -a -n -d -  -t -h -e -  -* -* -c -u -l -t -u -r -a -l -  -c -o -n -t -e -x -t -* -* -  -o -f -  -e -a -c -h -  -a -r -t -w -o -r -k -
+ -> -  -- -  -B -e -  -a -b -l -e -  -t -o -  -e -x -p -l -a -i -n -  -* -* -w -h -y -* -* -  -e -a -c -h -  -a -r -t -w -o -r -k -  -i -s -  -s -i -g -n -i -f -i -c -a -n -t -
+ -> -  -- -  -C -o -n -n -e -c -t -  -P -a -r -t -  -1 -  -( -a -r -t -' -s -  -p -o -w -e -r -) -  -w -i -t -h -  -P -a -r -t -  -2 -  -( -e -v -e -r -y -d -a -y -  -a -e -s -t -h -e -t -i -c -s -) -

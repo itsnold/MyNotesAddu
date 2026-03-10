@@ -1,0 +1,379 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\definecolor{solngray}{gray}{0.95}
+\newmdenv[backgroundcolor=solngray,linewidth=0.5pt,linecolor=gray,innertopmargin=8pt,innerbottommargin=8pt]{solnbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Answer Key - Exam E}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{ANSWER KEY}}\\[5pt]
+{\Large Prelim Practice Exam --- Version E}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}
+\end{center}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+
+\textbf{1. Answer: (B)}
+
+\begin{solnbox}
+$p \to q \equiv \neg p \lor q$
+
+This is the \textbf{Implication Law} --- the most important equivalence for conditionals!
+
+\textbf{Quick verification:}
+\begin{itemize}[noitemsep]
+    \item When $p = T$, $q = F$: $p \to q = F$, and $\neg p \lor q = F \lor F = F$ \checkmark
+    \item When $p = F$: $p \to q = T$, and $\neg p \lor q = T \lor q = T$ \checkmark
+\end{itemize}
+
+Note: (D) $\neg q \lor \neg p$ is equivalent to $q \to p$ (the converse), NOT the original.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{2. Answer: (D)}
+
+\begin{solnbox}
+``Some students passed'' = ``There exists someone who is a student AND passed.''
+
+$$\exists x\, (S(x) \land P(x))$$
+
+\textbf{Critical rule:}
+\begin{itemize}[noitemsep]
+    \item ``ALL A are B'' uses IMPLICATION: $\forall x\, (A(x) \to B(x))$
+    \item ``SOME A are B'' uses CONJUNCTION: $\exists x\, (A(x) \land B(x))$
+\end{itemize}
+
+Why? For ``all,'' we're saying IF something is an A, THEN it's a B. For ``some,'' we're saying there EXISTS something that IS BOTH an A AND a B.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{3. Answer: (C)}
+
+\begin{solnbox}
+For $p \to q$:
+\begin{itemize}[noitemsep]
+    \item \textbf{Contrapositive:} $\neg q \to \neg p$ (equivalent to original)
+    \item \textbf{Converse:} $q \to p$ (NOT equivalent)
+    \item \textbf{Inverse:} $\neg p \to \neg q$ (NOT equivalent)
+\end{itemize}
+
+The inverse negates both parts but keeps the order.
+
+\textbf{Memory tip:} Inverse and Converse are equivalent to each other, but neither is equivalent to the original. Only the Contrapositive is equivalent to the original.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{4. Answer: (C)}
+
+\begin{solnbox}
+\begin{itemize}[noitemsep]
+    \item \textbf{Tautology:} Always TRUE (e.g., $p \lor \neg p$)
+    \item \textbf{Contradiction:} Always FALSE (e.g., $p \land \neg p$)
+    \item \textbf{Contingency:} Sometimes true, sometimes false (depends on variable values)
+    \item \textbf{Fallacy:} An invalid argument form (not a type of proposition)
+\end{itemize}
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{5. Answer: (B)}
+
+\begin{solnbox}
+$\dfrac{p \land q}{\therefore p}$ is \textbf{Simplification}.
+
+If a conjunction is true, each part is individually true. We ``simplify'' by extracting one part.
+
+Compare with:
+\begin{itemize}[noitemsep]
+    \item \textbf{Conjunction:} $\dfrac{p \quad q}{\therefore p \land q}$ (opposite of simplification)
+    \item \textbf{Addition:} $\dfrac{p}{\therefore p \lor q}$
+\end{itemize}
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points)
+
+\begin{solnbox}
+\textbf{Truth table for $(p \land q) \to (p \lor q)$:}
+
+\begin{center}
+\begin{tabular}{cc|c|c|c}
+\toprule
+$p$ & $q$ & $p \land q$ & $p \lor q$ & $(p \land q) \to (p \lor q)$ \\
+\midrule
+T & T & T & T & T \\
+T & F & F & T & T \\
+F & T & F & T & T \\
+F & F & F & F & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Result:} All rows are TRUE, so this is a \textbf{TAUTOLOGY}.
+
+\textbf{Why does this make sense?} If both $p$ and $q$ are true ($p \land q$), then certainly at least one of them is true ($p \lor q$). The conjunction is ``stronger'' than the disjunction.
+
+Remember: An implication with a false antecedent is always true (rows 2, 3, 4 all have $p \land q = F$).
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 2.} (5 points)
+
+\begin{solnbox}
+Breaking down the sentence:
+
+\textbf{Part 1:} ``If John studies hard AND attends all classes, THEN he will pass''
+
+$(s \land a) \to p$
+
+\textbf{Part 2:} ``but if he doesn't study, he will fail''
+
+$\neg s \to f$
+
+\textbf{Combining with ``but'':} ``But'' here means ``and'' --- both conditions hold.
+
+$$\boxed{((s \land a) \to p) \land (\neg s \to f)}$$
+
+\textbf{Note:} Some might argue ``fail'' is $\neg p$, making part 2 become $\neg s \to \neg p$. Both interpretations are valid depending on whether $f$ and $\neg p$ are the same concept.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 3.} (4 points)
+
+\begin{solnbox}
+\textbf{(i) $\forall n\, (n \leq n^2)$ --- Domain: integers}
+
+Is every integer $\leq$ its square?
+
+Counterexample: $n = -1$. Is $-1 \leq (-1)^2 = 1$? Yes, $-1 \leq 1$. \checkmark
+
+Wait, let's try $n = 0$: $0 \leq 0$? Yes. \checkmark
+
+What about negative numbers in general? For $n < 0$: $n < 0 \leq n^2$ always. \checkmark
+
+For $n \geq 0$: When $n = 0$ or $n \geq 1$, we have $n \leq n^2$. \checkmark
+
+\textbf{Answer: TRUE}
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) $\exists m \exists n\, (m + n < m)$ --- Domain: integers}
+
+Is there a pair of integers where $m + n < m$?
+
+Simplify: $m + n < m \Rightarrow n < 0$
+
+So we just need $n$ to be negative. Example: $m = 5$, $n = -3$. Then $5 + (-3) = 2 < 5$. \checkmark
+
+\textbf{Answer: TRUE}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 4.} (6 points)
+
+\begin{solnbox}
+\textbf{(i) Nobody has sent a letter to everyone.}
+
+``There does not exist a person $x$ such that for all people $y$, $x$ sent a letter to $y$.''
+
+$$\neg \exists x \forall y\, L(x, y) \equiv \boxed{\forall x \exists y\, \neg L(x, y)}$$
+
+Simplified form: ``For every person, there's someone they haven't written to.''
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) Everyone has sent a letter to someone.}
+
+``For every person $x$, there exists a person $y$ such that $x$ sent a letter to $y$.''
+
+$$\boxed{\forall x \exists y\, L(x, y)}$$
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) There is someone who has received letters from everyone.}
+
+``There exists a person $y$ such that for all people $x$, $x$ sent a letter to $y$.''
+
+$$\boxed{\exists y \forall x\, L(x, y)}$$
+
+\textbf{Note:} In $L(x, y)$, $x$ is the sender and $y$ is the recipient. So ``received from everyone'' means everyone sent TO that person.
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points)
+
+\begin{solnbox}
+\textbf{(i)} $p$, therefore $p \lor q$
+
+This is \textbf{Addition}!
+
+$$\frac{p}{\therefore p \lor q}$$
+
+If something is true, we can OR it with anything and it's still true.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii)} $p \to q$, $p$, therefore $q$
+
+This is \textbf{Modus Ponens}!
+
+$$\frac{p \to q \quad p}{\therefore q}$$
+
+The antecedent is true, so the consequent must follow.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii)} $p \to q$, $q \to r$, therefore $p \to r$
+
+This is \textbf{Hypothetical Syllogism}!
+
+$$\frac{p \to q \quad q \to r}{\therefore p \to r}$$
+
+Chain of implications: snow $\to$ icy roads $\to$ schools close.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 6.} (7 points)
+
+\begin{solnbox}
+Prove: $(p \to q) \lor (p \to r) \equiv p \to (q \lor r)$
+
+\begin{align*}
+(p \to q) \lor (p \to r) &\equiv (\neg p \lor q) \lor (\neg p \lor r) && \text{[Implication Law, twice]} \\
+&\equiv \neg p \lor (q \lor r) \lor \neg p && \text{[Associative Law - rearranging]} \\
+&\equiv \neg p \lor \neg p \lor (q \lor r) && \text{[Commutative Law]} \\
+&\equiv \neg p \lor (q \lor r) && \text{[Idempotent Law: } \neg p \lor \neg p = \neg p\text{]} \\
+&\equiv p \to (q \lor r) && \text{[Implication Law]}
+\end{align*}
+
+$$\boxed{(p \to q) \lor (p \to r) \equiv p \to (q \lor r)}$$
+
+\textbf{Cleaner approach:}
+\begin{align*}
+(\neg p \lor q) \lor (\neg p \lor r) &\equiv \neg p \lor q \lor \neg p \lor r && \text{[Associative]} \\
+&\equiv \neg p \lor \neg p \lor q \lor r && \text{[Commutative]} \\
+&\equiv \neg p \lor (q \lor r) && \text{[Idempotent]} \\
+&\equiv p \to (q \lor r) && \text{[Implication]}
+\end{align*}
+
+\textbf{Laws used:} Implication, Associative, Commutative, Idempotent
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 7.} (4 points)
+
+\begin{solnbox}
+Original: $\forall x \exists y\, (P(x,y) \land Q(x,y))$
+
+where $P(x,y)$: $x + y > 0$ and $Q(x,y)$: $xy > 0$.
+
+\textbf{Negate:}
+\begin{align*}
+&\neg \forall x \exists y\, (P(x,y) \land Q(x,y)) \\
+&\equiv \exists x\, \neg \exists y\, (P(x,y) \land Q(x,y)) && \text{[Flip } \forall \text{ to } \exists\text{]} \\
+&\equiv \exists x \forall y\, \neg(P(x,y) \land Q(x,y)) && \text{[Flip } \exists \text{ to } \forall\text{]} \\
+&\equiv \exists x \forall y\, (\neg P(x,y) \lor \neg Q(x,y)) && \text{[De Morgan's Law]}
+\end{align*}
+
+$$\boxed{\exists x \forall y\, (\neg P(x,y) \lor \neg Q(x,y))}$$
+
+\textbf{In English:} ``There exists a real number $x$ such that for all real numbers $y$, either $x + y \leq 0$ or $xy \leq 0$.''
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 8.} (8 points)
+
+\begin{solnbox}
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $\neg p \lor q$
+    \item $r \to p$
+    \item $r$
+\end{enumerate}
+
+\textbf{Goal:} Prove $q$
+
+\textbf{Strategy:} Note that $\neg p \lor q \equiv p \to q$. So we have $p \to q$ and need to get $p$ to apply Modus Ponens.
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $r \to p$ & Premise \\
+2 & $r$ & Premise \\
+3 & $p$ & Modus Ponens (1, 2) \\
+4 & $\neg p \lor q$ & Premise \\
+5 & $p \to q$ & Implication equivalence (4) [or keep as is] \\
+6 & $q$ & Modus Ponens (3, 5) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Alternative without step 5:}
+
+From step 3, $p$ is true, so $\neg p$ is false.
+
+From step 4, $\neg p \lor q$ with $\neg p$ false means $q$ must be true (Disjunctive Syllogism).
+
+$$\boxed{\therefore q}$$
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item Steps 1-3: From $r$ and $r \to p$, we get $p$ by Modus Ponens.
+    \item Steps 4-6: Recognize that $\neg p \lor q$ is equivalent to $p \to q$. With $p$ and $p \to q$, we conclude $q$.
+\end{itemize}
+\end{solnbox}
+
+\vspace{20pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF ANSWER KEY}
+\end{center}
+
+\end{document}

@@ -1,0 +1,344 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+\definecolor{solngray}{gray}{0.95}
+\newmdenv[backgroundcolor=solngray,linewidth=0.5pt,linecolor=gray,innertopmargin=8pt,innerbottommargin=8pt]{solnbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Answer Key - Exam D}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{ANSWER KEY}}\\[5pt]
+{\Large Prelim Practice Exam --- Version D}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}
+\end{center}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+
+\textbf{1. Answer: (C)}
+
+\begin{solnbox}
+$x^2 = 4$ is NOT a proposition because it contains a free variable $x$. Without knowing the value of $x$, we cannot determine if it's true or false.
+
+The other options ARE propositions:
+\begin{itemize}[noitemsep]
+    \item (A) ``The Earth is flat'' - False, but still a declarative statement
+    \item (B) $3 + 4 = 8$ - False, but has a definite truth value
+    \item (D) Goldbach's Conjecture - unknown if true or false, but it IS either one or the other
+\end{itemize}
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{2. Answer: (B)}
+
+\begin{solnbox}
+The equivalence $p \to q \equiv \neg p \lor q$ is called the \textbf{Implication Law}.
+
+This is crucial for converting conditionals to disjunctions and vice versa. It's often the first step in proving equivalences involving implications.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{3. Answer: (A) True}
+
+\begin{solnbox}
+Domain: positive reals greater than 1, i.e., $x > 1$.
+
+For any $x > 1$: $x^2 = x \cdot x > x \cdot 1 = x$.
+
+So $x^2 > x$ is true for all elements in this domain. The statement is \textbf{TRUE}.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{4. Answer: (C)}
+
+\begin{solnbox}
+Negating $\forall x \exists y\, P(x, y)$:
+
+Push the negation inward, flipping each quantifier:
+\begin{align*}
+\neg \forall x \exists y\, P(x, y) &\equiv \exists x\, \neg \exists y\, P(x, y) \\
+&\equiv \exists x \forall y\, \neg P(x, y)
+\end{align*}
+
+Remember: negation flips $\forall \leftrightarrow \exists$ and eventually reaches the predicate.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{5. Answer: (C)}
+
+\begin{solnbox}
+$p \to q$, $q \to r$, therefore $p \to r$ is \textbf{Hypothetical Syllogism}.
+
+It chains implications together. Also called ``transitivity of implication.''
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Truth table for $\neg(p \to q) \lor (q \to p)$
+
+\begin{solnbox}
+\textbf{Key concepts:}
+\begin{itemize}[noitemsep]
+    \item $p \to q$ is false only when $p = T$ and $q = F$
+    \item $\neg(p \to q)$ is true only when $p = T$ and $q = F$
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{cc|c|c|c|c}
+\toprule
+$p$ & $q$ & $p \to q$ & $\neg(p \to q)$ & $q \to p$ & $\neg(p \to q) \lor (q \to p)$ \\
+\midrule
+T & T & T & F & T & T \\
+T & F & F & T & T & T \\
+F & T & T & F & F & F \\
+F & F & T & F & T & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Row 1 detail:} $p \to q = T \to T = T$, so $\neg(T) = F$. $q \to p = T \to T = T$. $F \lor T = T$.
+
+\textbf{Row 3 detail:} $p \to q = F \to T = T$, so $\neg(T) = F$. $q \to p = T \to F = F$. $F \lor F = F$.
+
+This is a contingency (has both T and F).
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 2.} (5 points) Translation
+
+\begin{solnbox}
+``You cannot board the plane unless you have a valid ticket and a passport.''
+
+\textbf{Key phrase:} ``$A$ unless $B$'' can be translated as:
+\begin{itemize}[noitemsep]
+    \item $\neg B \to \neg A$ (if not B, then not A), OR equivalently
+    \item $A \to B$ (if A, then B)
+\end{itemize}
+
+The phrase ``cannot [do X] unless [Y]'' means [Y] is necessary for [X].
+
+So: ``You can board'' requires ``(ticket AND passport)''
+
+$$\boxed{b \to (t \land p)}$$
+
+\textbf{Alternative interpretation} (equivalent): $\neg(t \land p) \to \neg b$
+
+Both say: Without both ticket and passport, no boarding.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 3.} (4 points)
+
+\begin{solnbox}
+\textbf{(i) $\exists x \forall y\, (xy = 0)$}
+
+``There exists a real number $x$ such that for ALL reals $y$, $xy = 0$.''
+
+Yes! $x = 0$ works. $0 \cdot y = 0$ for all $y$.
+
+\textbf{Answer: TRUE}
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) $\forall x \forall y\, (x + y = y + x)$}
+
+``For all reals $x$ and $y$, $x + y = y + x$.''
+
+This is the \textbf{commutative property of addition}, which holds for all real numbers.
+
+\textbf{Answer: TRUE}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 4.} (6 points)
+
+\begin{solnbox}
+\textbf{(i) Every student has worked with at least one other student.}
+
+``For every student $x$, there exists a student $y$ (where $y \neq x$) such that $x$ has worked with $y$.''
+
+$$\boxed{\forall x \exists y\, (x \neq y \land W(x, y))}$$
+
+The $x \neq y$ ensures we're talking about ``another'' student, not themselves.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) There is a student who has worked with everyone.}
+
+$$\boxed{\exists x \forall y\, W(x, y)}$$
+
+(If we want to exclude self: $\exists x \forall y\, (x \neq y \to W(x, y))$)
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) Some student has never worked with anyone.}
+
+``There exists a student $x$ such that for all students $y$, $x$ has NOT worked with $y$.''
+
+$$\boxed{\exists x \forall y\, \neg W(x, y)}$$
+
+(If ``anyone else'': $\exists x \forall y\, (x \neq y \to \neg W(x, y))$)
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points)
+
+\begin{solnbox}
+\textbf{(i)} Structure: Universal statement about even numbers, plus ``6 is even'', conclude ``36 is even.''
+
+$\forall n\, (E(n) \to E(n^2))$, $E(6)$, therefore $E(36)$
+
+Uses: \textbf{Universal Instantiation} (to get $E(6) \to E(36)$) then \textbf{Modus Ponens}
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii)} $p \lor q$, $\neg q$, therefore $p$
+
+This is \textbf{Disjunctive Syllogism}.
+
+Process of elimination: one option is ruled out, so the other must be true.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii)} $p \to q$, $\neg q$, therefore $\neg p$
+
+This is \textbf{Modus Tollens}.
+
+If the consequence (pizza) didn't happen, then the cause (Friday) didn't happen either.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 6.} (7 points)
+
+\begin{solnbox}
+Prove: $\neg(p \lor q) \lor (\neg p \land q) \equiv \neg p$
+
+\begin{align*}
+&\neg(p \lor q) \lor (\neg p \land q) \\
+&\equiv (\neg p \land \neg q) \lor (\neg p \land q) && \text{[De Morgan's Law]} \\
+&\equiv \neg p \land (\neg q \lor q) && \text{[Distributive Law (factor out $\neg p$)]} \\
+&\equiv \neg p \land T && \text{[Negation Law: } \neg q \lor q = T\text{]} \\
+&\equiv \neg p && \text{[Identity Law: } X \land T = X\text{]}
+\end{align*}
+
+$$\boxed{\neg(p \lor q) \lor (\neg p \land q) \equiv \neg p}$$
+
+\textbf{Laws used:}
+\begin{enumerate}[noitemsep]
+    \item De Morgan's Law: $\neg(p \lor q) = \neg p \land \neg q$
+    \item Distributive Law: $(A \land B) \lor (A \land C) = A \land (B \lor C)$
+    \item Negation Law: $\neg q \lor q = T$
+    \item Identity Law: $X \land T = X$
+\end{enumerate}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 7.} (4 points)
+
+\begin{solnbox}
+Original: $\forall x \forall y\, (P(x) \land Q(y) \to R(x, y))$
+
+\textbf{Step 1:} Negate, pushing through quantifiers.
+\begin{align*}
+&\neg \forall x \forall y\, (P(x) \land Q(y) \to R(x, y)) \\
+&\equiv \exists x\, \neg \forall y\, (P(x) \land Q(y) \to R(x, y)) \\
+&\equiv \exists x \exists y\, \neg(P(x) \land Q(y) \to R(x, y))
+\end{align*}
+
+\textbf{Step 2:} Simplify the negated implication.
+
+$\neg(A \to B) \equiv A \land \neg B$
+
+So: $\neg(P(x) \land Q(y) \to R(x, y)) \equiv (P(x) \land Q(y)) \land \neg R(x, y)$
+
+$$\boxed{\exists x \exists y\, (P(x) \land Q(y) \land \neg R(x, y))}$$
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 8.} (8 points)
+
+\begin{solnbox}
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $p \to (q \to r)$
+    \item $p$
+    \item $q$
+\end{enumerate}
+
+\textbf{Goal:} Prove $r$
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $p \to (q \to r)$ & Premise \\
+2 & $p$ & Premise \\
+3 & $q \to r$ & Modus Ponens (1, 2) \\
+4 & $q$ & Premise \\
+5 & $r$ & Modus Ponens (3, 4) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$$\boxed{\therefore r}$$
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item Step 3: Since $p$ is true and $p \to (q \to r)$ holds, by Modus Ponens we get $q \to r$.
+    \item Step 5: Since $q$ is true and $q \to r$ holds, by Modus Ponens we get $r$.
+\end{itemize}
+
+This demonstrates a ``nested conditional'' being unwrapped in stages.
+\end{solnbox}
+
+\vspace{20pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF ANSWER KEY}
+\end{center}
+
+\end{document}

@@ -1,0 +1,711 @@
+\documentclass[8pt,a4paper]{article}
+
+% ============ PACKAGES ============
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{framed}
+
+% ============ COMPACT SETTINGS ============
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist{noitemsep,topsep=1pt,parsep=1pt,partopsep=0pt,leftmargin=*}
+
+% ============ 50% GRAY TEXT FOR TRANSPARENCY ============
+\definecolor{graytext}{gray}{0.5}
+\color{graytext}
+
+% ============ HYPERREF ============
+\hypersetup{colorlinks=false}
+
+% ============ PAGE STYLE ============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\textsc{Discrete Structures I - Complete Cheat Sheet}}
+\fancyhead[R]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% ============ TITLE FORMATTING (NO COLORS) ============
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\small\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\footnotesize\bfseries}{\thesubsubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
+\titlespacing*{\subsubsection}{0pt}{3pt}{1pt}
+
+% ============ SIMPLE BOXES (NO BACKGROUND, JUST FRAME) ============
+\newenvironment{defbox}[1][]{\vspace{2pt}\noindent\textbf{#1}\par\smallskip}{\vspace{2pt}}
+\newenvironment{exbox}[1][]{\vspace{2pt}\noindent\textbf{#1}\par\smallskip}{\vspace{2pt}}
+\newenvironment{tipbox}[1][]{\vspace{2pt}\noindent\textbf{#1}\par\smallskip}{\vspace{2pt}}
+\newenvironment{warnbox}[1][]{\vspace{2pt}\noindent\textbf{[!] #1}\par\smallskip}{\vspace{2pt}}
+\newenvironment{solbox}{\vspace{2pt}\begin{leftbar}}{\end{leftbar}\vspace{2pt}}
+
+% ============ DOCUMENT ============
+\begin{document}
+\footnotesize
+
+\begin{center}
+{\large\bfseries DISCRETE STRUCTURES I - COMPLETE STUDY GUIDE}\\[2pt]
+{\scriptsize Propositional Logic $\bullet$ Predicates $\bullet$ Quantifiers $\bullet$ Inference $\bullet$ Applications}
+\end{center}
+
+\begin{multicols}{2}
+
+% =====================================
+% SECTION 1: PROPOSITIONAL LOGIC
+% =====================================
+\section{Propositional Logic}
+
+\begin{defbox}[Proposition]
+A declarative sentence that is either TRUE or FALSE, but not both.\\
+$\checkmark$ ``$1+1=2$'' (True) \quad $\times$ ``What time?'' (Question)
+\end{defbox}
+
+\subsection{Logical Connectives}
+\begin{center}
+\scriptsize
+\begin{tabular}{c|c|l|l}
+\textbf{Sym} & \textbf{Name} & \textbf{Read as} & \textbf{True when...} \\
+\hline
+$\neg p$ & Negation & NOT $p$ & $p$ is false \\
+$p \land q$ & Conjunction & $p$ AND $q$ & Both true \\
+$p \lor q$ & Disjunction & $p$ OR $q$ & At least one true \\
+$p \oplus q$ & XOR & Excl. OR & Exactly one true \\
+$p \to q$ & Conditional & IF $p$ THEN $q$ & $\neg p \lor q$ \\
+$p \leftrightarrow q$ & Biconditional & $p$ IFF $q$ & Same truth value \\
+\end{tabular}
+\end{center}
+
+\subsection{Truth Tables (Memorize!)}
+\begin{center}
+\scriptsize
+\begin{tabular}{cc|ccccc}
+$p$ & $q$ & $\neg p$ & $\land$ & $\lor$ & $\to$ & $\leftrightarrow$ \\
+\hline
+T & T & F & T & T & T & T \\
+T & F & F & F & T & \textbf{F} & F \\
+F & T & T & F & T & T & F \\
+F & F & T & F & F & T & T \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[KEY: Implication $p \to q$]
+Only FALSE when $p$ is TRUE and $q$ is FALSE!\\
+Think: ``A promise is broken only if you made it (T) but didn't keep it (F)''
+\end{warnbox}
+
+\subsection{Precedence (High to Low)}
+$\neg$ (1) $\to$ $\land$ (2) $\to$ $\lor$ (3) $\to$ $\to$ (4) $\to$ $\leftrightarrow$ (5)
+
+\subsection{Related Conditionals}
+\begin{center}
+\scriptsize
+\begin{tabular}{l|c|c}
+\textbf{Name} & \textbf{Form} & \textbf{$\equiv$ Original?} \\
+\hline
+Original & $p \to q$ & --- \\
+Contrapositive & $\neg q \to \neg p$ & \textbf{YES!} \\
+Converse & $q \to p$ & No \\
+Inverse & $\neg p \to \neg q$ & No \\
+\end{tabular}
+\end{center}
+
+% =====================================
+% SECTION 2: LOGICAL EQUIVALENCES
+% =====================================
+\section{Logical Equivalences}
+
+\begin{defbox}[Tautology / Contradiction]
+\textbf{Tautology:} Always TRUE (e.g., $p \lor \neg p$)\\
+\textbf{Contradiction:} Always FALSE (e.g., $p \land \neg p$)\\
+$p \equiv q$ means $p \leftrightarrow q$ is a tautology.
+\end{defbox}
+
+\subsection{Laws (MEMORIZE!)}
+\begin{center}
+\scriptsize
+\begin{tabular}{l|l}
+\textbf{Law} & \textbf{Equivalence} \\
+\hline
+Identity & $p \land T \equiv p$, $p \lor F \equiv p$ \\
+Domination & $p \lor T \equiv T$, $p \land F \equiv F$ \\
+Idempotent & $p \lor p \equiv p$, $p \land p \equiv p$ \\
+Double Neg & $\neg(\neg p) \equiv p$ \\
+Commutative & $p \lor q \equiv q \lor p$ \\
+Associative & $(p \lor q) \lor r \equiv p \lor (q \lor r)$ \\
+Distributive & $p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$ \\
+Absorption & $p \lor (p \land q) \equiv p$ \\
+\textbf{Implication} & $p \to q \equiv \neg p \lor q$ \\
+\textbf{Contrapositive} & $p \to q \equiv \neg q \to \neg p$ \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[De Morgan's Laws (CRITICAL!)]
+$\neg(p \land q) \equiv \neg p \lor \neg q$\\
+$\neg(p \lor q) \equiv \neg p \land \neg q$\\
+\textit{``Break the bar, change the sign''}
+\end{warnbox}
+
+% =====================================
+% SECTION 3: QUANTIFIERS
+% =====================================
+\section{Predicates \& Quantifiers}
+
+\begin{defbox}[Predicate]
+$P(x)$ = statement with variable $x$. Becomes proposition when $x$ gets a value from domain $U$.
+\end{defbox}
+
+\subsection{The Two Quantifiers}
+\begin{center}
+\scriptsize
+\begin{tabular}{c|l|l}
+\textbf{Sym} & \textbf{Name} & \textbf{Meaning} \\
+\hline
+$\forall x\, P(x)$ & Universal & $P(x)$ true for ALL $x$ in $U$ \\
+$\exists x\, P(x)$ & Existential & $P(x)$ true for SOME $x$ in $U$ \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[De Morgan's for Quantifiers]
+$\neg \forall x\, P(x) \equiv \exists x\, \neg P(x)$ \quad (Not all = Some don't)\\
+$\neg \exists x\, P(x) \equiv \forall x\, \neg P(x)$ \quad (None = All don't)
+\end{warnbox}
+
+\subsection{Translation Patterns}
+\begin{tipbox}[CRITICAL PATTERNS]
+``All A are B'' $\to$ $\forall x(A(x) \to B(x))$ \quad [Implication!]\\
+``Some A are B'' $\to$ $\exists x(A(x) \land B(x))$ \quad [Conjunction!]
+\end{tipbox}
+
+% =====================================
+% SECTION 4: NESTED QUANTIFIERS
+% =====================================
+\section{Nested Quantifiers}
+
+\begin{warnbox}[ORDER MATTERS!]
+Same quantifiers: Order doesn't matter\\
+$\forall x \forall y \equiv \forall y \forall x$ \quad $\exists x \exists y \equiv \exists y \exists x$\\[3pt]
+Different quantifiers: ORDER MATTERS!\\
+$\forall x \exists y\, P(x,y) \not\equiv \exists y \forall x\, P(x,y)$
+\end{warnbox}
+
+\begin{center}
+\scriptsize
+\begin{tabular}{l|l}
+\textbf{Statement} & \textbf{Meaning} \\
+\hline
+$\forall x \forall y$ & True for EVERY pair \\
+$\forall x \exists y$ & For each $x$, SOME $y$ works \\
+$\exists x \forall y$ & ONE $x$ works for ALL $y$ \\
+$\exists x \exists y$ & At least ONE pair works \\
+\end{tabular}
+\end{center}
+
+\subsection{Negating Nested Quantifiers}
+Push $\neg$ inward, flip each quantifier:\\
+$\neg \forall x \exists y\, P(x,y) \equiv \exists x \forall y\, \neg P(x,y)$
+
+% =====================================
+% SECTION 5: RULES OF INFERENCE
+% =====================================
+\section{Rules of Inference}
+
+\begin{defbox}[Valid Argument]
+Premises $p_1, p_2, \ldots, p_n$ and conclusion $q$.\\
+Valid if $(p_1 \land p_2 \land \ldots \land p_n) \to q$ is a tautology.
+\end{defbox}
+
+\subsection{Propositional Rules}
+\begin{center}
+\scriptsize
+\begin{tabular}{l|c|l}
+\textbf{Rule} & \textbf{Form} & \textbf{Think of it as...} \\
+\hline
+Modus Ponens & $\frac{p \to q, p}{\therefore q}$ & Condition met $\Rightarrow$ consequence \\
+Modus Tollens & $\frac{p \to q, \neg q}{\therefore \neg p}$ & Consequence failed $\Rightarrow$ condition was false \\
+Hyp. Syllogism & $\frac{p \to q, q \to r}{\therefore p \to r}$ & Chain implications \\
+Disj. Syllogism & $\frac{p \lor q, \neg p}{\therefore q}$ & Process of elimination \\
+Addition & $\frac{p}{\therefore p \lor q}$ & Add anything via OR \\
+Simplification & $\frac{p \land q}{\therefore p}$ & Extract from AND \\
+Conjunction & $\frac{p, q}{\therefore p \land q}$ & Combine via AND \\
+Resolution & $\frac{\neg p \lor r, p \lor q}{\therefore q \lor r}$ & Cancel $p$ and $\neg p$ \\
+\end{tabular}
+\end{center}
+
+\subsection{Quantifier Rules}
+\begin{center}
+\scriptsize
+\begin{tabular}{l|c|l}
+\textbf{Rule} & \textbf{Form} & \textbf{Direction} \\
+\hline
+Universal Inst. (UI) & $\forall x\, P(x) \Rightarrow P(c)$ & General $\to$ Specific \\
+Existential Inst. (EI) & $\exists x\, P(x) \Rightarrow P(c)$ & Name witness \\
+Universal Gen. (UG) & $P(c)$ arb. $\Rightarrow \forall x\, P(x)$ & Specific $\to$ General \\
+Existential Gen. (EG) & $P(c) \Rightarrow \exists x\, P(x)$ & Specific $\to$ Exists \\
+\end{tabular}
+\end{center}
+
+\begin{warnbox}[COMMON FALLACIES (INVALID!)]
+\textbf{Affirming Consequent:} $p \to q, q \Rightarrow p$ \quad WRONG!\\
+\textbf{Denying Antecedent:} $p \to q, \neg p \Rightarrow \neg q$ \quad WRONG!
+\end{warnbox}
+
+\end{multicols}
+
+\newpage
+
+% =====================================
+% APPLICATIONS & WORKED EXAMPLES
+% =====================================
+\begin{center}
+{\large\bfseries APPLICATIONS \& WORKED PROBLEMS}
+\end{center}
+
+\begin{multicols}{2}
+
+% =====================================
+% APP 1: ENGLISH TO LOGIC
+% =====================================
+\section{Translation: English to Logic}
+
+\begin{exbox}[Problem Type 1: Basic Translation]
+\textbf{Q:} ``If I go to Harry's or the country, I will not go shopping.''
+
+\textbf{Step 1:} Identify atomic propositions\\
+$p$ = I go to Harry's\\
+$q$ = I go to the country\\
+$r$ = I will go shopping
+
+\textbf{Step 2:} Identify structure\\
+``If [A] then [B]'' $\to$ implication\\
+``X or Y'' $\to$ disjunction\\
+``not Z'' $\to$ negation
+
+\textbf{Answer:} $(p \lor q) \to \neg r$
+\end{exbox}
+
+\begin{exbox}[Variant 1.1]
+``You can access the Internet only if you are a CS major or not a freshman.''
+
+$a$ = access internet, $c$ = CS major, $f$ = freshman
+
+\textbf{Key:} ``$p$ only if $q$'' means $p \to q$
+
+\textbf{Answer:} $a \to (c \lor \neg f)$
+\end{exbox}
+
+\begin{exbox}[Variant 1.2]
+``The automated reply cannot be sent when the file system is full.''
+
+$x$ = reply can be sent, $y$ = file system is full
+
+\textbf{Key:} ``cannot when'' = ``if Y then not X''
+
+\textbf{Answer:} $y \to \neg x$
+\end{exbox}
+
+\begin{exbox}[Variant 1.3: Complex]
+``You are eligible for President only if you are 35+, born in USA or parents were citizens, and lived 14+ years.''
+
+$e$ = eligible, $a$ = 35+, $b$ = born USA, $p$ = parents citizens, $r$ = 14+ years
+
+\textbf{Answer:} $e \to (a \land (b \lor p) \land r)$
+\end{exbox}
+
+% =====================================
+% APP 2: TRUTH TABLE CONSTRUCTION
+% =====================================
+\section{Truth Table Construction}
+
+\begin{exbox}[Problem Type 2: Build Truth Table]
+\textbf{Q:} Construct truth table for $(p \lor \neg q) \to (p \land q)$
+
+\textbf{Method:} Build columns for each sub-expression
+
+\begin{center}
+\scriptsize
+\begin{tabular}{cc|c|c|c|c}
+$p$ & $q$ & $\neg q$ & $p \lor \neg q$ & $p \land q$ & Result \\
+\hline
+T & T & F & T & T & \textbf{T} \\
+T & F & T & T & F & \textbf{F} \\
+F & T & F & F & F & \textbf{T} \\
+F & F & T & T & F & \textbf{F} \\
+\end{tabular}
+\end{center}
+
+\textbf{Analysis:} Not a tautology (has F), not a contradiction (has T). It's a contingency.
+\end{exbox}
+
+\begin{exbox}[Variant 2.1: Is it a Tautology?]
+\textbf{Q:} Is $(p \to q) \lor (q \to p)$ a tautology?
+
+\begin{center}
+\scriptsize
+\begin{tabular}{cc|c|c|c}
+$p$ & $q$ & $p \to q$ & $q \to p$ & OR \\
+\hline
+T & T & T & T & T \\
+T & F & F & T & T \\
+F & T & T & F & T \\
+F & F & T & T & T \\
+\end{tabular}
+\end{center}
+
+\textbf{Answer:} YES, all T $\Rightarrow$ tautology!
+\end{exbox}
+
+% =====================================
+% APP 3: EQUIVALENCE PROOFS
+% =====================================
+\section{Proving Equivalences}
+
+\begin{exbox}[Problem Type 3: Prove Equivalence]
+\textbf{Q:} Prove $\neg(p \lor (\neg p \land q)) \equiv \neg p \land \neg q$
+
+\textbf{Method:} Chain of equivalences with law names
+
+\begin{solbox}
+\begin{align*}
+&\neg(p \lor (\neg p \land q)) \\
+&\equiv \neg p \land \neg(\neg p \land q) \quad \text{[De Morgan]} \\
+&\equiv \neg p \land (p \lor \neg q) \quad \text{[De Morgan + Double Neg]} \\
+&\equiv (\neg p \land p) \lor (\neg p \land \neg q) \quad \text{[Distributive]} \\
+&\equiv F \lor (\neg p \land \neg q) \quad \text{[Negation: $\neg p \land p = F$]} \\
+&\equiv \neg p \land \neg q \quad \text{[Identity: $F \lor X = X$]} \quad \checkmark
+\end{align*}
+\end{solbox}
+\end{exbox}
+
+\begin{exbox}[Variant 3.1]
+\textbf{Q:} Show $(p \to q) \land (p \to r) \equiv p \to (q \land r)$
+
+\begin{solbox}
+\begin{align*}
+&(p \to q) \land (p \to r) \\
+&\equiv (\neg p \lor q) \land (\neg p \lor r) \quad \text{[Implication]} \\
+&\equiv \neg p \lor (q \land r) \quad \text{[Distributive (reverse)]} \\
+&\equiv p \to (q \land r) \quad \text{[Implication]} \quad \checkmark
+\end{align*}
+\end{solbox}
+\end{exbox}
+
+\begin{exbox}[Variant 3.2: Show Tautology]
+\textbf{Q:} Prove $(p \land q) \to (p \lor q)$ is a tautology
+
+\begin{solbox}
+\begin{align*}
+&(p \land q) \to (p \lor q) \\
+&\equiv \neg(p \land q) \lor (p \lor q) \quad \text{[Implication]} \\
+&\equiv (\neg p \lor \neg q) \lor (p \lor q) \quad \text{[De Morgan]} \\
+&\equiv (\neg p \lor p) \lor (\neg q \lor q) \quad \text{[Rearrange]} \\
+&\equiv T \lor T \equiv T \quad \checkmark
+\end{align*}
+\end{solbox}
+\end{exbox}
+
+% =====================================
+% APP 4: QUANTIFIER TRANSLATION
+% =====================================
+\section{Quantifier Translation}
+
+\begin{exbox}[Problem Type 4: English to Quantifiers]
+\textbf{Q:} ``Every student in this class has taken Java.''
+
+\textbf{Option 1:} If domain = students in this class\\
+$\forall x\, J(x)$
+
+\textbf{Option 2:} If domain = all people\\
+$\forall x(S(x) \to J(x))$
+
+\textbf{Key insight:} ``All A are B'' uses IMPLICATION!
+\end{exbox}
+
+\begin{exbox}[Variant 4.1: Some Statement]
+\textbf{Q:} ``Some student in this class has taken Java.''
+
+\textbf{Option 1:} Domain = students: $\exists x\, J(x)$
+
+\textbf{Option 2:} Domain = all people: $\exists x(S(x) \land J(x))$
+
+\textbf{Key:} ``Some A are B'' uses CONJUNCTION!
+\end{exbox}
+
+\begin{exbox}[Variant 4.2: Negation]
+\textbf{Q:} Express negation of ``All birds fly''
+
+Original: $\forall x(B(x) \to F(x))$
+
+Negation: $\neg \forall x(B(x) \to F(x))$\\
+$\equiv \exists x\, \neg(B(x) \to F(x))$\\
+$\equiv \exists x\, \neg(\neg B(x) \lor F(x))$\\
+$\equiv \exists x\, (B(x) \land \neg F(x))$
+
+\textbf{English:} ``There exists a bird that does not fly.''
+\end{exbox}
+
+\begin{exbox}[Variant 4.3: No/None]
+\textbf{Q:} ``No student is perfect.''
+
+Method 1: $\neg \exists x(S(x) \land P(x))$
+
+Method 2: $\forall x(S(x) \to \neg P(x))$
+
+Both equivalent! ``None'' = ``All are not''
+\end{exbox}
+
+\end{multicols}
+
+\newpage
+
+\begin{multicols}{2}
+
+% =====================================
+% APP 5: NESTED QUANTIFIERS
+% =====================================
+\section{Nested Quantifier Problems}
+
+\begin{exbox}[Problem Type 5: Truth Value]
+\textbf{Q:} Let $U$ = reals, $P(x,y): x + y = 0$. Is $\forall x \exists y\, P(x,y)$ true?
+
+\textbf{Analysis:}\\
+``For every $x$, there exists some $y$ such that $x + y = 0$''
+
+For any $x$, just pick $y = -x$. Then $x + (-x) = 0$. ✓
+
+\textbf{Answer:} TRUE - every number has an inverse.
+\end{exbox}
+
+\begin{exbox}[Variant 5.1: Swap Order]
+\textbf{Q:} Same setup. Is $\exists y \forall x\, P(x,y)$ true?
+
+``There exists ONE $y$ that works for ALL $x$''
+
+This claims one number $y$ is the inverse of EVERY $x$. Impossible!
+
+\textbf{Answer:} FALSE
+\end{exbox}
+
+\begin{exbox}[Variant 5.2: Multiplication]
+\textbf{Q:} $U$ = reals, $P(x,y): x \cdot y = 0$
+
+\begin{center}
+\scriptsize
+\begin{tabular}{l|c|l}
+Statement & T/F & Why \\
+\hline
+$\forall x \forall y$ & F & $2 \cdot 3 \neq 0$ \\
+$\forall x \exists y$ & T & Pick $y=0$ \\
+$\exists x \forall y$ & T & $x=0$ works \\
+$\exists x \exists y$ & T & $x=y=0$ \\
+\end{tabular}
+\end{center}
+\end{exbox}
+
+\begin{exbox}[Variant 5.3: Love Relations]
+$L(x,y)$ = ``$x$ loves $y$''
+
+\textbf{``Everybody loves somebody''}: $\forall x \exists y\, L(x,y)$\\
+(Each person has THEIR OWN someone)
+
+\textbf{``Someone is loved by everyone''}: $\exists y \forall x\, L(x,y)$\\
+(ONE person loved by ALL)
+
+\textbf{These are DIFFERENT!}
+\end{exbox}
+
+% =====================================
+% APP 6: NEGATING NESTED QUANTIFIERS
+% =====================================
+\section{Negating Nested Quantifiers}
+
+\begin{exbox}[Problem Type 6: Full Negation]
+\textbf{Q:} Negate $\exists w \forall a \exists f\, (P(w,f) \land Q(f,a))$
+
+\textbf{Method:} Push $\neg$ inward, flip each quantifier
+
+\begin{solbox}
+Step 1: $\neg \exists w \to \forall w \neg$\\
+Step 2: $\neg \forall a \to \exists a \neg$\\
+Step 3: $\neg \exists f \to \forall f \neg$\\
+Step 4: Apply De Morgan to predicate
+
+\textbf{Result:} $\forall w \exists a \forall f\, (\neg P(w,f) \lor \neg Q(f,a))$
+\end{solbox}
+\end{exbox}
+
+\begin{exbox}[Variant 6.1: Simple Nested]
+\textbf{Q:} Negate $\forall x \exists y\, P(x,y)$
+
+$\neg \forall x \exists y\, P(x,y)$\\
+$\equiv \exists x \neg \exists y\, P(x,y)$\\
+$\equiv \exists x \forall y \neg P(x,y)$
+
+\textbf{English:} ``There is an $x$ such that for all $y$, $P(x,y)$ is false.''
+\end{exbox}
+
+% =====================================
+% APP 7: INFERENCE PROOFS
+% =====================================
+\section{Building Valid Arguments}
+
+\begin{exbox}[Problem Type 7: Step-by-Step Proof]
+\textbf{Q:} Given: $p \land (p \to q)$. Prove $q$.
+
+\begin{solbox}
+\begin{tabular}{c|l|l}
+\# & Statement & Reason \\
+\hline
+1 & $p \land (p \to q)$ & Premise \\
+2 & $p$ & Simplification (1) \\
+3 & $p \to q$ & Simplification (1) \\
+4 & $q$ & Modus Ponens (2,3) \\
+\end{tabular}
+\end{solbox}
+\end{exbox}
+
+\begin{exbox}[Variant 7.1: Weather Problem]
+\textbf{Premises:}\\
+1. It is not sunny and it is colder. ($\neg p \land q$)\\
+2. We swim only if it is sunny. ($r \to p$)\\
+3. If we don't swim, we canoe. ($\neg r \to s$)\\
+4. If we canoe, we're home by sunset. ($s \to t$)
+
+\textbf{Prove:} We're home by sunset. ($t$)
+
+\begin{solbox}
+\begin{tabular}{c|l|l}
+\# & Statement & Reason \\
+\hline
+1 & $\neg p \land q$ & Premise \\
+2 & $\neg p$ & Simplification (1) \\
+3 & $r \to p$ & Premise \\
+4 & $\neg r$ & Modus Tollens (2,3) \\
+5 & $\neg r \to s$ & Premise \\
+6 & $s$ & Modus Ponens (4,5) \\
+7 & $s \to t$ & Premise \\
+8 & $t$ & Modus Ponens (6,7) \\
+\end{tabular}
+\end{solbox}
+
+\textbf{Key insight:} Step 4 uses Modus Tollens backwards from $\neg p$.
+\end{exbox}
+
+\begin{exbox}[Variant 7.2: Socrates]
+\textbf{Premises:}\\
+1. All men are mortal. ($\forall x(M(x) \to R(x))$)\\
+2. Socrates is a man. ($M(s)$)
+
+\textbf{Prove:} Socrates is mortal. ($R(s)$)
+
+\begin{solbox}
+\begin{tabular}{c|l|l}
+\# & Statement & Reason \\
+\hline
+1 & $\forall x(M(x) \to R(x))$ & Premise \\
+2 & $M(s) \to R(s)$ & UI (1) \\
+3 & $M(s)$ & Premise \\
+4 & $R(s)$ & MP (2,3) \\
+\end{tabular}
+\end{solbox}
+\end{exbox}
+
+\begin{exbox}[Variant 7.3: Class Problem]
+\textbf{Premises:}\\
+1. A student hasn't read the book. ($\exists x(C(x) \land \neg B(x))$)\\
+2. Everyone in class passed. ($\forall x(C(x) \to P(x))$)
+
+\textbf{Prove:} Someone who passed hasn't read the book.
+
+\begin{solbox}
+\begin{tabular}{c|l|l}
+\# & Statement & Reason \\
+\hline
+1 & $\exists x(C(x) \land \neg B(x))$ & Premise \\
+2 & $C(a) \land \neg B(a)$ & EI (1) \\
+3 & $C(a)$ & Simp (2) \\
+4 & $\forall x(C(x) \to P(x))$ & Premise \\
+5 & $C(a) \to P(a)$ & UI (4) \\
+6 & $P(a)$ & MP (3,5) \\
+7 & $\neg B(a)$ & Simp (2) \\
+8 & $P(a) \land \neg B(a)$ & Conj (6,7) \\
+9 & $\exists x(P(x) \land \neg B(x))$ & EG (8) \\
+\end{tabular}
+\end{solbox}
+\end{exbox}
+
+\end{multicols}
+
+\newpage
+
+% =====================================
+% QUICK REFERENCE FORMULAS
+% =====================================
+\begin{center}
+{\large\bfseries QUICK REFERENCE}
+\end{center}
+
+\begin{multicols}{3}
+
+\subsection*{Connectives}
+\begin{center}
+\scriptsize
+\begin{tabular}{c|l}
+$\neg$ & NOT \\
+$\land$ & AND \\
+$\lor$ & OR \\
+$\oplus$ & XOR \\
+$\to$ & IF-THEN \\
+$\leftrightarrow$ & IFF \\
+\end{tabular}
+\end{center}
+
+\subsection*{Key Equivalences}
+$p \to q \equiv \neg p \lor q$\\
+$p \to q \equiv \neg q \to \neg p$\\
+$\neg(p \land q) \equiv \neg p \lor \neg q$\\
+$\neg(p \lor q) \equiv \neg p \land \neg q$\\
+$\neg \forall x\, P \equiv \exists x\, \neg P$\\
+$\neg \exists x\, P \equiv \forall x\, \neg P$
+
+\subsection*{Translation}
+``All A are B''\\
+$\to \forall x(A \to B)$\\[3pt]
+``Some A are B''\\
+$\to \exists x(A \land B)$\\[3pt]
+``$p$ only if $q$''\\
+$\to p \to q$
+
+\subsection*{Inference Rules}
+MP: $p \to q, p \Rightarrow q$\\
+MT: $p \to q, \neg q \Rightarrow \neg p$\\
+HS: $p \to q, q \to r \Rightarrow p \to r$\\
+DS: $p \lor q, \neg p \Rightarrow q$\\
+UI: $\forall x\, P(x) \Rightarrow P(c)$\\
+EG: $P(c) \Rightarrow \exists x\, P(x)$
+
+\subsection*{Fallacies (INVALID)}
+$p \to q, q \Rightarrow p$ \textbf{NO!}\\
+$p \to q, \neg p \Rightarrow \neg q$ \textbf{NO!}
+
+\subsection*{Precedence}
+1. $\neg$\\
+2. $\land$\\
+3. $\lor$\\
+4. $\to$\\
+5. $\leftrightarrow$
+
+\end{multicols}
+
+\end{document}

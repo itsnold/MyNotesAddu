@@ -1,0 +1,213 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Prelim Practice Exam E}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{DISCRETE STRUCTURES I}}\\[5pt]
+{\Large Prelim Practice Exam --- Version E}\\[5pt]
+{\large\textit{Simulation Exam}}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}\\[5pt]
+\textbf{Time Allowed:} 1.5 hours \quad | \quad \textbf{Total Points:} 55
+\end{center}
+
+\vspace{5pt}
+
+\noindent\textbf{Name:} \underline{\hspace{6cm}} \quad \textbf{Date:} \underline{\hspace{3cm}}
+
+\vspace{10pt}
+
+\noindent\textbf{Instructions:}
+\begin{itemize}[noitemsep]
+    \item Answer all questions. Show all work for full credit.
+    \item Box your final answers.
+\end{itemize}
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+\textit{Circle the letter of the best answer. 2 points each.}
+
+\vspace{10pt}
+
+\textbf{1.} The statement ``If $p$ then $q$'' is logically equivalent to:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $p \land q$
+    \item $\neg p \lor q$
+    \item $q \to p$
+    \item $\neg q \lor \neg p$
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{2.} Which statement represents ``Some students passed the exam''?
+
+Let $S(x)$ = ``$x$ is a student'' and $P(x)$ = ``$x$ passed the exam''.
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\forall x\, (S(x) \to P(x))$
+    \item $\forall x\, (S(x) \land P(x))$
+    \item $\exists x\, (S(x) \to P(x))$
+    \item $\exists x\, (S(x) \land P(x))$
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{3.} The inverse of $p \to q$ is:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\neg q \to \neg p$
+    \item $q \to p$
+    \item $\neg p \to \neg q$
+    \item $\neg(p \to q)$
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{4.} A compound proposition that is always false is called a:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item Tautology
+    \item Contingency
+    \item Contradiction
+    \item Fallacy
+\end{enumerate}
+
+\vspace{25pt}
+
+\textbf{5.} The rule $\dfrac{p \land q}{\therefore p}$ is called:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item Conjunction
+    \item Simplification
+    \item Addition
+    \item Absorption
+\end{enumerate}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Construct a truth table for $(p \land q) \to (p \lor q)$ and determine if it is a tautology, contradiction, or contingency.
+
+\vspace{100pt}
+
+\textbf{Question 2.} (5 points) Translate into propositional logic:
+
+\textit{``If John studies hard and attends all classes, then he will pass the course, but if he doesn't study, he will fail.''}
+
+Let:
+\begin{itemize}[noitemsep]
+    \item $s$: ``John studies hard''
+    \item $a$: ``John attends all classes''
+    \item $p$: ``John passes the course''
+    \item $f$: ``John fails''
+\end{itemize}
+
+\vspace{80pt}
+
+\textbf{Question 3.} (4 points) Determine the truth value. Domain: all integers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\forall n\, (n \leq n^2)$
+    
+    \vspace{40pt}
+    
+    \item $\exists m \exists n\, (m + n < m)$
+    
+    \vspace{40pt}
+\end{enumerate}
+
+\textbf{Question 4.} (6 points) Let $L(x, y)$ be ``$x$ has sent a letter to $y$'' where the domain is all people. Express with quantifiers:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Nobody has sent a letter to everyone.
+    
+    \vspace{40pt}
+    
+    \item Everyone has sent a letter to someone.
+    
+    \vspace{40pt}
+    
+    \item There is someone who has received letters from everyone.
+    
+    \vspace{40pt}
+\end{enumerate}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points) Identify the rule of inference:
+
+\begin{enumerate}[label=(\roman*)]
+    \item $p$ is true. Therefore, $p \lor q$ is true.
+    
+    \vspace{40pt}
+    
+    \item If Maria gets an A, she gets a scholarship. Maria got an A. Therefore, Maria gets a scholarship.
+    
+    \vspace{40pt}
+    
+    \item If it snows, the roads are icy. If the roads are icy, schools close. Therefore, if it snows, schools close.
+    
+    \vspace{40pt}
+\end{enumerate}
+
+\textbf{Question 6.} (7 points) Prove that $(p \to q) \lor (p \to r) \equiv p \to (q \lor r)$ without using truth tables. List each logical law used.
+
+\vspace{140pt}
+
+\textbf{Question 7.} (4 points) Negate and express in simplified form:
+
+``For every real number $x$, there exists a real number $y$ such that $x + y > 0$ and $xy > 0$.''
+
+Use $P(x,y)$ for $x + y > 0$ and $Q(x,y)$ for $xy > 0$.
+
+\vspace{100pt}
+
+\textbf{Question 8.} (8 points) Prove valid using inference rules:
+
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $\neg p \lor q$
+    \item $r \to p$
+    \item $r$
+\end{enumerate}
+
+\textbf{Conclusion:} $q$
+
+\vspace{120pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF EXAM}\\[3pt]
+\textit{Total: 55 points}
+\end{center}
+
+\end{document}

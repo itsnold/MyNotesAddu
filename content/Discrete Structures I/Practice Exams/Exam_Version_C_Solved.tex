@@ -1,0 +1,537 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{mdframed}
+
+% Gray solution boxes
+\definecolor{solngray}{gray}{0.95}
+\newmdenv[backgroundcolor=solngray,linewidth=0.5pt,linecolor=gray,innertopmargin=8pt,innerbottommargin=8pt]{solnbox}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{Discrete Structures I}}
+\fancyhead[R]{\textbf{Prelim Practice Exam C}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\textbf{DISCRETE STRUCTURES I}}\\[5pt]
+{\Large Prelim Practice Exam --- Version C}\\[5pt]
+{\large\textit{With Complete Solutions}}\\[10pt]
+\rule{0.8\textwidth}{0.5pt}\\[5pt]
+\textbf{Time Allowed:} 1.5 hours \quad | \quad \textbf{Total Points:} 55
+\end{center}
+
+\vspace{10pt}
+
+\noindent\textbf{Instructions:} Answer all questions. Show all work for full credit.
+
+\vspace{15pt}
+
+%==============================================================================
+% PART I: MULTIPLE CHOICE
+%==============================================================================
+\section*{PART I: Multiple Choice (10 points)}
+\textit{2 points each.}
+
+\vspace{8pt}
+
+\textbf{1.} The implication $p \to q$ is false:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item When $p$ is false and $q$ is true
+    \item When $p$ is true and $q$ is false
+    \item When both $p$ and $q$ are false
+    \item When both $p$ and $q$ are true
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{Explanation:} This is THE most important thing to memorize about implications!
+
+The implication $p \to q$ is FALSE \textbf{only} when $p$ is TRUE and $q$ is FALSE.
+
+\textbf{Think of it as a promise:}
+\begin{itemize}[noitemsep]
+    \item ``If it rains, I'll bring an umbrella.''
+    \item Rain + umbrella = promise kept (T $\to$ T = T)
+    \item Rain + no umbrella = \textbf{promise broken} (T $\to$ F = F)
+    \item No rain + umbrella = promise not tested, so not broken (F $\to$ T = T)
+    \item No rain + no umbrella = promise not tested, so not broken (F $\to$ F = T)
+\end{itemize}
+
+\textbf{Key insight:} A false hypothesis makes the implication trivially true (``vacuously true'').
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{2.} De Morgan's Law states that $\neg(p \land q)$ is equivalent to:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item $\neg p \land \neg q$
+    \item $\neg p \lor \neg q$
+    \item $p \lor q$
+    \item $\neg p \to \neg q$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (B)}
+
+\textbf{De Morgan's Laws:}
+$$\neg(p \land q) \equiv \neg p \lor \neg q$$
+$$\neg(p \lor q) \equiv \neg p \land \neg q$$
+
+\textbf{Memory trick:} ``Break the bar, change the sign'' or ``NOT distributes and flips AND/OR.''
+
+When you negate a compound statement:
+\begin{enumerate}[noitemsep]
+    \item Negate each component
+    \item Flip AND to OR (or OR to AND)
+\end{enumerate}
+
+\textbf{Intuition:} For the conjunction $p \land q$ to be false (i.e., $\neg(p \land q)$), we need at least one of them to be false, i.e., $\neg p$ OR $\neg q$.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{3.} Given the statement ``All cats are mammals,'' which is its contrapositive?
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item If something is not a cat, then it is not a mammal.
+    \item If something is a mammal, then it is a cat.
+    \item If something is not a mammal, then it is not a cat.
+    \item Some cats are not mammals.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (C)}
+
+\textbf{Step 1:} Translate the original to logic.
+
+``All cats are mammals'' = $\forall x (Cat(x) \to Mammal(x))$
+
+For a specific $x$: $C(x) \to M(x)$
+
+\textbf{Step 2:} Form the contrapositive.
+
+Contrapositive of $p \to q$ is $\neg q \to \neg p$.
+
+So contrapositive of $C(x) \to M(x)$ is $\neg M(x) \to \neg C(x)$.
+
+\textbf{Step 3:} Translate back to English.
+
+``If something is NOT a mammal, then it is NOT a cat.''
+
+This is option (C)!
+
+\textbf{Note:}
+\begin{itemize}[noitemsep]
+    \item (A) is the INVERSE (negate both, but don't swap) --- not equivalent
+    \item (B) is the CONVERSE (swap, but don't negate) --- not equivalent
+    \item (C) is the CONTRAPOSITIVE --- equivalent!
+\end{itemize}
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{4.} $\forall x \exists y\, P(x, y)$ differs from $\exists y \forall x\, P(x, y)$ in that:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item The first says every $x$ has its own $y$; the second says one $y$ works for all $x$
+    \item They are logically equivalent
+    \item The first is always false
+    \item The first uses universal, the second uses existential quantification only
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (A)}
+
+\textbf{This is crucial! Quantifier order matters when quantifiers are different!}
+
+\textbf{$\forall x \exists y\, P(x, y)$:} ``For every $x$, there exists some $y$ such that $P(x, y)$.''
+
+The $y$ can depend on $x$. Each $x$ gets its own $y$.
+
+Example: ``Everyone has a mother.'' Each person has their own mother.
+
+\textbf{$\exists y \forall x\, P(x, y)$:} ``There exists a $y$ such that for all $x$, $P(x, y)$.''
+
+ONE fixed $y$ must work for ALL $x$.
+
+Example: ``There is someone who is everyone's friend.'' One universal friend.
+
+\textbf{These are NOT equivalent!} The second is a stronger claim than the first.
+\end{solnbox}
+
+\vspace{10pt}
+
+\textbf{5.} The argument ``If I study, I pass. I did not study. Therefore, I did not pass'' is:
+
+\begin{enumerate}[label=(\Alph*),noitemsep]
+    \item Valid by Modus Tollens
+    \item Valid by Modus Ponens
+    \item Invalid (Denying the Antecedent)
+    \item Invalid (Affirming the Consequent)
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{Answer: (C)}
+
+Let $s$ = ``I study'', $p$ = ``I pass''
+
+The argument is: $s \to p$, $\neg s$, therefore $\neg p$.
+
+This is the \textbf{Denying the Antecedent} fallacy!
+
+\textbf{Why it's invalid:}
+
+Just because studying leads to passing doesn't mean it's the ONLY way to pass!
+
+Maybe you passed by:
+\begin{itemize}[noitemsep]
+    \item Lucky guessing
+    \item Already knowing the material
+    \item The test being curved
+\end{itemize}
+
+\textbf{Compare with valid forms:}
+\begin{itemize}[noitemsep]
+    \item Modus Ponens: $s \to p$, $s$ $\therefore p$ (valid)
+    \item Modus Tollens: $s \to p$, $\neg p$ $\therefore \neg s$ (valid)
+    \item Denying Antecedent: $s \to p$, $\neg s$ $\therefore \neg p$ (INVALID!)
+    \item Affirming Consequent: $s \to p$, $p$ $\therefore s$ (INVALID!)
+\end{itemize}
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART II: SHORT ANSWER
+%==============================================================================
+\section*{PART II: Short Answer (20 points)}
+
+\textbf{Question 1.} (5 points) Construct a truth table for $(p \oplus q) \leftrightarrow \neg(p \leftrightarrow q)$.
+
+\begin{solnbox}
+\textbf{This problem reveals an important relationship!}
+
+$\oplus$ is XOR (exclusive or): true when exactly one operand is true.
+
+$\leftrightarrow$ is biconditional (iff): true when both operands have the same value.
+
+\textbf{Prediction:} XOR is the ``opposite'' of biconditional, so $p \oplus q \equiv \neg(p \leftrightarrow q)$.
+
+\begin{center}
+\begin{tabular}{cc|cc|c|c}
+\toprule
+$p$ & $q$ & $p \oplus q$ & $p \leftrightarrow q$ & $\neg(p \leftrightarrow q)$ & $(p \oplus q) \leftrightarrow \neg(p \leftrightarrow q)$ \\
+\midrule
+T & T & F & T & F & T \\
+T & F & T & F & T & T \\
+F & T & T & F & T & T \\
+F & F & F & T & F & T \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Result:} All T's in the final column! This is a \textbf{TAUTOLOGY}.
+
+\textbf{What this means:} $p \oplus q \equiv \neg(p \leftrightarrow q)$
+
+XOR and biconditional are negations of each other:
+\begin{itemize}[noitemsep]
+    \item $\leftrightarrow$: same truth values $\to$ true
+    \item $\oplus$: different truth values $\to$ true
+\end{itemize}
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 2.} (5 points) Translate into propositional logic:
+
+\textit{``A user can delete a file only if they have write permissions or they are the administrator.''}
+
+Let:
+\begin{itemize}[noitemsep]
+    \item $d$: ``User can delete file''
+    \item $w$: ``User has write permissions''
+    \item $a$: ``User is administrator''
+\end{itemize}
+
+\begin{solnbox}
+\textbf{Key phrase:} ``$A$ only if $B$'' means $A \to B$.
+
+So: ``User can delete only if [condition]'' = $d \to [\text{condition}]$
+
+The condition is: ``write permissions OR administrator'' = $w \lor a$
+
+\textbf{Answer:}
+$$\boxed{d \to (w \lor a)}$$
+
+\textbf{Interpretation:} Having write permissions or being admin is NECESSARY for deletion. It's a requirement, not a guarantee.
+
+\textbf{Note:} This doesn't say deleting is sufficient for having permissions. It says if you CAN delete, you MUST have one of those permissions.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 3.} (4 points) Determine truth values. Domain: all integers.
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\exists x \forall y\, (x + y = y)$
+    \item $\forall x \exists y\, (x \cdot y = 1)$
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) $\exists x \forall y\, (x + y = y)$}
+
+``There exists an integer $x$ such that for ALL integers $y$, $x + y = y$.''
+
+We need ONE $x$ that works universally.
+
+$x + y = y$ means $x = 0$.
+
+Check: $0 + y = y$ for all $y$? Yes! Zero is the additive identity.
+
+This is \textbf{TRUE}. The witness is $x = 0$.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) $\forall x \exists y\, (x \cdot y = 1)$}
+
+``For every integer $x$, there exists an integer $y$ such that $x \cdot y = 1$.''
+
+We need every integer to have a multiplicative inverse \textit{that is also an integer}.
+
+Consider $x = 2$: We need $2y = 1$, so $y = 1/2$. But $1/2$ is NOT an integer!
+
+Consider $x = 0$: We need $0 \cdot y = 1$, but $0 \cdot y = 0$ for all $y$. Impossible!
+
+This is \textbf{FALSE}.
+
+\textbf{Note:} If the domain were REAL numbers (except 0), this would be true.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 4.} (6 points) Let $T(x, y)$ mean ``$x$ is taller than $y$'' where the domain is all people. Express:
+
+\begin{enumerate}[label=(\roman*)]
+    \item Everyone is taller than someone.
+    \item There is someone who is not taller than anyone.
+    \item Someone is the tallest (taller than everyone else).
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i) Everyone is taller than someone.}
+
+``For every person $x$, there exists a person $y$ such that $x$ is taller than $y$.''
+
+$$\boxed{\forall x \exists y\, T(x, y)}$$
+
+(Each person has someone shorter than them.)
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii) There is someone who is not taller than anyone.}
+
+``There exists a person $x$ such that for all people $y$, $x$ is NOT taller than $y$.''
+
+$$\boxed{\exists x \forall y\, \neg T(x, y)}$$
+
+(This describes the shortest person --- they're not taller than anyone!)
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii) Someone is the tallest.}
+
+``There exists a person $x$ such that for all OTHER people $y$, $x$ is taller than $y$.''
+
+$$\boxed{\exists x \forall y\, (x \neq y \to T(x, y))}$$
+
+\textbf{Why the $x \neq y$?} We don't want to require someone to be taller than themselves (which is impossible).
+
+Alternative (simpler, if we allow $T(x,x)$ to be false naturally):
+$\exists x \forall y\, (y \neq x \to T(x, y))$
+\end{solnbox}
+
+\newpage
+
+%==============================================================================
+% PART III: PROBLEM SOLVING
+%==============================================================================
+\section*{PART III: Problem Solving (25 points)}
+
+\textbf{Question 5.} (6 points) Identify the rule of inference:
+
+\begin{enumerate}[label=(\roman*)]
+    \item I will go to the party and I will dance. Therefore, I will dance.
+    \item If $x$ is even, then $x^2$ is even. $x = 4$ is even. Therefore, $16$ is even.
+    \item If the alarm sounds, there is danger or a test is happening. The alarm sounds. Therefore, there is danger or a test is happening.
+\end{enumerate}
+
+\begin{solnbox}
+\textbf{(i)} $p \land q$, therefore $q$
+
+This is \textbf{Simplification}!
+
+If a conjunction is true, each conjunct is individually true.
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(ii)} Let $E(x)$ = ``$x$ is even'', consider specific value $x = 4$.
+
+Structure:
+\begin{align*}
+&\forall x\, (E(x) \to E(x^2)) \\
+&E(4) \\
+&\therefore E(16)
+\end{align*}
+
+This uses TWO rules:
+\begin{enumerate}[noitemsep]
+    \item \textbf{Universal Instantiation}: From $\forall x\, P(x)$ conclude $P(4)$: ``If 4 is even, then $4^2$ is even''
+    \item \textbf{Modus Ponens}: From ``If 4 is even, then 16 is even'' and ``4 is even'', conclude ``16 is even''
+\end{enumerate}
+
+\rule{\linewidth}{0.3pt}
+
+\textbf{(iii)} Let $a$ = alarm, $d$ = danger, $t$ = test
+
+Structure: $a \to (d \lor t)$, $a$, therefore $d \lor t$
+
+This is \textbf{Modus Ponens}!
+
+$$\frac{p \to q \quad p}{\therefore q}$$
+
+The antecedent ($a$) is true, so the consequent ($d \lor t$) follows.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 6.} (7 points) Prove: $\neg p \lor (p \land q) \equiv p \to q$ (without truth tables).
+
+\begin{solnbox}
+\textbf{Strategy:} Transform the left side step by step.
+
+\begin{align*}
+\neg p \lor (p \land q) &\equiv (\neg p \lor p) \land (\neg p \lor q) && \text{[Distributive Law]} \\
+&\equiv T \land (\neg p \lor q) && \text{[Negation Law: } \neg p \lor p = T \text{]} \\
+&\equiv \neg p \lor q && \text{[Identity Law: } T \land X = X \text{]} \\
+&\equiv p \to q && \text{[Implication Law]}
+\end{align*}
+
+$$\boxed{\neg p \lor (p \land q) \equiv p \to q}$$
+
+\textbf{Laws used:}
+\begin{enumerate}[noitemsep]
+    \item Distributive Law: $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$
+    \item Negation Law: $\neg p \lor p \equiv T$
+    \item Identity Law: $T \land X \equiv X$
+    \item Implication Law: $\neg p \lor q \equiv p \to q$
+\end{enumerate}
+
+\textbf{Alternative approach} (going right to left):
+
+Start with $p \to q \equiv \neg p \lor q$ and show it equals $\neg p \lor (p \land q)$.
+
+By absorption: $\neg p \lor (p \land q) \equiv \neg p \lor q$ when $\neg p$ ``absorbs'' the $p$ in the second term.
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 7.} (4 points) Negate and simplify:
+
+``Every student who studies hard passes the exam.''
+
+Express using $S(x)$ = ``$x$ is a student'', $H(x)$ = ``$x$ studies hard'', $P(x)$ = ``$x$ passes''.
+
+\begin{solnbox}
+\textbf{Step 1:} Translate the original.
+
+``Every student who studies hard passes'' = ``For all $x$, if $x$ is a student and studies hard, then $x$ passes.''
+
+$$\forall x\, ((S(x) \land H(x)) \to P(x))$$
+
+\textbf{Step 2:} Negate it.
+
+\begin{align*}
+&\neg \forall x\, ((S(x) \land H(x)) \to P(x)) \\
+&\equiv \exists x\, \neg((S(x) \land H(x)) \to P(x)) && \text{[De Morgan for quantifiers]}
+\end{align*}
+
+\textbf{Step 3:} Simplify $\neg(A \to B)$.
+
+Recall: $\neg(A \to B) \equiv A \land \neg B$
+
+So: $\neg((S(x) \land H(x)) \to P(x)) \equiv (S(x) \land H(x)) \land \neg P(x)$
+
+\textbf{Final answer:}
+$$\boxed{\exists x\, (S(x) \land H(x) \land \neg P(x))}$$
+
+\textbf{In English:} ``There exists a student who studies hard but does NOT pass the exam.''
+
+\textbf{Intuition:} The negation of ``all such students pass'' is ``at least one such student doesn't pass.''
+\end{solnbox}
+
+\vspace{15pt}
+
+\textbf{Question 8.} (8 points) Prove valid:
+
+\textbf{Premises:}
+\begin{enumerate}[noitemsep]
+    \item $(p \land q) \to r$
+    \item $p$
+    \item $q$
+\end{enumerate}
+
+\textbf{Conclusion:} $r$
+
+\begin{solnbox}
+\textbf{Strategy:} Combine $p$ and $q$, then apply Modus Ponens.
+
+\begin{center}
+\begin{tabular}{c|l|l}
+\toprule
+\textbf{Step} & \textbf{Statement} & \textbf{Reason} \\
+\midrule
+1 & $p$ & Premise \\
+2 & $q$ & Premise \\
+3 & $p \land q$ & Conjunction (1, 2) \\
+4 & $(p \land q) \to r$ & Premise \\
+5 & $r$ & Modus Ponens (3, 4) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$$\boxed{\therefore r}$$
+
+\textbf{Explanation:}
+\begin{itemize}[noitemsep]
+    \item Steps 1-3: We're given $p$ and $q$ separately. The Conjunction rule lets us combine them into $p \land q$.
+    \item Steps 4-5: Now we have both $p \land q$ and $(p \land q) \to r$. The hypothesis of the implication is satisfied, so by Modus Ponens, the conclusion $r$ follows.
+\end{itemize}
+
+\textbf{This is a very direct proof!} The key insight is recognizing you need to BUILD $p \land q$ from separate premises before you can use the conditional.
+\end{solnbox}
+
+\vspace{20pt}
+
+\begin{center}
+\rule{0.5\textwidth}{0.5pt}\\[5pt]
+\textbf{END OF EXAM}\\[3pt]
+\textit{Total: 55 points}
+\end{center}
+
+\end{document}

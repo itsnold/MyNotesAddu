@@ -1,0 +1,227 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage[a4paper,landscape,left=0.5cm,top=0.5cm,bottom=0.5cm,right=14.85cm]{geometry}
+\usepackage{multicol}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{transparent}
+
+% ============================================
+% TRANSPARENCY SETTING (adjust 0.0 to 1.0)
+% 1.0 = fully opaque, 0.5 = 50% transparent, 0.0 = invisible
+% ============================================
+\newcommand{\globalopacity}{1}  % <-- EDIT THIS VALUE
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\pagestyle{empty}
+
+\titleformat{\section}{\normalfont\bfseries\color{blue!70!black}}{\thesection}{0.5em}{}
+\titlespacing{\section}{0pt}{4pt}{2pt}
+
+\newcommand{\tand}{\wedge}
+\newcommand{\tor}{\vee}
+\newcommand{\tnot}{\neg} 
+\newcommand{\timplies}{\rightarrow}
+\newcommand{\tiff}{\leftrightarrow}
+
+\begin{document}
+\transparent{\globalopacity}  % Apply transparency to everything below
+\begin{multicols}{3}
+
+\begin{center}
+\textbf{\Large DISCRETE STRUCTURES CHEATSHEET}
+\end{center}
+
+\section*{Logical Operators}
+\begin{tabular}{|c|c||c|c|c|c|c|}
+\hline
+$p$ & $q$ & $\tnot p$ & $p \tand q$ & $p \tor q$ & $p \timplies q$ & $p \tiff q$ \\
+\hline
+T & T & F & T & T & T & T \\
+T & F & F & F & T & F & F \\
+F & T & T & F & T & T & F \\
+F & F & T & F & F & T & T \\
+\hline
+\end{tabular}
+
+\textbf{Key:} $p \timplies q$ is FALSE \textbf{only when} $p$ is T and $q$ is F.
+
+\section*{Logical Equivalences}
+
+\textbf{Identity:} $p \tand T \equiv p$, \quad $p \tor F \equiv p$
+
+\textbf{Domination:} $p \tor T \equiv T$, \quad $p \tand F \equiv F$
+
+\textbf{Idempotent:} $p \tand p \equiv p$, \quad $p \tor p \equiv p$
+
+\textbf{Double Neg:} $\tnot(\tnot p) \equiv p$
+
+\textbf{Commutative:} $p \tand q \equiv q \tand p$, \quad $p \tor q \equiv q \tor p$
+
+\textbf{Associative:} $(p \tand q) \tand r \equiv p \tand (q \tand r)$
+
+\textbf{Distributive:}
+\begin{itemize}[nosep,leftmargin=*]
+\item $p \tor (q \tand r) \equiv (p \tor q) \tand (p \tor r)$
+\item $p \tand (q \tor r) \equiv (p \tand q) \tor (p \tand r)$
+\end{itemize}
+
+\textbf{De Morgan's Laws:}
+\begin{itemize}[nosep,leftmargin=*]
+\item $\tnot(p \tand q) \equiv \tnot p \tor \tnot q$
+\item $\tnot(p \tor q) \equiv \tnot p \tand \tnot q$
+\end{itemize}
+
+\textbf{Absorption:} $p \tor (p \tand q) \equiv p$, \quad $p \tand (p \tor q) \equiv p$
+
+\textbf{Negation:} $p \tor \tnot p \equiv T$, \quad $p \tand \tnot p \equiv F$
+
+\section*{Conditional Equivalences}
+
+$p \timplies q \equiv \tnot p \tor q$ \hfill (Material Implication)
+
+$p \timplies q \equiv \tnot q \timplies \tnot p$ \hfill (Contrapositive)
+
+$p \tiff q \equiv (p \timplies q) \tand (q \timplies p)$
+
+$\tnot(p \timplies q) \equiv p \tand \tnot q$
+
+\textbf{Related Forms:}
+\begin{itemize}[nosep,leftmargin=*]
+\item Converse of $p \timplies q$: $q \timplies p$
+\item Inverse of $p \timplies q$: $\tnot p \timplies \tnot q$
+\item Contrapositive: $\tnot q \timplies \tnot p$ (equivalent!)
+\end{itemize}
+
+\section*{Rules of Inference}
+
+\textbf{Modus Ponens:} $p$, $p \timplies q$ $\therefore q$\\
+{\small \textit{``If p then q. p is true. So q is true.''}}
+
+\textbf{Modus Tollens:} $\tnot q$, $p \timplies q$ $\therefore \tnot p$\\
+{\small \textit{``If p then q. q is false. So p must be false.'' (Backward reasoning)}}
+
+\textbf{Hypothetical Syllogism:} $p \timplies q$, $q \timplies r$ $\therefore p \timplies r$\\
+{\small \textit{``Chain of implications: if p→q and q→r, then p→r''}}
+
+\textbf{Disjunctive Syllogism:} $p \tor q$, $\tnot p$ $\therefore q$\\
+{\small \textit{``Either p or q. Not p. So it must be q.''}}
+
+\textbf{Addition:} $p$ $\therefore p \tor q$\\
+{\small \textit{``p is true, so `p or anything' is true.''}}
+
+\textbf{Simplification:} $p \tand q$ $\therefore p$\\
+{\small \textit{``Both are true, so either one alone is true.''}}
+
+\textbf{Conjunction:} $p$, $q$ $\therefore p \tand q$\\
+{\small \textit{``p is true. q is true. So both together are true.''}}
+
+\textbf{Resolution:} $p \tor q$, $\tnot p \tor r$ $\therefore q \tor r$\\
+{\small \textit{``Cancel out p and $\tnot p$, keep the rest.''}}
+
+
+\section*{Quantifiers}
+
+$\forall x P(x)$: ``For all $x$, $P(x)$'' (Universal)
+
+$\exists x P(x)$: ``There exists $x$ such that $P(x)$'' (Existential)
+
+$\exists! x P(x)$: ``There exists exactly one $x$...''
+
+\textbf{Negating Quantifiers:}
+\begin{itemize}[nosep,leftmargin=*]
+\item $\tnot \forall x P(x) \equiv \exists x \tnot P(x)$
+\item $\tnot \exists x P(x) \equiv \forall x \tnot P(x)$
+\end{itemize}
+
+\textbf{Nested Negation Algorithm:}
+\begin{enumerate}[nosep,leftmargin=*]
+\item Move $\tnot$ inward
+\item Flip $\forall \leftrightarrow \exists$
+\item When reaching predicate, negate it
+\end{enumerate}
+
+\textbf{Example:} $\tnot \forall x \exists y P(x,y) \equiv \exists x \forall y \tnot P(x,y)$
+
+\section*{Translation Patterns}
+
+\textbf{``All A are B'':} $\forall x (A(x) \timplies B(x))$
+\begin{itemize}[nosep,leftmargin=*]
+\item Uses $\timplies$ (implication)!
+\item ``All dogs bark'' = $\forall x (Dog(x) \timplies Barks(x))$
+\end{itemize}
+
+\textbf{``Some A are B'':} $\exists x (A(x) \tand B(x))$
+\begin{itemize}[nosep,leftmargin=*]
+\item Uses $\tand$ (conjunction)!
+\item ``Some dogs bark'' = $\exists x (Dog(x) \tand Barks(x))$
+\end{itemize}
+
+\textbf{``No A are B'':} $\forall x (A(x) \timplies \tnot B(x))$
+
+or equivalently: $\tnot \exists x (A(x) \tand B(x))$
+
+\section*{Quantifier Inference Rules}
+
+\textbf{Universal Instantiation (UI):}\\
+$\forall x P(x)$ $\therefore P(c)$ for any $c$\\
+{\small \textit{``If it's true for ALL, pick any specific one.''}}
+
+\textbf{Universal Generalization (UG):}\\
+$P(c)$ for arbitrary $c$ $\therefore \forall x P(x)$\\
+{\small \textit{``If it works for an arbitrary element, it works for all.'' (c must not be special!)}}
+
+\textbf{Existential Instantiation (EI):}\\
+$\exists x P(x)$ $\therefore P(c)$ for some new $c$\\
+{\small \textit{``Something exists, give it a name. Use this FIRST, before UI!''}}
+
+\textbf{Existential Generalization (EG):}\\
+$P(c)$ for some $c$ $\therefore \exists x P(x)$\\
+{\small \textit{``Found one example? Then something exists.''}}
+
+\section*{Nested Quantifiers - Order Matters!}
+
+$\forall x \forall y$ = $\forall y \forall x$ (order doesn't matter)
+
+$\exists x \exists y$ = $\exists y \exists x$ (order doesn't matter)
+
+$\forall x \exists y \neq \exists y \forall x$ \textbf{ORDER MATTERS!}
+
+\textbf{Example:} Let $L(x,y)$ = ``$x$ loves $y$''
+\begin{itemize}[nosep,leftmargin=*]
+\item $\forall x \exists y L(x,y)$: Everyone loves someone
+\item $\exists y \forall x L(x,y)$: Someone is loved by everyone
+\end{itemize}
+
+\section*{Common Fallacies (AVOID!)}
+
+\textbf{Affirming the Consequent:}\\
+$q$, $p \timplies q$ $\therefore p$ \quad \textcolor{red}{\textbf{INVALID!}}
+
+\textbf{Denying the Antecedent:}\\
+$\tnot p$, $p \timplies q$ $\therefore \tnot q$ \quad \textcolor{red}{\textbf{INVALID!}}
+
+\section*{Proof Strategy Tips}
+
+\textbf{For Equivalence Proofs:}
+\begin{enumerate}[nosep,leftmargin=*]
+\item Convert $\timplies$ to $\tnot p \tor q$
+\item Apply De Morgan's if you see $\tnot(\text{compound})$
+\item Look for absorption, distribution
+\item Name every law used!
+\end{enumerate}
+
+\textbf{For Valid Arguments:}
+\begin{enumerate}[nosep,leftmargin=*]
+\item Number all premises
+\item Work forward (from premises)
+\item Work backward (from conclusion)
+\item Connect in the middle
+\end{enumerate}
+
+\end{multicols}
+\end{document}
